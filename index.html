@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox SMP - Minecraft Gaming & Server</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Honeycomb Pattern Background for Home Screen */
+        .main-screen {
+            background-color: #0f0f0f;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath fill-rule='evenodd' d='M13.99 9.83l13.5-7.78v15.56l-13.5 7.78-13.5-7.78V2.05l13.5 7.78zM3 12.37v13.56l11.5 6.64 11.5-6.64V12.37L14.5 5.73 3 12.37zM0 27.64l13.5 7.78v15.56L0 43.2V27.64zm3 2.54v11.56l11.5 6.64 11.5-6.64V30.18L14.5 23.54 3 30.18z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        /* Smooth Sidebar Transition */
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-neutral-950 text-white font-sans antialiased overflow-x-hidden">
+
+    <!-- Top Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800 z-40 flex items-center justify-between px-4 py-3">
+        <div class="flex items-center space-x-3">
+            <button id="menu-btn" class="text-neutral-300 hover:text-white text-xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Logo & Brand Name -->
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="showHome()">
+                <i class="fas fa-cube text-emerald-500 text-2xl"></i>
+                <span class="font-extrabold text-lg tracking-wider bg-gradient-to-r from-emerald-500 to-green-400 bg-clip-text text-transparent">Blox SMP</span>
+            </div>
+        </div>
+        
+        <!-- Right Side: YouTube Button & Server Join Button -->
+        <div class="flex items-center space-x-3">
+            <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-600/30 px-3 py-1.5 rounded-lg text-sm font-semibold transition flex items-center space-x-1.5">
+                <i class="fab fa-youtube text-base"></i>
+                <span class="hidden sm:inline">YouTube</span>
+            </a>
+            <button onclick="openSection('server-section')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-emerald-600/20">
+                Server IP
+            </button>
+        </div>
+    </header>
+
+    <!-- Sliding Sidebar Menu -->
+    <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-72 bg-neutral-900 border-r border-neutral-800 z-50 transform -translate-x-full flex flex-col shadow-2xl">
+        <div class="flex items-center justify-between p-4 border-b border-neutral-800">
+            <span class="font-bold text-emerald-500 tracking-wide">NAVIGATION</span>
+            <button id="close-btn" class="text-neutral-400 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4 flex-1 overflow-y-auto space-y-2">
+            <a href="#" onclick="showHome(); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
+                <i class="fas fa-home w-5 text-emerald-500"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" onclick="openSection('server-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
+                <i class="fas fa-server w-5 text-emerald-500"></i>
+                <span>Server & Rules</span>
+            </a>
+            <a href="#" onclick="openSection('videos-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
+                <i class="fas fa-video w-5 text-emerald-500"></i>
+                <span>YouTube Videos</span>
+            </a>
+            <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
+                <i class="fab fa-youtube w-5 text-red-500"></i>
+                <span>YouTube Channel</span>
+            </a>
+        </div>
+        <div class="p-4 border-t border-neutral-800 text-xs text-neutral-500 text-center">
+            &copy; 2026 Blox SMP. All rights reserved.
+        </div>
+    </div>
+
+    <!-- Backdrop for Sidebar -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm"></div>
+
+    <!-- MAIN SCREEN (Epic Welcome Banner with Honeycomb Texture) -->
+    <main id="home-screen" class="main-screen h-screen flex flex-col items-center justify-center text-center px-4 pt-16">
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-wider bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent drop-shadow-2xl">
+            Welcome To Blox SMP
+        </h1>
+        <p class="mt-4 text-neutral-400 text-sm sm:text-base max-w-md">
+            The ultimate Minecraft survival experience. Join our custom server and watch our epic gaming adventures!
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <button onclick="openSection('server-section')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
+                Join Server <i class="fas fa-server ml-2"></i>
+            </button>
+            <button onclick="openSection('videos-section')" class="bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-3 rounded-xl border border-neutral-700 transition">
+                Watch Videos <i class="fas fa-play ml-2"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- SERVER DETAILS SECTION -->
+    <section id="server-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-4xl mx-auto">
+        <div class="border-b border-neutral-800 pb-4 mb-8 flex items-center justify-between">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center">
+                <i class="fas fa-server text-emerald-500 mr-2"></i> Server Details & Rules
+            </h2>
+            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
+        </div>
+
+        <!-- IP Copy Card -->
+        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 mb-6 shadow-xl">
+            <h3 class="text-lg font-bold text-white mb-2">🌍 Minecraft Server IP</h3>
+            <p class="text-xs text-neutral-400 mb-4">Copy the IP address below and paste it directly into your Minecraft multiplayer menu:</p>
+            <div class="flex flex-col sm:flex-row items-center justify-between bg-neutral-950 border border-neutral-800 p-4 rounded-xl gap-3">
+                <div>
+                    <span class="text-xs text-neutral-500 block">Java & Bedrock IP:</span>
+                    <span id="server-ip" class="font-mono font-bold text-emerald-400 text-base sm:text-lg select-all">play.bloxsmp.com</span>
+                </div>
+                <button onclick="copyIP()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition shadow-md">
+                    <i class="fas fa-copy mr-1.5"></i> Copy IP
+                </button>
+            </div>
+            <div class="mt-4 flex gap-4 text-xs text-neutral-400">
+                <span>🎮 Version: <strong>1.20+</strong></span>
+                <span>🌐 Mode: <strong>Survival SMP</strong></span>
+            </div>
+        </div>
+
+        <!-- Rules Card -->
+        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 shadow-xl">
+            <h3 class="text-lg font-bold text-white mb-3">📜 Server Rules</h3>
+            <ul class="space-y-2 text-sm text-neutral-300 list-disc list-inside">
+                <li>Kisi ka bhi saman ya ghar bina permission ke na churayein (No Stealing/Griefing).</li>
+                <li>Hacks, X-ray ya unfair mods ka use bilkul na karein.</li>
+                <li>Chat mein gaali-galoch ya toxic behavior na karein.</li>
+                <li>Sabhi players aur members ki izzat karein.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- YOUTUBE VIDEOS SECTION -->
+    <section id="videos-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-6xl mx-auto">
+        <div class="border-b border-neutral-800 pb-4 mb-8 flex items-center justify-between">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center">
+                <i class="fab fa-youtube text-red-500 mr-2"></i> Latest YouTube Videos
+            </h2>
+            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
+        </div>
+
+        <!-- Videos Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Video Card Example 1 -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col group">
+                <div class="h-48 w-full bg-neutral-950 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1627856013091-fedde1e43463?auto=format&fit=crop&w=800&q=80" alt="Video" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">15:20</span>
+                </div>
+                <div class="p-5 flex flex-col flex-1 justify-between">
+                    <h3 class="font-bold text-white text-base group-hover:text-emerald-400 transition">Building Our Mega Base in Blox SMP! (Ep 1)</h3>
+                    <div class="mt-4 flex items-center justify-between text-xs text-neutral-400">
+                        <span>2.4K views • 2 days ago</span>
+                        <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="text-red-400 font-semibold hover:underline">Watch <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card Example 2 -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col group">
+                <div class="h-48 w-full bg-neutral-950 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Video" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">12:45</span>
+                </div>
+                <div class="p-5 flex flex-col flex-1 justify-between">
+                    <h3 class="font-bold text-white text-base group-hover:text-emerald-400 transition">Trolling My Friend in Minecraft SMP! 😂</h3>
+                    <div class="mt-4 flex items-center justify-between text-xs text-neutral-400">
+                        <span>5.1K views • 1 week ago</span>
+                        <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="text-red-400 font-semibold hover:underline">Watch <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card Example 3 -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col group">
+                <div class="h-48 w-full bg-neutral-950 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=800&q=80" alt="Video" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">20:10</span>
+                </div>
+                <div class="p-5 flex flex-col flex-1 justify-between">
+                    <h3 class="font-bold text-white text-base group-hover:text-emerald-400 transition">Finding Diamond Armor in Hardcore SMP!</h3>
+                    <div class="mt-4 flex items-center justify-between text-xs text-neutral-400">
+                        <span>8.3K views • 2 weeks ago</span>
+                        <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="text-red-400 font-semibold hover:underline">Watch <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function showHome() {
+            document.getElementById('home-screen').classList.remove('hidden');
+            document.getElementById('server-section').classList.add('hidden');
+            document.getElementById('videos-section').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function openSection(sectionId) {
+            document.getElementById('home-screen').classList.add('hidden');
+            document.getElementById('server-section').classList.add('hidden');
+            document.getElementById('videos-section').classList.add('hidden');
+            
+            document.getElementById(sectionId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        
+        document.getElementById('menu-btn').onclick = () => {
+            sidebar.classList.remove('-translate-x-full');
+            backdrop.classList.remove('hidden');
+        };
+
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            backdrop.classList.add('hidden');
+        }
+
+        document.getElementById('close-btn').onclick = closeSidebar;
+        backdrop.onclick = closeSidebar;
+
+        function copyIP() {
+            const ipText = document.getElementById('server-ip').innerText;
+            navigator.clipboard.writeText(ipText);
+            alert('Server IP Copied: ' + ipText);
+        }
+    </script>
+</body>
+</html>
