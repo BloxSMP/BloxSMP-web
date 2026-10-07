@@ -30,8 +30,8 @@
             </button>
             <!-- Logo & Brand Name -->
             <div class="flex items-center space-x-2 cursor-pointer" onclick="showHome()">
-                <i class="fas fa-cube text-emerald-500 text-2xl"></i>
-                <span class="font-extrabold text-lg tracking-wider bg-gradient-to-r from-emerald-500 to-green-400 bg-clip-text text-transparent">Blox SMP</span>
+                <i class="fas fa-cube text-xl" style="color: #20D8E8;"></i>
+                <span class="font-extrabold text-lg tracking-wider bg-gradient-to-r from-[#20D8E8] via-[#1689E8] to-[#6B55E8] bg-clip-text text-transparent">Blox SMP</span>
             </div>
         </div>
         
@@ -41,7 +41,7 @@
                 <i class="fab fa-youtube text-base"></i>
                 <span class="hidden sm:inline">YouTube</span>
             </a>
-            <button onclick="openSection('server-section')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-emerald-600/20">
+            <button onclick="openSection('server-section')" class="text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition shadow-lg" style="background: linear-gradient(135deg, #20D8E8, #1689E8, #6B55E8);">
                 Server IP
             </button>
         </div>
@@ -50,22 +50,22 @@
     <!-- Sliding Sidebar Menu -->
     <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-72 bg-neutral-900 border-r border-neutral-800 z-50 transform -translate-x-full flex flex-col shadow-2xl">
         <div class="flex items-center justify-between p-4 border-b border-neutral-800">
-            <span class="font-bold text-emerald-500 tracking-wide">NAVIGATION</span>
+            <span class="font-bold tracking-wide" style="color: #20D8E8;">NAVIGATION</span>
             <button id="close-btn" class="text-neutral-400 hover:text-white text-lg">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="p-4 flex-1 overflow-y-auto space-y-2">
             <a href="#" onclick="showHome(); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
-                <i class="fas fa-home w-5 text-emerald-500"></i>
+                <i class="fas fa-home w-5" style="color: #20D8E8;"></i>
                 <span>Home</span>
             </a>
             <a href="#" onclick="openSection('server-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
-                <i class="fas fa-server w-5 text-emerald-500"></i>
+                <i class="fas fa-server w-5" style="color: #1689E8;"></i>
                 <span>Server & Rules</span>
             </a>
             <a href="#" onclick="openSection('videos-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
-                <i class="fas fa-video w-5 text-emerald-500"></i>
+                <i class="fas fa-video w-5" style="color: #6B55E8;"></i>
                 <span>YouTube Videos</span>
             </a>
             <a href="https://www.youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
@@ -84,13 +84,13 @@
     <!-- MAIN SCREEN (Epic Welcome Banner with Honeycomb Texture) -->
     <main id="home-screen" class="main-screen h-screen flex flex-col items-center justify-center text-center px-4 pt-16">
         <h1 class="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-wider bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent drop-shadow-2xl">
-            Welcome To Blox SMP
+            Welcome To <span class="bg-gradient-to-r from-[#20D8E8] via-[#1689E8] to-[#6B55E8] bg-clip-text text-transparent">Blox SMP</span>
         </h1>
         <p class="mt-4 text-neutral-400 text-sm sm:text-base max-w-md">
             The ultimate Minecraft survival experience. Join our custom server and watch our epic gaming adventures!
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <button onclick="openSection('server-section')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
+            <button onclick="openSection('server-section')" class="text-white font-bold px-8 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5" style="background: linear-gradient(135deg, #20D8E8, #1689E8, #6B55E8);">
                 Join Server <i class="fas fa-server ml-2"></i>
             </button>
             <button onclick="openSection('videos-section')" class="bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-8 py-3 rounded-xl border border-neutral-700 transition">
@@ -103,7 +103,7 @@
     <section id="server-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-4xl mx-auto">
         <div class="border-b border-neutral-800 pb-4 mb-8 flex items-center justify-between">
             <h2 class="text-2xl font-bold tracking-tight text-white flex items-center">
-                <i class="fas fa-server text-emerald-500 mr-2"></i> Server Details & Rules
+                <i class="fas fa-server mr-2" style="color: #1689E8;"></i> Server Details & Rules
             </h2>
             <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
         </div>
@@ -115,9 +115,9 @@
             <div class="flex flex-col sm:flex-row items-center justify-between bg-neutral-950 border border-neutral-800 p-4 rounded-xl gap-3">
                 <div>
                     <span class="text-xs text-neutral-500 block">Java & Bedrock IP:</span>
-                    <span id="server-ip" class="font-mono font-bold text-emerald-400 text-base sm:text-lg select-all">play.bloxsmp.com</span>
+                    <span id="server-ip" class="font-mono font-bold text-base sm:text-lg select-all" style="color: #20D8E8;">play.bloxsmp.com</span>
                 </div>
-                <button onclick="copyIP()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition shadow-md">
+                <button onclick="copyIP()" class="w-full sm:w-auto text-white text-xs font-bold px-5 py-2.5 rounded-lg transition shadow-md" style="background: linear-gradient(135deg, #20D8E8, #1689E8);">
                     <i class="fas fa-copy mr-1.5"></i> Copy IP
                 </button>
             </div>
@@ -157,7 +157,7 @@
                     <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">15:20</span>
                 </div>
                 <div class="p-5 flex flex-col flex-1 justify-between">
-                    <h3 class="font-bold text-white text-base group-hover:text-emerald-400 transition">Building Our Mega Base in Blox SMP! (Ep 1)</h3>
+                    <h3 class="font-bold text-white text-base group-hover:text-[#20D8E8] transition">Building Our Mega Base in Blox SMP! (Ep 1)</h3>
                     <div class="mt-4 flex items-center justify-between text-xs text-neutral-400">
                         <span>2.4K views • 2 days ago</span>
                         <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="text-red-400 font-semibold hover:underline">Watch <i class="fas fa-external-link-alt ml-1"></i></a>
@@ -172,7 +172,7 @@
                     <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">12:45</span>
                 </div>
                 <div class="p-5 flex flex-col flex-1 justify-between">
-                    <h3 class="font-bold text-white text-base group-hover:text-emerald-400 transition">Trolling My Friend in Minecraft SMP! 😂</h3>
+                    <h3 class="font-bold text-white text-base group-hover:text-[#20D8E8] transition">Trolling My Friend in Minecraft SMP! 😂</h3>
                     <div class="mt-4 flex items-center justify-between text-xs text-neutral-400">
                         <span>5.1K views • 1 week ago</span>
                         <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="text-red-400 font-semibold hover:underline">Watch <i class="fas fa-external-link-alt ml-1"></i></a>
@@ -187,7 +187,7 @@
                     <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">20:10</span>
                 </div>
                 <div class="p-5 flex flex-col flex-1 justify-between">
-                    <h3 class="font-bold text-white text-base group-hover:text-emerald-400 transition">Finding Diamond Armor in Hardcore SMP!</h3>
+                    <h3 class="font-bold text-white text-base group-hover:text-[#20D8E8] transition">Finding Diamond Armor in Hardcore SMP!</h3>
                     <div class="mt-4 flex items-center justify-between text-xs text-neutral-400">
                         <span>8.3K views • 2 weeks ago</span>
                         <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="text-red-400 font-semibold hover:underline">Watch <i class="fas fa-external-link-alt ml-1"></i></a>
