@@ -18,6 +18,12 @@
         .sidebar {
             transition: transform 0.3s ease-in-out;
         }
+        /* Letterhead Paper Styling */
+        .letterhead-container {
+            position: relative;
+            background: white;
+            color: #171717;
+        }
     </style>
 </head>
 <body class="bg-neutral-950 text-white font-sans antialiased overflow-x-hidden">
@@ -136,7 +142,6 @@
             <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Video Card Example -->
             <div class="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col group">
                 <div class="h-48 w-full bg-neutral-950 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1627856013091-fedde1e43463?auto=format&fit=crop&w=800&q=80" alt="Video" class="w-full h-full object-cover">
@@ -148,7 +153,7 @@
         </div>
     </section>
 
-    <!-- LETTER HEAD SECTION (Fixed Image Display) -->
+    <!-- LETTER HEAD SECTION (Robust Layout with Direct Image Fallback) -->
     <section id="letterhead-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-3xl mx-auto">
         <div class="border-b border-neutral-800 pb-4 mb-8 flex items-center justify-between">
             <h2 class="text-2xl font-bold tracking-tight text-white flex items-center">
@@ -157,13 +162,39 @@
             <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
         </div>
 
-        <!-- Letterhead Container with Direct Image Tag -->
-        <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden p-2 sm:p-4">
-            <!-- Displaying the uploaded image directly so it's 100% visible -->
-            <img src="1000045573.jpg" alt="Blox SMP Letterhead" class="w-full h-auto rounded-xl shadow-md border border-neutral-200">
-            
-            <!-- Optional Action Bar below letterhead -->
-            <div class="p-4 flex justify-center bg-white">
+        <!-- Letterhead Paper Box -->
+        <div class="letterhead-container rounded-2xl shadow-2xl p-6 sm:p-10 border border-neutral-300">
+            <!-- Header matching brand style -->
+            <div class="flex justify-between items-center border-b-2 border-neutral-800 pb-4 mb-6">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-cube text-2xl" style="color: #1689E8;"></i>
+                    <span class="font-black text-2xl tracking-wider text-neutral-900">BLOX SMP</span>
+                </div>
+                <div class="text-xs font-semibold text-neutral-700">
+                    <label>Date: <input type="date" id="letter-date" class="border border-neutral-400 rounded px-2 py-1 text-xs outline-none bg-neutral-50"></label>
+                </div>
+            </div>
+
+            <!-- Notice / Letter Body Area (Editable) -->
+            <div class="min-h-[300px] text-sm text-neutral-800 space-y-4">
+                <p class="font-bold">To Whom It May Concern,</p>
+                <div contenteditable="true" class="w-full min-h-[180px] p-3 border border-dashed border-neutral-300 rounded-lg bg-neutral-50 focus:outline-none focus:border-[#1689E8]">
+                    Yahan par aap apna official message ya notice click karke type kar sakte hain...
+                </div>
+                <div class="pt-6">
+                    <p class="font-bold">Management Team</p>
+                    <p class="text-xs text-neutral-500">Blox SMP Official</p>
+                </div>
+            </div>
+
+            <!-- Footer matching your design info -->
+            <div class="border-t border-neutral-300 pt-4 mt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-600 gap-2">
+                <div>📧 bloxsmp02@gmail.com</div>
+                <div>📺 BloxSMPOfficial</div>
+            </div>
+
+            <!-- Print Button -->
+            <div class="mt-6 text-center">
                 <button onclick="window.print()" class="bg-neutral-900 text-white text-xs font-bold px-6 py-2.5 rounded-lg shadow-md hover:bg-neutral-800 transition">
                     <i class="fas fa-print mr-1.5"></i> Print / Save Letterhead
                 </button>
@@ -173,6 +204,9 @@
 
     <!-- JavaScript Logic -->
     <script>
+        // Set today's date automatically
+        document.getElementById('letter-date').valueAsDate = new Date();
+
         function showHome() {
             document.getElementById('home-screen').classList.remove('hidden');
             document.getElementById('server-section').classList.add('hidden');
