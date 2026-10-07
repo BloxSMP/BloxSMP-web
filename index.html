@@ -167,7 +167,7 @@
         </div>
     </section>
 
-    <!-- JOINING REQUEST FORM SECTION -->
+    <!-- JOINING REQUEST FORM SECTION (WITH FALLBACK UPLOADER) -->
     <section id="joining-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-3xl mx-auto">
         <div class="border-b border-neutral-800 pb-4 mb-6 flex items-center justify-between">
             <h2 class="text-xl font-bold tracking-tight text-white flex items-center">
@@ -176,9 +176,17 @@
             <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
         </div>
 
-        <div class="bg-white rounded-xl shadow-2xl p-4 flex flex-col items-center">
-            <img src="joiningletter.png" alt="Joining Request Form" class="w-full h-auto rounded shadow border border-neutral-300">
-            <div class="mt-4">
+        <div class="bg-white rounded-xl shadow-2xl p-6 flex flex-col items-center">
+            <!-- Fallback Uploader Box (Agar direct image load na ho toh yahan se turant select kar sakte hain) -->
+            <div id="joining-upload-box" class="mb-4 text-center w-full p-4 border-2 border-dashed border-neutral-400 rounded-lg bg-neutral-50">
+                <p class="text-xs font-semibold text-neutral-700 mb-2">Agar form image show na ho, toh yahan click karke 'joiningletter.png' select karein:</p>
+                <input type="file" id="joining-file-input" accept="image/*" class="text-xs text-neutral-600 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-neutral-900 file:text-white cursor-pointer">
+            </div>
+
+            <!-- Direct Image tag -->
+            <img id="joining-img" src="joiningletter.png" alt="Joining Request Form" class="w-full h-auto rounded shadow border border-neutral-300" onerror="handleJoiningError()">
+            
+            <div class="mt-6">
                 <button onclick="window.print()" class="bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold px-6 py-2.5 rounded-lg shadow transition flex items-center space-x-2">
                     <i class="fas fa-print"></i>
                     <span>Print Joining Form</span>
@@ -189,6 +197,22 @@
 
     <!-- JavaScript Logic -->
     <script>
+        // Automatic Fallback handler if image fails to load from direct filename
+        function handleJoiningError() {
+            document.getElementById('joining-upload-box').style.display = 'block';
+        }
+
+        // Manual Image Loader via File Input
+        document.getElementById('joining-file-input').addEventListener('change', function(e) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = document.getElementById('joining-img');
+                img.src = event.target.result;
+                document.getElementById('joining-upload-box').style.display = 'none';
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
         function showHome() {
             document.getElementById('home-screen').classList.remove('hidden');
             document.getElementById('server-section').classList.add('hidden');
