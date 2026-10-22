@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blox SMP | Player Verification</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:20px;color:#172554}
+.card{max-width:420px;margin:30px auto;background:white;padding:25px;border-radius:18px;box-shadow:0 5px 24px #ccd3e5}
+h1{color:#4f46e5;margin-bottom:4px}
+.label{font-size:12px;color:#64748b;margin-top:18px}
+.value{font-weight:bold;margin-top:5px;overflow-wrap:anywhere}
+.status{color:#15803d;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>BLOX SMP</h1>
+<p>PLAYER ID VERIFICATION</p>
+<div id="details">Checking player ID...</div>
+</div>
+<script>
+const players = {
+  "BSMP-001": {
+    name: "Sample Player",
+    ign: "Minecraft_IGN",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  }
+};
+
+const id = new URLSearchParams(location.search).get("id");
+const p = players[id];
+const box = document.getElementById("details");
+
+if (!p) {
+  box.textContent = "Player ID not found. Please contact Blox SMP staff.";
+} else {
+  const fields = [
+    ["PLAYER NAME", p.name],
+    ["MINECRAFT USERNAME / IGN", p.ign],
+    ["PLAYER ID NUMBER", id],
+    ["RANK / ROLE", p.rank],
+    ["VALID TILL", p.validTill],
+    ["STATUS", p.status]
+  ];
+  box.replaceChildren();
+  fields.forEach(([label, value]) => {
+    const l = document.createElement("div");
+    l.className = "label";
+    l.textContent = label;
+    const v = document.createElement("div");
+    v.className = "value";
+    v.textContent = value;
+    if (label === "STATUS") v.className += " status";
+    box.append(l, v);
+  });
+}
+</script>
+</body>
+</html>
