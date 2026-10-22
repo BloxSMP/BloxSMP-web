@@ -1,62 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blox SMP | Player Verification</title>
-<style>
-body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:20px;color:#172554}
-.card{max-width:420px;margin:30px auto;background:white;padding:25px;border-radius:18px;box-shadow:0 5px 24px #ccd3e5}
-h1{color:#4f46e5;margin-bottom:4px}
-.label{font-size:12px;color:#64748b;margin-top:18px}
-.value{font-weight:bold;margin-top:5px;overflow-wrap:anywhere}
-.status{color:#15803d;font-weight:bold}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blox SMP | Player Verification</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      margin: 0;
+      padding: 20px;
+      color: #172554;
+    }
+
+    .card {
+      max-width: 420px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 5px 24px #ccd3e5;
+    }
+
+    h1 {
+      color: #4f46e5;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 18px;
+    }
+
+    .value {
+      font-weight: bold;
+      margin-top: 5px;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      color: #15803d;
+      font-weight: bold;
+    }
+
+    .not-found {
+      color: #dc2626;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-<div class="card">
-<h1>BLOX SMP</h1>
-<p>PLAYER ID VERIFICATION</p>
-<div id="details">Checking player ID...</div>
-</div>
-<script>
-const players = {
-  "BSMP-001": {
-    name: "Sample Player",
-    ign: "Minecraft_IGN",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  }
-};
+  <div class="card">
+    <h1>BLOX SMP</h1>
+    <p class="subtitle">PLAYER ID VERIFICATION</p>
 
-const id = new URLSearchParams(location.search).get("id");
-const p = players[id];
-const box = document.getElementById("details");
+    <div id="details">Checking player ID...</div>
 
-if (!p) {
-  box.textContent = "Player ID not found. Please contact Blox SMP staff.";
-} else {
-  const fields = [
-    ["PLAYER NAME", p.name],
-    ["MINECRAFT USERNAME / IGN", p.ign],
-    ["PLAYER ID NUMBER", id],
-    ["RANK / ROLE", p.rank],
-    ["VALID TILL", p.validTill],
-    ["STATUS", p.status]
-  ];
-  box.replaceChildren();
-  fields.forEach(([label, value]) => {
-    const l = document.createElement("div");
-    l.className = "label";
-    l.textContent = label;
-    const v = document.createElement("div");
-    v.className = "value";
-    v.textContent = value;
-    if (label === "STATUS") v.className += " status";
-    box.append(l, v);
-  });
-}
-</script>
+    <div class="footer">
+      Blox SMP • Player Verification Portal
+    </div>
+  </div>
+
+  <script>
+    const players = {
+      "BSMP-001": {
+        name: "Player One",
+        ign: "Minecraft_IGN_1",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-002": {
+        name: "Player Two",
+        ign: "Minecraft_IGN_2",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-003": {
+        name: "Player Three",
+        ign: "Minecraft_IGN_3",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-004": {
+        name: "Player Four",
+        ign: "Minecraft_IGN_4",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-005": {
+        name: "Player Five",
+        ign: "Minecraft_IGN_5",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-006": {
+        name: "Player Six",
+        ign: "Minecraft_IGN_6",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-007": {
+        name: "Player Seven",
+        ign: "Minecraft_IGN_7",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-008": {
+        name: "Player Eight",
+        ign: "Minecraft_IGN_8",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-009": {
+        name: "Player Nine",
+        ign: "Minecraft_IGN_9",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      },
+
+      "BSMP-010": {
+        name: "Player Ten",
+        ign: "Minecraft_IGN_10",
+        rank: "Member",
+        validTill: "31/12/2027",
+        status: "ACTIVE"
+      }
+    };
+
+    const id = new URLSearchParams(
+      window.location.search
+    ).get("id");
+
+    const player = players[id];
+    const details = document.getElementById("details");
+
+    if (!player) {
+      details.className = "not-found";
+      details.textContent =
+        "Player ID not found. Please contact Blox SMP staff.";
+    } else {
+      const fields = [
+        ["PLAYER NAME", player.name],
+        ["MINECRAFT USERNAME / IGN", player.ign],
+        ["PLAYER ID NUMBER", id],
+        ["RANK / ROLE", player.rank],
+        ["VALID TILL", player.validTill],
+        ["STATUS", player.status]
+      ];
+
+      details.replaceChildren();
+
+      fields.forEach(([label, value]) => {
+        const labelElement = document.createElement("div");
+        labelElement.className = "label";
+        labelElement.textContent = label;
+
+        const valueElement = document.createElement("div");
+        valueElement.className = "value";
+        valueElement.textContent = value;
+
+        if (label === "STATUS") {
+          valueElement.classList.add(
+            value === "ACTIVE" ? "status" : "not-found"
+          );
+        }
+
+        details.append(labelElement, valueElement);
+      });
+    }
+  </script>
 </body>
 </html>
