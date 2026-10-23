@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blox SMP | Player Verification</title>
-
 <style>
 * {
   box-sizing: border-box;
@@ -12,217 +5,124 @@
 
 body {
   margin: 0;
-  padding: 20px;
+  padding: 24px 16px;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: #202820;
-  color: #ffffff;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: #f0fff4;
+  background-color: #080d0b;
+  background-image:
+    radial-gradient(ellipse at 50% 0%,
+      rgba(35,160,78,.28), transparent 55%),
+    radial-gradient(ellipse at 100% 100%,
+      rgba(17,94,57,.25), transparent 45%),
+    linear-gradient(135deg,
+      #080d0b, #14231a 55%, #080d0b);
+  background-attachment: fixed;
 }
 
 .card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: 100%;
-  max-width: 400px;
-  background: #303b30;
-  border: 2px solid #557a45;
-  border-radius: 8px;
-  padding: 24px;
-  box-shadow: 0 6px 0 #151b15;
+  max-width: 410px;
+  padding: 28px 25px;
+  border-radius: 12px;
+  background: linear-gradient(145deg,
+    rgba(25,39,30,.98),
+    rgba(11,19,14,.98));
+  border: 1px solid #3e9b5c;
+  box-shadow:
+    0 0 0 4px rgba(53,140,75,.08),
+    0 15px 45px rgba(0,0,0,.55),
+    0 0 28px rgba(46,204,113,.12);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg, #176b35, #7cff9b,
+    #28a957, #176b35
+  );
 }
 
 .logo {
   text-align: center;
-  font-size: 34px;
-  margin-bottom: 8px;
+  font-size: 38px;
+  margin-bottom: 10px;
+  filter: drop-shadow(
+    0 0 10px rgba(87,255,133,.35)
+  );
 }
 
 h1 {
   text-align: center;
   margin: 0;
-  font-size: 26px;
-  color: #8bd66b;
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #8cffaa;
+  text-shadow: 0 0 18px rgba(71,255,126,.22);
 }
 
 .subtitle {
   text-align: center;
-  font-size: 12px;
-  color: #c7d8bf;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
+  font-size: 11px;
+  color: #a9c9b2;
+  letter-spacing: 3px;
+  margin: 9px 0 26px;
 }
 
 .label {
-  color: #b4c9a9;
-  font-size: 11px;
-  margin-top: 17px;
-  letter-spacing: 1px;
+  color: #91b89b;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin-top: 18px;
 }
 
 .value {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
-  margin-top: 5px;
+  margin-top: 6px;
   overflow-wrap: anywhere;
+  color: #f1fff4;
 }
 
 .status {
   display: inline-block;
-  background: #234d29;
-  color: #a8f59a;
-  border: 1px solid #5eaa52;
-  padding: 5px 10px;
+  margin-top: 6px;
+  padding: 7px 12px;
   border-radius: 4px;
-  font-size: 13px;
+  color: #9affb1;
+  background: #123b23;
+  border: 1px solid #3a9b58;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .not-found {
-  color: #ff8a80;
+  color: #ff8585;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .footer {
-  border-top: 1px solid #52634d;
-  margin-top: 24px;
-  padding-top: 15px;
+  border-top: 1px solid #294633;
+  margin-top: 25px;
+  padding-top: 16px;
   text-align: center;
-  color: #b4c9a9;
-  font-size: 12px;
+  color: #83a88d;
+  font-size: 11px;
+  letter-spacing: .5px;
 }
 </style>
-</head>
-
-<body>
-<div class="card">
-  <div class="logo">⛏️</div>
-  <h1>BLOX SMP</h1>
-  <div class="subtitle">PLAYER VERIFICATION</div>
-
-  <div id="details">Checking player ID...</div>
-
-  <div class="footer">
-    Minecraft Community • Blox SMP
-  </div>
-</div>
-
-<script>
-const players = {
-  "BSMP-001": {
-    name: "Player One",
-    ign: "Minecraft_IGN_1",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-002": {
-    name: "Player Two",
-    ign: "Minecraft_IGN_2",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-003": {
-    name: "Player Three",
-    ign: "Minecraft_IGN_3",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-004": {
-    name: "Player Four",
-    ign: "Minecraft_IGN_4",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-005": {
-    name: "Player Five",
-    ign: "Minecraft_IGN_5",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-006": {
-    name: "Player Six",
-    ign: "Minecraft_IGN_6",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-007": {
-    name: "Player Seven",
-    ign: "Minecraft_IGN_7",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-008": {
-    name: "Player Eight",
-    ign: "Minecraft_IGN_8",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-009": {
-    name: "Player Nine",
-    ign: "Minecraft_IGN_9",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  },
-  "BSMP-010": {
-    name: "Player Ten",
-    ign: "Minecraft_IGN_10",
-    rank: "Member",
-    validTill: "31/12/2027",
-    status: "ACTIVE"
-  }
-};
-
-const id = new URLSearchParams(location.search).get("id");
-const player = players[id];
-const details = document.getElementById("details");
-
-if (!player) {
-  details.className = "not-found";
-  details.textContent =
-    "Player ID not found. Please contact Blox SMP staff.";
-} else {
-  const fields = [
-    ["PLAYER NAME", player.name],
-    ["MINECRAFT USERNAME / IGN", player.ign],
-    ["PLAYER ID NUMBER", id],
-    ["RANK / ROLE", player.rank],
-    ["VALID TILL", player.validTill]
-  ];
-
-  details.replaceChildren();
-
-  fields.forEach(([label, value]) => {
-    const l = document.createElement("div");
-    l.className = "label";
-    l.textContent = label;
-
-    const v = document.createElement("div");
-    v.className = "value";
-    v.textContent = value;
-
-    details.append(l, v);
-  });
-
-  const statusLabel = document.createElement("div");
-  statusLabel.className = "label";
-  statusLabel.textContent = "VERIFICATION STATUS";
-
-  const statusValue = document.createElement("div");
-  statusValue.className =
-    player.status === "ACTIVE" ? "status" : "not-found";
-  statusValue.textContent = player.status;
-
-  details.append(statusLabel, statusValue);
-}
-</script>
-</body>
-</html>
