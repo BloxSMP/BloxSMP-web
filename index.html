@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blox SMP - Official Minecraft Server</title>
     
-    <!-- Step 1: Google SEO Meta Tags -->
+    <!-- Google SEO Meta Tags -->
     <meta name="description" content="Blox SMP - The ultimate Minecraft survival server. Join now with IP play.bloxsmp.com and check out our joining form and staff team.">
     <meta name="keywords" content="Blox SMP, Minecraft server India, Minecraft survival server, play bloxsmp com">
     <meta name="author" content="Blox SMP Official">
@@ -15,6 +15,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         .main-screen {
             background-color: #0f0f0f;
@@ -24,108 +25,216 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Front and Back ID Card Layout Styling matching user design */
+        /* Front and Back ID Card Layout Styling matching exact image design */
         .card-container {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
         }
         .id-card {
             width: 320px;
-            height: 500px;
+            height: 480px;
             background: #ffffff;
             color: #000000;
-            border: 3px solid #00d2ff;
-            border-radius: 16px;
-            padding: 15px;
+            border: 3px solid #000000;
+            border-radius: 18px;
+            padding: 16px;
             box-sizing: border-box;
             position: relative;
-            box-shadow: 0 4px 20px rgba(0,210,255,0.3);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .card-header {
-            background: #000;
-            color: #fff;
-            padding: 6px 12px;
-            font-weight: bold;
-            font-size: 12px;
-            text-align: center;
-            border-radius: 6px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+
+        /* Diagonal corner accent stripes */
+        .id-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, transparent 50%, #000 50%);
+            border-top-right-radius: 14px;
         }
-        .card-top-row {
+
+        .id-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #00d2ff 50%, transparent 50%);
+            border-bottom-left-radius: 14px;
+        }
+
+        .card-header-badge {
+            background: #000000;
+            color: #ffffff;
+            padding: 5px 15px;
+            font-weight: 900;
+            font-size: 11px;
+            text-align: center;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            width: max-content;
+            margin: 0 auto 12px auto;
+        }
+
+        .server-brand-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
         }
-        .server-brand {
+
+        .server-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #00d2ff, #1689E8);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .server-title-text {
             font-weight: 900;
-            font-size: 20px;
-            color: #000;
-            line-height: 1.1;
+            font-size: 22px;
+            color: #000000;
+            line-height: 0.95;
+            letter-spacing: -0.5px;
         }
+
+        .sub-header-bar {
+            background: #000000;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            text-align: center;
+            padding: 4px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .card-body-content {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
         .avatar-box {
-            width: 90px;
-            height: 90px;
-            border: 2px solid #00d2ff;
-            border-radius: 10px;
-            background: #111;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #00d2ff;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2a0845, #6441A5);
             overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            flex-shrink: 0;
         }
+
         .avatar-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .field-group {
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 4px;
-            margin-bottom: 10px;
+
+        .fields-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .field-item {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 2px;
+            margin-bottom: 6px;
             text-align: left;
-            font-size: 13px;
-            font-weight: bold;
-            color: #333;
         }
-        .field-group span {
-            color: #666;
-            font-size: 11px;
-            display: block;
+
+        .field-label {
+            font-size: 9px;
+            font-weight: 800;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
+        .field-value {
+            font-size: 12px;
+            font-weight: 800;
+            color: #000000;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rank-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 4px;
+            margin-top: 4px;
+        }
+
         .card-footer-banner {
-            background: #000;
-            color: #fff;
+            background: #000000;
+            color: #ffffff;
             padding: 8px;
-            font-size: 10px;
+            border-radius: 8px;
             text-align: center;
-            border-radius: 6px;
-            font-weight: bold;
         }
+
+        .slogan-top {
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #aaaaaa;
+        }
+
+        .slogan-bottom {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
         .qr-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             flex: 1;
+            margin: 10px 0;
         }
+
         .qr-code-box {
             width: 160px;
             height: 160px;
-            border: 2px solid #00d2ff;
-            padding: 10px;
-            background: #fff;
-            border-radius: 8px;
+            border: 3px solid #00d2ff;
+            padding: 8px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
+
         .qr-code-box img {
             width: 100%;
             height: 100%;
         }
 
-        /* Print formatting */
+        /* Exact Print Size Formatting */
         @media print {
             body * {
                 visibility: hidden;
@@ -275,64 +384,103 @@
         </div>
 
         <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 shadow-xl flex flex-col items-center">
-            <div class="mb-6 flex flex-wrap justify-center gap-3 w-full max-w-xl">
-                <input type="text" id="username" placeholder="Minecraft Username" class="p-2 rounded bg-neutral-950 border border-neutral-800 text-white text-sm outline-none flex-1">
-                <select id="rank" class="p-2 rounded bg-neutral-950 border border-neutral-800 text-white text-sm outline-none">
+            <div class="mb-6 flex flex-wrap justify-center gap-3 w-full max-w-2xl">
+                <input type="text" id="username" placeholder="Minecraft Username" class="p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white text-sm outline-none flex-1 min-w-[160px]">
+                <input type="text" id="realname" placeholder="Player Name" class="p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white text-sm outline-none flex-1 min-w-[160px]">
+                <select id="rank" class="p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white text-sm outline-none">
                     <option value="MEMBER">Member</option>
                     <option value="VIP">VIP</option>
                     <option value="ADMIN">Admin</option>
                     <option value="OWNER">Owner</option>
                 </select>
-                <button onclick="generateCard()" class="px-5 py-2 bg-cyan-500 text-black font-bold text-sm rounded hover:bg-cyan-400 transition">Card Banao</button>
-                <button onclick="window.print()" class="px-5 py-2 bg-blue-600 text-white font-bold text-sm rounded hover:bg-blue-500 transition">Print Nikalo</button>
+                <button onclick="generateCard()" class="px-5 py-2.5 bg-cyan-500 text-black font-bold text-sm rounded-lg hover:bg-cyan-400 transition">Card Banao</button>
+                <button onclick="window.print()" class="px-5 py-2.5 bg-blue-600 text-white font-bold text-sm rounded-lg hover:bg-blue-500 transition">Print Nikalo</button>
             </div>
 
             <!-- Front & Back Cards Container -->
             <div id="print-area" class="card-container my-6">
+                
                 <!-- FRONT SIDE -->
                 <div class="id-card">
                     <div>
-                        <div class="card-header mb-3">FRONT SIDE</div>
-                        <div class="card-top-row mb-3">
-                            <div class="server-brand">BLOX<br><span style="color:#1689E8">SMP</span></div>
+                        <div class="card-header-badge">FRONT SIDE</div>
+                        
+                        <div class="server-brand-row">
+                            <div class="server-logo-icon">B</div>
+                            <div class="server-title-text">BLOX<br><span style="color:#1689E8">SMP</span></div>
+                        </div>
+
+                        <div class="sub-header-bar">PLAYER ID CARD</div>
+
+                        <div class="card-body-content">
                             <div class="avatar-box">
-                                <img id="player-head" src="https://mc-heads.net/avatar/Steve" alt="Skin">
+                                <img id="player-head" src="https://mc-heads.net/avatar/Steve" alt="Skin Head">
+                            </div>
+                            <div class="fields-column">
+                                <div class="field-item">
+                                    <div class="field-label">PLAYER NAME :</div>
+                                    <div id="card-realname" class="field-value">PRO GAMER</div>
+                                </div>
+                                <div class="field-item">
+                                    <div class="field-label">IN-GAME NAME :</div>
+                                    <div id="card-username" class="field-value">Steve</div>
+                                </div>
+                                <div class="field-item">
+                                    <div class="field-label">UUID :</div>
+                                    <div id="card-uuid" class="field-value">#8493-BLOX</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="field-group">
-                            <span>PLAYER NAME :</span>
-                            <span id="card-username" style="color:#000; font-size:14px;">Steve</span>
+
+                        <div class="rank-row">
+                            <i class="fas fa-user-tag text-xs text-neutral-700"></i>
+                            <div>
+                                <div class="field-label">RANK :</div>
+                                <div id="card-rank" class="field-value" style="color: #1689E8;">MEMBER</div>
+                            </div>
                         </div>
-                        <div class="field-group">
-                            <span>IN-GAME NAME :</span>
-                            <span id="card-ign" style="color:#000; font-size:14px;">Steve</span>
-                        </div>
-                        <div class="field-group">
-                            <span>RANK :</span>
-                            <span id="card-rank" style="color:#e67e22; font-size:14px;">MEMBER</span>
+
+                        <div class="rank-row" style="margin-top: 6px;">
+                            <i class="fas fa-calendar-alt text-xs text-neutral-700"></i>
+                            <div>
+                                <div class="field-label">CARD EXPIRY :</div>
+                                <div id="card-expiry" class="field-value">PERMANENT</div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="card-footer-banner">
-                        PLAY • BUILD • GROW &nbsp;|&nbsp; BLOX SMP
+                        <div class="slogan-top">PLAY • BUILD • GROW</div>
+                        <div class="slogan-bottom">BLOX SMP - MORE THAN JUST A SERVER</div>
                     </div>
                 </div>
 
                 <!-- BACK SIDE -->
                 <div class="id-card">
                     <div>
-                        <div class="card-header mb-4">BACK SIDE</div>
-                        <div class="text-center font-bold text-xs text-neutral-600 mb-4">PLAYER ID CARD</div>
+                        <div class="card-header-badge">BACK SIDE</div>
+
+                        <div class="server-brand-row" style="justify-content: center; margin-bottom: 12px;">
+                            <div class="server-logo-icon">B</div>
+                            <div class="server-title-text">BLOX<br><span style="color:#1689E8">SMP</span></div>
+                        </div>
+
+                        <div class="sub-header-bar">PLAYER ID CARD</div>
+
                         <div class="qr-section">
                             <div class="qr-code-box">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=play.bloxsmp.com" alt="QR Code">
+                                <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bloxsmp.com/player/Steve" alt="Player QR Code">
                             </div>
-                            <p class="text-xs font-bold text-neutral-700 mt-3">SCAN TO VIEW PLAYER DETAILS</p>
+                            <p class="text-xs font-black text-black mt-3 tracking-wider">SCAN TO VIEW PLAYER DETAILS</p>
                         </div>
                     </div>
+
                     <div class="card-footer-banner">
-                        MORE THAN JUST A SERVER
+                        <div class="slogan-top">OFFICIAL PLAYER PASSPORT</div>
+                        <div class="slogan-bottom">BLOX SMP - MORE THAN JUST A SERVER</div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -454,12 +602,23 @@
     <script>
         function generateCard() {
             const user = document.getElementById('username').value.trim() || 'Steve';
+            const realname = document.getElementById('realname').value.trim() || 'PRO GAMER';
             const rank = document.getElementById('rank').value;
 
+            // Random UUID generator for realistic card look
+            const randomUUID = '#' + Math.floor(1000 + Math.random() * 9000) + '-BLOX';
+
             document.getElementById('card-username').innerText = user;
-            document.getElementById('card-ign').innerText = user;
+            document.getElementById('card-realname').innerText = realname;
+            document.getElementById('card-uuid').innerText = randomUUID;
             document.getElementById('card-rank').innerText = rank;
+
+            // Mojang Skin API for Minecraft head image
             document.getElementById('player-head').src = 'https://mc-heads.net/avatar/' + user;
+
+            // Working QR Code generation containing player details URL
+            const playerDataURL = 'https://bloxsmp.com/player/' + encodeURIComponent(user);
+            document.getElementById('qr-image').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(playerDataURL);
         }
 
         function handleJoiningError() {
