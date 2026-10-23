@@ -23,6 +23,126 @@
         .sidebar {
             transition: transform 0.3s ease-in-out;
         }
+
+        /* Front and Back ID Card Layout Styling matching user design */
+        .card-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .id-card {
+            width: 320px;
+            height: 500px;
+            background: #ffffff;
+            color: #000000;
+            border: 3px solid #00d2ff;
+            border-radius: 16px;
+            padding: 15px;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,210,255,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card-header {
+            background: #000;
+            color: #fff;
+            padding: 6px 12px;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .card-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .server-brand {
+            font-weight: 900;
+            font-size: 20px;
+            color: #000;
+            line-height: 1.1;
+        }
+        .avatar-box {
+            width: 90px;
+            height: 90px;
+            border: 2px solid #00d2ff;
+            border-radius: 10px;
+            background: #111;
+            overflow: hidden;
+        }
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .field-group {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+        .field-group span {
+            color: #666;
+            font-size: 11px;
+            display: block;
+        }
+        .card-footer-banner {
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            font-size: 10px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        .qr-code-box {
+            width: 160px;
+            height: 160px;
+            border: 2px solid #00d2ff;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+        }
+        .qr-code-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Print formatting */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #print-area, #print-area * {
+                visibility: visible;
+            }
+            #print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body class="bg-neutral-950 text-white font-sans antialiased overflow-x-hidden">
@@ -67,6 +187,10 @@
                 <i class="fas fa-server w-5" style="color: #1689E8;"></i>
                 <span>Server & Rules</span>
             </a>
+            <a href="#" onclick="openSection('idcard-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
+                <i class="fas fa-id-card w-5" style="color: #20D8E8;"></i>
+                <span>Player ID Card</span>
+            </a>
             <a href="#" onclick="openSection('staff-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
                 <i class="fas fa-users-cog w-5" style="color: #6B55E8;"></i>
                 <span>Staff Team</span>
@@ -108,11 +232,11 @@
             <button onclick="openSection('server-section')" class="text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5" style="background: linear-gradient(135deg, #20D8E8, #1689E8, #6B55E8);">
                 Join Server <i class="fas fa-server ml-2"></i>
             </button>
-            <button onclick="openSection('staff-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
-                Staff Team <i class="fas fa-users-cog ml-2" style="color: #20D8E8;"></i>
+            <button onclick="openSection('idcard-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
+                Player ID Card <i class="fas fa-id-card ml-2" style="color: #20D8E8;"></i>
             </button>
-            <button onclick="openSection('joining-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
-                Joining Form <i class="fas fa-user-plus ml-2" style="color: #1689E8;"></i>
+            <button onclick="openSection('staff-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
+                Staff Team <i class="fas fa-users-cog ml-2" style="color: #1689E8;"></i>
             </button>
         </div>
     </main>
@@ -137,6 +261,78 @@
                 <button onclick="copyIP()" class="w-full sm:w-auto text-white text-xs font-bold px-5 py-2.5 rounded-lg transition shadow-md" style="background: linear-gradient(135deg, #20D8E8, #1689E8);">
                     <i class="fas fa-copy mr-1.5"></i> Copy IP
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAYER ID CARD GENERATOR SECTION -->
+    <section id="idcard-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-5xl mx-auto text-center">
+        <div class="border-b border-neutral-800 pb-4 mb-6 flex items-center justify-between">
+            <h2 class="text-xl font-bold tracking-tight text-white flex items-center">
+                <i class="fas fa-id-card mr-2" style="color: #20D8E8;"></i> Front & Back Player ID Cards
+            </h2>
+            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
+        </div>
+
+        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 shadow-xl flex flex-col items-center">
+            <div class="mb-6 flex flex-wrap justify-center gap-3 w-full max-w-xl">
+                <input type="text" id="username" placeholder="Minecraft Username" class="p-2 rounded bg-neutral-950 border border-neutral-800 text-white text-sm outline-none flex-1">
+                <select id="rank" class="p-2 rounded bg-neutral-950 border border-neutral-800 text-white text-sm outline-none">
+                    <option value="MEMBER">Member</option>
+                    <option value="VIP">VIP</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="OWNER">Owner</option>
+                </select>
+                <button onclick="generateCard()" class="px-5 py-2 bg-cyan-500 text-black font-bold text-sm rounded hover:bg-cyan-400 transition">Card Banao</button>
+                <button onclick="window.print()" class="px-5 py-2 bg-blue-600 text-white font-bold text-sm rounded hover:bg-blue-500 transition">Print Nikalo</button>
+            </div>
+
+            <!-- Front & Back Cards Container -->
+            <div id="print-area" class="card-container my-6">
+                <!-- FRONT SIDE -->
+                <div class="id-card">
+                    <div>
+                        <div class="card-header mb-3">FRONT SIDE</div>
+                        <div class="card-top-row mb-3">
+                            <div class="server-brand">BLOX<br><span style="color:#1689E8">SMP</span></div>
+                            <div class="avatar-box">
+                                <img id="player-head" src="https://mc-heads.net/avatar/Steve" alt="Skin">
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <span>PLAYER NAME :</span>
+                            <span id="card-username" style="color:#000; font-size:14px;">Steve</span>
+                        </div>
+                        <div class="field-group">
+                            <span>IN-GAME NAME :</span>
+                            <span id="card-ign" style="color:#000; font-size:14px;">Steve</span>
+                        </div>
+                        <div class="field-group">
+                            <span>RANK :</span>
+                            <span id="card-rank" style="color:#e67e22; font-size:14px;">MEMBER</span>
+                        </div>
+                    </div>
+                    <div class="card-footer-banner">
+                        PLAY • BUILD • GROW &nbsp;|&nbsp; BLOX SMP
+                    </div>
+                </div>
+
+                <!-- BACK SIDE -->
+                <div class="id-card">
+                    <div>
+                        <div class="card-header mb-4">BACK SIDE</div>
+                        <div class="text-center font-bold text-xs text-neutral-600 mb-4">PLAYER ID CARD</div>
+                        <div class="qr-section">
+                            <div class="qr-code-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=play.bloxsmp.com" alt="QR Code">
+                            </div>
+                            <p class="text-xs font-bold text-neutral-700 mt-3">SCAN TO VIEW PLAYER DETAILS</p>
+                        </div>
+                    </div>
+                    <div class="card-footer-banner">
+                        MORE THAN JUST A SERVER
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -228,7 +424,7 @@
         </div>
     </section>
 
-    <!-- JOINING REQUEST FORM SECTION (WITH FALLBACK UPLOADER) -->
+    <!-- JOINING REQUEST FORM SECTION -->
     <section id="joining-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-3xl mx-auto">
         <div class="border-b border-neutral-800 pb-4 mb-6 flex items-center justify-between">
             <h2 class="text-xl font-bold tracking-tight text-white flex items-center">
@@ -238,13 +434,11 @@
         </div>
 
         <div class="bg-white rounded-xl shadow-2xl p-6 flex flex-col items-center">
-            <!-- Fallback Uploader Box -->
             <div id="joining-upload-box" class="mb-4 text-center w-full p-4 border-2 border-dashed border-neutral-400 rounded-lg bg-neutral-50" style="display: none;">
                 <p class="text-xs font-semibold text-neutral-700 mb-2">Agar form image show na ho, toh yahan click karke 'joiningletter.png' select karein:</p>
                 <input type="file" id="joining-file-input" accept="image/*" class="text-xs text-neutral-600 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-neutral-900 file:text-white cursor-pointer">
             </div>
 
-            <!-- Direct Image tag -->
             <img id="joining-img" src="joiningletter.png" alt="Joining Request Form" class="w-full h-auto rounded shadow border border-neutral-300" onerror="handleJoiningError()">
             
             <div class="mt-6">
@@ -258,6 +452,16 @@
 
     <!-- JavaScript Logic -->
     <script>
+        function generateCard() {
+            const user = document.getElementById('username').value.trim() || 'Steve';
+            const rank = document.getElementById('rank').value;
+
+            document.getElementById('card-username').innerText = user;
+            document.getElementById('card-ign').innerText = user;
+            document.getElementById('card-rank').innerText = rank;
+            document.getElementById('player-head').src = 'https://mc-heads.net/avatar/' + user;
+        }
+
         function handleJoiningError() {
             document.getElementById('joining-upload-box').style.display = 'block';
         }
@@ -277,6 +481,7 @@
         function showHome() {
             document.getElementById('home-screen').classList.remove('hidden');
             document.getElementById('server-section').classList.add('hidden');
+            document.getElementById('idcard-section').classList.add('hidden');
             document.getElementById('staff-section').classList.add('hidden');
             document.getElementById('videos-section').classList.add('hidden');
             document.getElementById('letterhead-section').classList.add('hidden');
@@ -287,6 +492,7 @@
         function openSection(sectionId) {
             document.getElementById('home-screen').classList.add('hidden');
             document.getElementById('server-section').classList.add('hidden');
+            document.getElementById('idcard-section').classList.add('hidden');
             document.getElementById('staff-section').classList.add('hidden');
             document.getElementById('videos-section').classList.add('hidden');
             document.getElementById('letterhead-section').classList.add('hidden');
