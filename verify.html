@@ -1,212 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blox SMP | Player Verification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blox SMP | Player Verification</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef2ff;
-      margin: 0;
-      padding: 20px;
-      color: #172554;
-    }
+body {
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #202820;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .card {
-      max-width: 420px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 5px 24px #ccd3e5;
-    }
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: #303b30;
+  border: 2px solid #557a45;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 6px 0 #151b15;
+}
 
-    h1 {
-      color: #4f46e5;
-      margin-bottom: 4px;
-    }
+.logo {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 8px;
+}
 
-    .subtitle {
-      color: #64748b;
-      font-size: 14px;
-    }
+h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 26px;
+  color: #8bd66b;
+}
 
-    .label {
-      font-size: 12px;
-      color: #64748b;
-      margin-top: 18px;
-    }
+.subtitle {
+  text-align: center;
+  font-size: 12px;
+  color: #c7d8bf;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
 
-    .value {
-      font-weight: bold;
-      margin-top: 5px;
-      overflow-wrap: anywhere;
-    }
+.label {
+  color: #b4c9a9;
+  font-size: 11px;
+  margin-top: 17px;
+  letter-spacing: 1px;
+}
 
-    .status {
-      color: #15803d;
-      font-weight: bold;
-    }
+.value {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
 
-    .not-found {
-      color: #dc2626;
-      font-weight: bold;
-      margin-top: 20px;
-    }
+.status {
+  display: inline-block;
+  background: #234d29;
+  color: #a8f59a;
+  border: 1px solid #5eaa52;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
 
-    .footer {
-      margin-top: 25px;
-      padding-top: 15px;
-      border-top: 1px solid #e2e8f0;
-      color: #64748b;
-      font-size: 12px;
-      text-align: center;
-    }
-  </style>
+.not-found {
+  color: #ff8a80;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.footer {
+  border-top: 1px solid #52634d;
+  margin-top: 24px;
+  padding-top: 15px;
+  text-align: center;
+  color: #b4c9a9;
+  font-size: 12px;
+}
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>BLOX SMP</h1>
-    <p class="subtitle">PLAYER ID VERIFICATION</p>
+<div class="card">
+  <div class="logo">⛏️</div>
+  <h1>BLOX SMP</h1>
+  <div class="subtitle">PLAYER VERIFICATION</div>
 
-    <div id="details">Checking player ID...</div>
+  <div id="details">Checking player ID...</div>
 
-    <div class="footer">
-      Blox SMP • Player Verification Portal
-    </div>
+  <div class="footer">
+    Minecraft Community • Blox SMP
   </div>
+</div>
 
-  <script>
-    const players = {
-      "BSMP-001": {
-        name: "Player One",
-        ign: "Minecraft_IGN_1",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+<script>
+const players = {
+  "BSMP-001": {
+    name: "Player One",
+    ign: "Minecraft_IGN_1",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-002": {
+    name: "Player Two",
+    ign: "Minecraft_IGN_2",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-003": {
+    name: "Player Three",
+    ign: "Minecraft_IGN_3",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-004": {
+    name: "Player Four",
+    ign: "Minecraft_IGN_4",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-005": {
+    name: "Player Five",
+    ign: "Minecraft_IGN_5",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-006": {
+    name: "Player Six",
+    ign: "Minecraft_IGN_6",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-007": {
+    name: "Player Seven",
+    ign: "Minecraft_IGN_7",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-008": {
+    name: "Player Eight",
+    ign: "Minecraft_IGN_8",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-009": {
+    name: "Player Nine",
+    ign: "Minecraft_IGN_9",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  },
+  "BSMP-010": {
+    name: "Player Ten",
+    ign: "Minecraft_IGN_10",
+    rank: "Member",
+    validTill: "31/12/2027",
+    status: "ACTIVE"
+  }
+};
 
-      "BSMP-002": {
-        name: "Player Two",
-        ign: "Minecraft_IGN_2",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+const id = new URLSearchParams(location.search).get("id");
+const player = players[id];
+const details = document.getElementById("details");
 
-      "BSMP-003": {
-        name: "Player Three",
-        ign: "Minecraft_IGN_3",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+if (!player) {
+  details.className = "not-found";
+  details.textContent =
+    "Player ID not found. Please contact Blox SMP staff.";
+} else {
+  const fields = [
+    ["PLAYER NAME", player.name],
+    ["MINECRAFT USERNAME / IGN", player.ign],
+    ["PLAYER ID NUMBER", id],
+    ["RANK / ROLE", player.rank],
+    ["VALID TILL", player.validTill]
+  ];
 
-      "BSMP-004": {
-        name: "Player Four",
-        ign: "Minecraft_IGN_4",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+  details.replaceChildren();
 
-      "BSMP-005": {
-        name: "Player Five",
-        ign: "Minecraft_IGN_5",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+  fields.forEach(([label, value]) => {
+    const l = document.createElement("div");
+    l.className = "label";
+    l.textContent = label;
 
-      "BSMP-006": {
-        name: "Player Six",
-        ign: "Minecraft_IGN_6",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+    const v = document.createElement("div");
+    v.className = "value";
+    v.textContent = value;
 
-      "BSMP-007": {
-        name: "Player Seven",
-        ign: "Minecraft_IGN_7",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+    details.append(l, v);
+  });
 
-      "BSMP-008": {
-        name: "Player Eight",
-        ign: "Minecraft_IGN_8",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+  const statusLabel = document.createElement("div");
+  statusLabel.className = "label";
+  statusLabel.textContent = "VERIFICATION STATUS";
 
-      "BSMP-009": {
-        name: "Player Nine",
-        ign: "Minecraft_IGN_9",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      },
+  const statusValue = document.createElement("div");
+  statusValue.className =
+    player.status === "ACTIVE" ? "status" : "not-found";
+  statusValue.textContent = player.status;
 
-      "BSMP-010": {
-        name: "Player Ten",
-        ign: "Minecraft_IGN_10",
-        rank: "Member",
-        validTill: "31/12/2027",
-        status: "ACTIVE"
-      }
-    };
-
-    const id = new URLSearchParams(
-      window.location.search
-    ).get("id");
-
-    const player = players[id];
-    const details = document.getElementById("details");
-
-    if (!player) {
-      details.className = "not-found";
-      details.textContent =
-        "Player ID not found. Please contact Blox SMP staff.";
-    } else {
-      const fields = [
-        ["PLAYER NAME", player.name],
-        ["MINECRAFT USERNAME / IGN", player.ign],
-        ["PLAYER ID NUMBER", id],
-        ["RANK / ROLE", player.rank],
-        ["VALID TILL", player.validTill],
-        ["STATUS", player.status]
-      ];
-
-      details.replaceChildren();
-
-      fields.forEach(([label, value]) => {
-        const labelElement = document.createElement("div");
-        labelElement.className = "label";
-        labelElement.textContent = label;
-
-        const valueElement = document.createElement("div");
-        valueElement.className = "value";
-        valueElement.textContent = value;
-
-        if (label === "STATUS") {
-          valueElement.classList.add(
-            value === "ACTIVE" ? "status" : "not-found"
-          );
-        }
-
-        details.append(labelElement, valueElement);
-      });
-    }
-  </script>
+  details.append(statusLabel, statusValue);
+}
+</script>
 </body>
 </html>
