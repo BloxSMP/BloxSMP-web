@@ -1,128 +1,280 @@
-<style>
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blox SMP | Player Verification</title>
 
-body {
-  margin: 0;
-  padding: 24px 16px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
-  color: #f0fff4;
-  background-color: #080d0b;
-  background-image:
-    radial-gradient(ellipse at 50% 0%,
-      rgba(35,160,78,.28), transparent 55%),
-    radial-gradient(ellipse at 100% 100%,
-      rgba(17,94,57,.25), transparent 45%),
-    linear-gradient(135deg,
-      #080d0b, #14231a 55%, #080d0b);
-  background-attachment: fixed;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  width: 100%;
-  max-width: 410px;
-  padding: 28px 25px;
-  border-radius: 12px;
-  background: linear-gradient(145deg,
-    rgba(25,39,30,.98),
-    rgba(11,19,14,.98));
-  border: 1px solid #3e9b5c;
-  box-shadow:
-    0 0 0 4px rgba(53,140,75,.08),
-    0 15px 45px rgba(0,0,0,.55),
-    0 0 28px rgba(46,204,113,.12);
-}
+    body {
+      margin: 0;
+      padding: 24px 16px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      color: #f0fff4;
+      background-color: #080d0b;
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(35,160,78,.28), transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(17,94,57,.25), transparent 45%),
+        linear-gradient(135deg, #080d0b, #14231a 55%, #080d0b);
+      background-attachment: fixed;
+    }
 
-.card::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(
-    90deg, #176b35, #7cff9b,
-    #28a957, #176b35
-  );
-}
+    .card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 100%;
+      max-width: 410px;
+      padding: 28px 25px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(25,39,30,.98), rgba(11,19,14,.98));
+      border: 1px solid #3e9b5c;
+      box-shadow:
+        0 0 0 4px rgba(53,140,75,.08),
+        0 15px 45px rgba(0,0,0,.55),
+        0 0 28px rgba(46,204,113,.12);
+    }
 
-.logo {
-  text-align: center;
-  font-size: 38px;
-  margin-bottom: 10px;
-  filter: drop-shadow(
-    0 0 10px rgba(87,255,133,.35)
-  );
-}
+    .card::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #176b35, #7cff9b, #28a957, #176b35);
+    }
 
-h1 {
-  text-align: center;
-  margin: 0;
-  font-size: 29px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: #8cffaa;
-  text-shadow: 0 0 18px rgba(71,255,126,.22);
-}
+    .logo {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 10px rgba(87,255,133,.35));
+    }
 
-.subtitle {
-  text-align: center;
-  font-size: 11px;
-  color: #a9c9b2;
-  letter-spacing: 3px;
-  margin: 9px 0 26px;
-}
+    h1 {
+      text-align: center;
+      margin: 0;
+      font-size: 29px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #8cffaa;
+      text-shadow: 0 0 18px rgba(71,255,126,.22);
+    }
 
-.label {
-  color: #91b89b;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  margin-top: 18px;
-}
+    .subtitle {
+      text-align: center;
+      font-size: 11px;
+      color: #a9c9b2;
+      letter-spacing: 3px;
+      margin: 9px 0 26px;
+    }
 
-.value {
-  font-size: 15px;
-  font-weight: bold;
-  margin-top: 6px;
-  overflow-wrap: anywhere;
-  color: #f1fff4;
-}
+    .divider {
+      height: 1px;
+      background: #294633;
+      margin: 20px 0;
+    }
 
-.status {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 7px 12px;
-  border-radius: 4px;
-  color: #9affb1;
-  background: #123b23;
-  border: 1px solid #3a9b58;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+    .label {
+      color: #91b89b;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-top: 18px;
+      text-transform: uppercase;
+    }
 
-.not-found {
-  color: #ff8585;
-  text-align: center;
-  line-height: 1.6;
-}
+    .value {
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 6px;
+      overflow-wrap: anywhere;
+      color: #f1fff4;
+    }
 
-.footer {
-  border-top: 1px solid #294633;
-  margin-top: 25px;
-  padding-top: 16px;
-  text-align: center;
-  color: #83a88d;
-  font-size: 11px;
-  letter-spacing: .5px;
-}
-</style>
+    .status {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 7px 12px;
+      border-radius: 4px;
+      color: #9affb1;
+      background: #123b23;
+      border: 1px solid #3a9b58;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .not-found {
+      color: #ff8585;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .footer {
+      border-top: 1px solid #294633;
+      margin-top: 25px;
+      padding-top: 16px;
+      text-align: center;
+      color: #83a88d;
+      font-size: 11px;
+      letter-spacing: .5px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 360px) {
+      .card {
+        padding: 24px 18px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="logo">⛏️</div>
+
+    <h1>BLOX SMP</h1>
+    <div class="subtitle">PLAYER VERIFICATION SYSTEM</div>
+
+    <div id="player-data">
+      <p style="text-align:center;color:#a9c9b2;">
+        Checking player details...
+      </p>
+    </div>
+
+    <div class="footer">
+      BLOX SMP OFFICIAL<br>
+      Minecraft Player Identity System
+    </div>
+  </main>
+
+  <script>
+    // Demo player records.
+    // Apne actual players ke naam aur IGN yahan update karna.
+
+    const players = [
+      {
+        id: "BSMP-001",
+        name: "Player 1",
+        ign: "BloxPlayer001",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-002",
+        name: "Player 2",
+        ign: "BloxPlayer002",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-003",
+        name: "Player 3",
+        ign: "BloxPlayer003",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-004",
+        name: "Player 4",
+        ign: "BloxPlayer004",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-005",
+        name: "Player 5",
+        ign: "BloxPlayer005",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-006",
+        name: "Player 6",
+        ign: "BloxPlayer006",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-007",
+        name: "Player 7",
+        ign: "BloxPlayer007",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-008",
+        name: "Player 8",
+        ign: "BloxPlayer008",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-009",
+        name: "Player 9",
+        ign: "BloxPlayer009",
+        status: "ACTIVE"
+      },
+      {
+        id: "BSMP-010",
+        name: "Player 10",
+        ign: "BloxPlayer010",
+        status: "ACTIVE"
+      }
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const playerId = params.get("id");
+    const container = document.getElementById("player-data");
+
+    const player = players.find(
+      p => p.id.toLowerCase() === (playerId || "").toLowerCase()
+    );
+
+    if (player) {
+      container.innerHTML = `
+        <div class="label">Verification Result</div>
+        <div class="status">✓ ${escapeHTML(player.status)}</div>
+
+        <div class="divider"></div>
+
+        <div class="label">Player Name</div>
+        <div class="value">${escapeHTML(player.name)}</div>
+
+        <div class="label">Minecraft Username (IGN)</div>
+        <div class="value">${escapeHTML(player.ign)}</div>
+
+        <div class="label">Player ID</div>
+        <div class="value">${escapeHTML(player.id)}</div>
+
+        <div class="label">Server</div>
+        <div class="value">Blox SMP</div>
+      `;
+    } else {
+      container.innerHTML = `
+        <div class="not-found">
+          <h2>Player Not Found</h2>
+          <p>Invalid or missing Player ID.</p>
+          <p>Please scan a valid Blox SMP ID card QR code.</p>
+        </div>
+      `;
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+  </script>
+</body>
+</html>
