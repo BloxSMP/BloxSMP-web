@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blox SMP - Official Minecraft Server</title>
     
-    <!-- Step 1: Google SEO Meta Tags -->
+    <!-- Google SEO Meta Tags -->
     <meta name="description" content="Blox SMP - The ultimate Minecraft survival server. Join now with IP play.bloxsmp.com and check out our joining form and staff team.">
     <meta name="keywords" content="Blox SMP, Minecraft server India, Minecraft survival server, play bloxsmp com">
     <meta name="author" content="Blox SMP Official">
@@ -15,13 +15,218 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         .main-screen {
-            background-color: #0f0f0f;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath fill-rule='evenodd' d='M13.99 9.83l13.5-7.78v15.56l-13.5 7.78-13.5-7.78V2.05l13.5 7.78zM3 12.37v13.56l11.5 6.64 11.5-6.64V12.37L14.5 5.73 3 12.37zM0 27.64l13.5 7.78v15.56L0 43.2V27.64zm3 2.54v11.56l11.5 6.64 11.5-6.64V30.18L14.5 23.54 3 30.18z'/%3E%3C/g%3E%3C/svg%3E");
+            background-color: #0b0c10;
+            background-image: radial-gradient(circle at 50% 50%, #1f2833 0%, #0b0c10 100%);
         }
         .sidebar {
             transition: transform 0.3s ease-in-out;
+        }
+
+        /* Landscape Cyberpunk Player ID Card Layout */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .card-container {
+                flex-direction: row;
+            }
+        }
+
+        /* Standard ID/ATM Card Ratio (85.6mm x 54mm equivalent) */
+        .cyber-card {
+            width: 380px;
+            height: 240px;
+            background: linear-gradient(135deg, #0d0f18 0%, #151928 50%, #0a0c14 100%);
+            border: 2px solid #00f0ff;
+            border-radius: 14px;
+            padding: 16px;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        /* Glowing Accent Line */
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00f0ff, #7000ff, #00f0ff);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #00f0ff, #7000ff);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #00f0ff, #a100ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-type-tag {
+            font-size: 9px;
+            font-weight: 800;
+            background: rgba(0, 240, 255, 0.15);
+            color: #00f0ff;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            padding: 3px 8px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .card-middle {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .avatar-frame {
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            border: 2px solid #00f0ff;
+            background: #000;
+            overflow: hidden;
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+            flex-shrink: 0;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .player-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 12px;
+            flex: 1;
+            text-align: left;
+        }
+
+        .info-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 8px;
+            color: #8a99ad;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .badge-rank {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff8c00, #ff0055);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 4px;
+            width: fit-content;
+            margin-top: 2px;
+            box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 6px;
+            font-size: 9px;
+            color: #66788a;
+            font-weight: 600;
+        }
+
+        .qr-wrapper {
+            width: 105px;
+            height: 105px;
+            background: #ffffff;
+            border: 2px solid #00f0ff;
+            border-radius: 8px;
+            padding: 6px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .qr-wrapper img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Print Format */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #print-area, #print-area * {
+                visibility: visible;
+            }
+            #print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -67,6 +272,10 @@
                 <i class="fas fa-server w-5" style="color: #1689E8;"></i>
                 <span>Server & Rules</span>
             </a>
+            <a href="#" onclick="openSection('idcard-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
+                <i class="fas fa-id-card w-5" style="color: #20D8E8;"></i>
+                <span>Player ID Card</span>
+            </a>
             <a href="#" onclick="openSection('staff-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg hover:bg-neutral-800 text-neutral-300 hover:text-white transition">
                 <i class="fas fa-users-cog w-5" style="color: #6B55E8;"></i>
                 <span>Staff Team</span>
@@ -108,11 +317,11 @@
             <button onclick="openSection('server-section')" class="text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5" style="background: linear-gradient(135deg, #20D8E8, #1689E8, #6B55E8);">
                 Join Server <i class="fas fa-server ml-2"></i>
             </button>
-            <button onclick="openSection('staff-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
-                Staff Team <i class="fas fa-users-cog ml-2" style="color: #20D8E8;"></i>
+            <button onclick="openSection('idcard-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
+                Player ID Card <i class="fas fa-id-card ml-2" style="color: #20D8E8;"></i>
             </button>
-            <button onclick="openSection('joining-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
-                Joining Form <i class="fas fa-user-plus ml-2" style="color: #1689E8;"></i>
+            <button onclick="openSection('staff-section')" class="bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-6 py-3 rounded-xl border border-neutral-800 transition flex items-center">
+                Staff Team <i class="fas fa-users-cog ml-2" style="color: #1689E8;"></i>
             </button>
         </div>
     </main>
@@ -141,6 +350,102 @@
         </div>
     </section>
 
+    <!-- PLAYER ID CARD GENERATOR SECTION -->
+    <section id="idcard-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-5xl mx-auto text-center">
+        <div class="border-b border-neutral-800 pb-4 mb-6 flex items-center justify-between">
+            <h2 class="text-xl font-bold tracking-tight text-white flex items-center">
+                <i class="fas fa-id-card mr-2" style="color: #20D8E8;"></i> Official Cyberpunk Player Cards
+            </h2>
+            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-neutral-900 px-3 py-1.5 rounded-lg border border-neutral-800">Back to Home</button>
+        </div>
+
+        <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-6 shadow-2xl backdrop-blur-md flex flex-col items-center">
+            <div class="mb-8 flex flex-wrap justify-center gap-3 w-full max-w-2xl">
+                <input type="text" id="username" placeholder="Minecraft Username" class="p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white text-sm outline-none focus:border-cyan-500 flex-1 min-w-[150px]">
+                <input type="text" id="realname" placeholder="Player Name" class="p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white text-sm outline-none focus:border-cyan-500 flex-1 min-w-[150px]">
+                <select id="rank" class="p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white text-sm outline-none focus:border-cyan-500">
+                    <option value="MEMBER">Member</option>
+                    <option value="VIP">VIP</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="OWNER">Owner</option>
+                </select>
+                <button onclick="generateCard()" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm rounded-lg hover:opacity-90 transition shadow-lg shadow-cyan-500/20">Card Banao</button>
+                <button onclick="window.print()" class="px-5 py-2.5 bg-neutral-800 border border-neutral-700 text-white font-bold text-sm rounded-lg hover:bg-neutral-700 transition">Print Nikalo</button>
+            </div>
+
+            <!-- Front & Back Cards Container -->
+            <div id="print-area" class="card-container my-4">
+                
+                <!-- FRONT SIDE -->
+                <div class="cyber-card">
+                    <div class="card-top">
+                        <div class="brand-logo">
+                            <div class="brand-logo-icon">B</div>
+                            <div class="brand-title">BLOX SMP</div>
+                        </div>
+                        <div class="card-type-tag">FRONT SIDE</div>
+                    </div>
+
+                    <div class="card-middle">
+                        <div class="avatar-frame">
+                            <img id="player-head" src="https://mc-heads.net/avatar/Steve" alt="Player Skin">
+                        </div>
+                        <div class="player-info-grid">
+                            <div class="info-block">
+                                <span class="info-label">PLAYER NAME</span>
+                                <span id="card-realname" class="info-value">PRO GAMER</span>
+                            </div>
+                            <div class="info-block">
+                                <span class="info-label">IGN</span>
+                                <span id="card-username" class="info-value">Steve</span>
+                            </div>
+                            <div class="info-block">
+                                <span class="info-label">CARD ID</span>
+                                <span id="card-uuid" class="info-value">#8493-BLOX</span>
+                            </div>
+                            <div class="info-block">
+                                <span class="info-label">RANK</span>
+                                <span id="card-rank" class="badge-rank">MEMBER</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>SERVER: play.bloxsmp.com</span>
+                        <span>VERIFIED PASSPORT</span>
+                    </div>
+                </div>
+
+                <!-- BACK SIDE -->
+                <div class="cyber-card">
+                    <div class="card-top">
+                        <div class="brand-logo">
+                            <div class="brand-logo-icon">B</div>
+                            <div class="brand-title">BLOX SMP</div>
+                        </div>
+                        <div class="card-type-tag">BACK SIDE</div>
+                    </div>
+
+                    <div class="flex items-center justify-around my-auto">
+                        <div class="qr-wrapper">
+                            <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bloxsmp.com/player/Steve" alt="Player QR">
+                        </div>
+                        <div class="text-left max-w-[180px]">
+                            <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider mb-1">SCAN PLAYER DATA</div>
+                            <div class="text-[9px] text-gray-400 leading-tight">Scan this QR code with any camera to verify player authenticity on Blox SMP network.</div>
+                        </div>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>PLAY • BUILD • GROW</span>
+                        <span>MORE THAN JUST A SERVER</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- STAFF / ADMIN TEAM SECTION -->
     <section id="staff-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-5xl mx-auto">
         <div class="border-b border-neutral-800 pb-4 mb-8 flex items-center justify-between">
@@ -153,7 +458,6 @@
         <p class="text-neutral-400 text-sm mb-6">Here are the dedicated members managing Blox SMP. Feel free to reach out to them if you need any help!</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <!-- Owner Card -->
             <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 text-center shadow-xl relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1.5" style="background: linear-gradient(90deg, #20D8E8, #1689E8);"></div>
                 <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-neutral-800 border-2 border-[#20D8E8] flex items-center justify-center text-2xl font-bold text-[#20D8E8] shadow-inner">
@@ -164,7 +468,6 @@
                 <p class="text-xs text-neutral-400 mt-3">Founder and manager of Blox SMP. Handles major updates and server core.</p>
             </div>
 
-            <!-- Admin Card -->
             <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 text-center shadow-xl relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1.5" style="background: linear-gradient(90deg, #1689E8, #6B55E8);"></div>
                 <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-neutral-800 border-2 border-[#1689E8] flex items-center justify-center text-2xl font-bold text-[#1689E8] shadow-inner">
@@ -175,7 +478,6 @@
                 <p class="text-xs text-neutral-400 mt-3">Manages plugins, events, and handles community grievances.</p>
             </div>
 
-            <!-- Moderator Card -->
             <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 text-center shadow-xl relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1.5" style="background: linear-gradient(90deg, #6B55E8, #20D8E8);"></div>
                 <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-neutral-800 border-2 border-[#6B55E8] flex items-center justify-center text-2xl font-bold text-[#6B55E8] shadow-inner">
@@ -228,7 +530,7 @@
         </div>
     </section>
 
-    <!-- JOINING REQUEST FORM SECTION (WITH FALLBACK UPLOADER) -->
+    <!-- JOINING REQUEST FORM SECTION -->
     <section id="joining-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-3xl mx-auto">
         <div class="border-b border-neutral-800 pb-4 mb-6 flex items-center justify-between">
             <h2 class="text-xl font-bold tracking-tight text-white flex items-center">
@@ -238,13 +540,11 @@
         </div>
 
         <div class="bg-white rounded-xl shadow-2xl p-6 flex flex-col items-center">
-            <!-- Fallback Uploader Box -->
             <div id="joining-upload-box" class="mb-4 text-center w-full p-4 border-2 border-dashed border-neutral-400 rounded-lg bg-neutral-50" style="display: none;">
                 <p class="text-xs font-semibold text-neutral-700 mb-2">Agar form image show na ho, toh yahan click karke 'joiningletter.png' select karein:</p>
                 <input type="file" id="joining-file-input" accept="image/*" class="text-xs text-neutral-600 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-neutral-900 file:text-white cursor-pointer">
             </div>
 
-            <!-- Direct Image tag -->
             <img id="joining-img" src="joiningletter.png" alt="Joining Request Form" class="w-full h-auto rounded shadow border border-neutral-300" onerror="handleJoiningError()">
             
             <div class="mt-6">
@@ -258,6 +558,24 @@
 
     <!-- JavaScript Logic -->
     <script>
+        function generateCard() {
+            const user = document.getElementById('username').value.trim() || 'Steve';
+            const realname = document.getElementById('realname').value.trim() || 'PRO GAMER';
+            const rank = document.getElementById('rank').value;
+
+            const randomUUID = '#' + Math.floor(1000 + Math.random() * 9000) + '-BLOX';
+
+            document.getElementById('card-username').innerText = user;
+            document.getElementById('card-realname').innerText = realname;
+            document.getElementById('card-uuid').innerText = randomUUID;
+            document.getElementById('card-rank').innerText = rank;
+
+            document.getElementById('player-head').src = 'https://mc-heads.net/avatar/' + user;
+
+            const playerDataURL = 'https://bloxsmp.com/player/' + encodeURIComponent(user);
+            document.getElementById('qr-image').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(playerDataURL);
+        }
+
         function handleJoiningError() {
             document.getElementById('joining-upload-box').style.display = 'block';
         }
@@ -277,6 +595,7 @@
         function showHome() {
             document.getElementById('home-screen').classList.remove('hidden');
             document.getElementById('server-section').classList.add('hidden');
+            document.getElementById('idcard-section').classList.add('hidden');
             document.getElementById('staff-section').classList.add('hidden');
             document.getElementById('videos-section').classList.add('hidden');
             document.getElementById('letterhead-section').classList.add('hidden');
@@ -287,6 +606,7 @@
         function openSection(sectionId) {
             document.getElementById('home-screen').classList.add('hidden');
             document.getElementById('server-section').classList.add('hidden');
+            document.getElementById('idcard-section').classList.add('hidden');
             document.getElementById('staff-section').classList.add('hidden');
             document.getElementById('videos-section').classList.add('hidden');
             document.getElementById('letterhead-section').classList.add('hidden');
