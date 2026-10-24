@@ -409,7 +409,7 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn {
   <div class="server-panel">
     <div>
       <div class="panel-label">MINECRAFT BEDROCK SERVER</div>
-      <div class="server-ip" id="serverIp">BloxSMP02</div>
+      <div class="server-ip" id="serverIp">bloxsmp02.aternos.me</div>
       <div class="server-meta">
         <div class="meta-item">PORT &nbsp;<strong id="serverPort">19132</strong></div>
         <div class="meta-item">PLAYERS &nbsp;<strong id="players">—</strong></div>
@@ -469,7 +469,7 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn {
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-const SERVER_IP = "BloxSMP02";
+const SERVER_IP = "bloxsmp02.aternos.me";
 const SERVER_PORT = 19132;
 const DISCORD_LINK = "https://discord.gg/24WVRUPWJE";
 
@@ -506,16 +506,22 @@ async function checkServer() {
   const statusDot = document.getElementById("statusDot");
   const players = document.getElementById("players");
 
+  statusText.textContent = "Checking server status…";
+  statusDot.className = "status-dot";
+
   try {
     const url = "https://api.mcsrvstat.us/bedrock/3/" +
       encodeURIComponent(SERVER_IP) + ":" + SERVER_PORT;
+
     const response = await fetch(url);
     if (!response.ok) throw new Error("Status unavailable");
+
     const data = await response.json();
 
     if (data.online) {
       statusText.textContent = "Server is online";
       statusDot.className = "status-dot online";
+
       players.textContent = data.players
         ? data.players.online + " / " + data.players.max
         : "Online";
@@ -530,6 +536,7 @@ async function checkServer() {
     players.textContent = "—";
   }
 }
+
 checkServer();
 setInterval(checkServer, 60000);
 
