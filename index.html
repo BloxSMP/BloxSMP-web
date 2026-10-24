@@ -4,450 +4,369 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080612">
-<meta name="description" content="Enter BLOX SMP — venture into the End.">
+<meta name="description" content="Welcome to BLOX SMP — enter the End.">
 <title>BLOX SMP — Beyond The End</title>
+
+<!-- YOUR ORIGINAL LOGO -->
+<link rel="icon" type="image/png" sizes="48x48" href="./logo.png">
+<link rel="shortcut icon" type="image/png" href="./logo.png">
+<link rel="apple-touch-icon" href="./logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
+:root {
   --bg:#080612;
-  --panel:#120c20;
+  --panel:#160d25;
   --purple:#a855f7;
-  --purple-light:#d8b4fe;
-  --purple-dark:#581c87;
-  --ink:#f5edff;
-  --muted:#a99bbd;
-  --line:rgba(192,132,252,.2);
-  --glass:rgba(19,12,34,.75);
-  --gold:#e5c6ff;
+  --light:#d8b4fe;
+  --text:#f5edff;
+  --muted:#b8a9cf;
+  --border:rgba(192,132,252,.22);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:95px}
-body{
-  background:var(--bg);color:var(--ink);
-  font-family:'Inter',sans-serif;overflow-x:hidden;
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
 }
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-button:focus-visible,a:focus-visible{outline:2px solid #d8b4fe;outline-offset:4px}
-.container{width:min(1160px,89%);margin:auto}
-.orbitron,.brand,.nav-cta,.btn,.copy-btn{
+a { color:inherit; text-decoration:none; }
+button { cursor:pointer; font:inherit; }
+.container { width:min(1160px,89%); margin:auto; }
+h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn {
   font-family:'Orbitron',sans-serif;
 }
-
-/* NAVIGATION */
-.nav{
-  position:fixed;top:17px;left:50%;transform:translateX(-50%);
-  width:min(1180px,94%);z-index:50;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:12px 17px;border:1px solid var(--line);border-radius:14px;
-  background:rgba(10,6,20,.78);backdrop-filter:blur(24px);
-  box-shadow:0 8px 35px #0005;
+.nav {
+  position:fixed; z-index:50; top:16px; left:50%;
+  transform:translateX(-50%); width:min(1180px,94%);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:18px; padding:12px 17px;
+  border:1px solid var(--border); border-radius:14px;
+  background:rgba(10,6,20,.82); backdrop-filter:blur(22px);
+  box-shadow:0 8px 35px #0006;
 }
-.brand{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:800;letter-spacing:1.5px}
-.brand-icon{
-  width:36px;height:36px;display:grid;place-items:center;
-  border-radius:10px;border:1px solid #c084fc66;
-  background:linear-gradient(145deg,#48216b,#1b102b);
-  color:#e9d5ff;font-size:17px;
-  box-shadow:0 0 22px #9333ea35,inset 0 1px #fff2;
+.brand { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:800; letter-spacing:1px; }
+.brand-icon {
+  width:36px; height:36px; display:grid; place-items:center;
+  border-radius:9px; background:linear-gradient(135deg,#7134a0,#21112f);
+  border:1px solid #c084fc66; color:#fff;
+  box-shadow:0 0 22px #9333ea35;
 }
-.brand-name span{color:#c084fc}
-.navlinks{display:flex;gap:25px;color:#b8a9cf;font-size:11px;font-weight:700}
-.navlinks a{transition:color .2s}
-.navlinks a:hover{color:#e9d5ff}
-.nav-cta{
-  padding:12px 15px;border-radius:8px;
+.brand-name span { color:var(--light); }
+.navlinks { display:flex; gap:23px; color:#b8a9cf; font-size:11px; font-weight:700; }
+.navlinks a:hover { color:white; }
+.nav-cta,.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  border-radius:8px; font-size:10px; font-weight:800;
+  padding:13px 17px; transition:.25s;
+}
+.nav-cta,.btn-primary {
   background:linear-gradient(135deg,#9333ea,#581c87);
-  color:white;font-size:10px;font-weight:800;letter-spacing:.3px;
-  box-shadow:0 0 22px #9333ea22;transition:.25s;
+  color:white; border:1px solid #c084fc55;
+  box-shadow:0 7px 24px #9333ea30;
 }
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 0 30px #a855f755}
-
-/* END DIMENSION HERO */
-.hero{
-  min-height:790px;min-height:100svh;
-  position:relative;isolation:isolate;overflow:hidden;
-  display:flex;align-items:center;
+.nav-cta:hover,.btn:hover { transform:translateY(-3px); }
+.btn-secondary {
+  background:#1b102bcc; border:1px solid #a855f744; color:#e9d5ff;
+}
+.hero {
+  min-height:100svh; min-height:790px; position:relative;
+  isolation:isolate; overflow:hidden; display:flex; align-items:center;
   background:
-    radial-gradient(ellipse at 74% 25%,#7024b844 0%,transparent 34%),
-    radial-gradient(ellipse at 46% 85%,#5b21b622 0%,transparent 48%),
-    linear-gradient(180deg,#080612 0%,#10091d 48%,#1c0d2b 100%);
+    radial-gradient(ellipse at 76% 25%,#7024b844,transparent 34%),
+    radial-gradient(ellipse at 46% 85%,#5b21b622,transparent 48%),
+    linear-gradient(180deg,#080612,#10091d 48%,#1c0d2b);
 }
-.hero:after{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  opacity:.28;
+.hero:before {
+  content:""; position:absolute; inset:0; z-index:-1; opacity:.35;
   background-image:
-    radial-gradient(1px 1px at 10% 20%,#fff 99%,transparent),
+    radial-gradient(2px 2px at 10% 20%,#fff 99%,transparent),
     radial-gradient(2px 2px at 25% 70%,#d8b4fe 99%,transparent),
     radial-gradient(1px 1px at 44% 30%,#fff 99%,transparent),
     radial-gradient(2px 2px at 69% 17%,#c084fc 99%,transparent),
     radial-gradient(1px 1px at 87% 62%,#fff 99%,transparent),
-    radial-gradient(1px 1px at 92% 28%,#fff 99%,transparent),
-    radial-gradient(2px 2px at 51% 57%,#d8b4fe 99%,transparent);
+    radial-gradient(2px 2px at 92% 28%,#fff 99%,transparent);
 }
-.hero-light{
-  position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(115deg,transparent 10%,#a855f70a 48%,#7e22ce14 70%,transparent);
+.hero-content {
+  position:relative; z-index:8; width:min(1160px,89%);
+  margin:auto; padding:160px 0 165px;
 }
-.sun{
-  position:absolute;width:clamp(190px,26vw,350px);aspect-ratio:1;
-  top:8%;right:11%;border-radius:50%;
-  background:radial-gradient(circle,#d8b4fe 0%,#a855f7 7%,#7e22ce55 30%,transparent 70%);
-  filter:blur(7px);z-index:-1;animation:portalPulse 5s ease-in-out infinite;
+.eyebrow,.kicker {
+  color:#c084fc; font-size:10px; font-weight:800;
+  letter-spacing:3px; text-transform:uppercase;
 }
-@keyframes portalPulse{0%,100%{opacity:.58;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
-.hero-content{position:relative;z-index:8;width:min(1160px,89%);margin:auto;padding:160px 0 165px}
-.eyebrow{
-  display:flex;align-items:center;gap:10px;
-  color:#c084fc;font-size:10px;font-weight:800;letter-spacing:3px;
-}
-.eyebrow-line{width:28px;height:1px;background:#c084fc}
-.hero h1{
-  font-family:'Orbitron',sans-serif;
-  font-size:clamp(48px,8.5vw,105px);font-weight:800;
-  letter-spacing:-.075em;line-height:1.08;
-  color:#fff;margin:26px 0 24px;
+.eyebrow { display:flex; align-items:center; gap:10px; }
+.eyebrow:before { content:""; width:28px; height:1px; background:#c084fc; }
+.hero h1 {
+  font-size:clamp(48px,8.5vw,105px); font-weight:800;
+  letter-spacing:-.075em; line-height:1.08; margin:26px 0 24px;
   text-shadow:0 0 35px #a855f733;
 }
-.hero h1 .line2{
-  display:block;color:#c084fc;
+.hero h1 span {
+  display:block; color:#c084fc;
   text-shadow:0 0 18px #a855f777,0 0 55px #7e22ce44;
 }
-.hero-description{max-width:470px;color:#b8a9cf;font-size:14px;line-height:1.95}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{
-  min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:13px;
-  padding:0 20px;border-radius:8px;font-size:10px;font-weight:800;
-  letter-spacing:.15px;transition:transform .2s,box-shadow .2s,background .2s;
+.hero-description { max-width:470px; color:var(--muted); font-size:14px; line-height:1.95; }
+.hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.hero-meta { display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-top:42px; }
+.meta { color:#b3a2ca; font-size:9px; font-weight:800; letter-spacing:1px; }
+.meta span { color:#c084fc; }
+.sun {
+  position:absolute; z-index:-1; width:330px; aspect-ratio:1;
+  top:7%; right:10%; border-radius:50%;
+  background:radial-gradient(circle,#d8b4fe 0%,#a855f7 9%,#7e22ce55 35%,transparent 70%);
+  filter:blur(8px); animation:pulse 5s ease-in-out infinite;
 }
-.btn:hover{transform:translateY(-3px)}
-.btn-primary{
-  color:white;background:linear-gradient(135deg,#9333ea,#581c87);
-  border:1px solid #c084fc55;box-shadow:0 8px 24px #9333ea30;
+@keyframes pulse { 50% { transform:scale(1.08); opacity:.65; } }
+.particle {
+  position:absolute; width:4px; height:4px; border-radius:50%;
+  background:#d8b4fe; box-shadow:0 0 12px 3px #a855f766;
+  animation:float 7s ease-in-out infinite;
 }
-.btn-primary:hover{box-shadow:0 12px 32px #9333ea55}
-.btn-light{background:#1b102bcc;border:1px solid #a855f744;color:#e9d5ff}
-.btn-light:hover{background:#28163f}
-.arrow{font-size:15px}
-.hero-meta{display:flex;align-items:center;gap:23px;flex-wrap:wrap;margin-top:42px}
-.meta{display:flex;align-items:center;gap:9px;color:#b3a2ca;font-size:9px;font-weight:800;letter-spacing:1px}
-.meta span{color:#c084fc}
-.meta-line{height:18px;width:1px;background:#9d70c655}
+.p1 { top:22%; left:57%; }
+.p2 { top:43%; left:88%; animation-delay:-3s; }
+.p3 { top:67%; left:53%; animation-delay:-1s; }
+.p4 { top:30%; left:94%; animation-delay:-5s; }
+.p5 { top:76%; left:78%; animation-delay:-2s; }
+@keyframes float { 50% { transform:translateY(-25px); opacity:1; } }
 
-/* PURPLE FLOATING PARTICLES */
-.particle{
-  position:absolute;z-index:2;pointer-events:none;
-  width:4px;height:4px;border-radius:50%;
-  background:#d8b4fe;box-shadow:0 0 12px 3px #a855f766;
-  animation:particleFloat 7s ease-in-out infinite;
+/* Floating obsidian islands */
+.island {
+  position:absolute; z-index:2; width:280px; height:160px;
+  animation:islandFloat 8s ease-in-out infinite; pointer-events:none;
 }
-.p1{top:22%;left:57%;animation-delay:-2s}
-.p2{top:43%;left:88%;animation-delay:-4s}
-.p3{top:67%;left:53%;animation-delay:-1s}
-.p4{top:30%;left:94%;animation-delay:-5s}
-.p5{top:76%;left:78%;animation-delay:-3s}
-.p6{top:16%;left:41%;animation-delay:-2.5s}
-@keyframes particleFloat{
-  0%,100%{transform:translateY(0);opacity:.25}
-  50%{transform:translateY(-25px);opacity:1}
-}
-
-/* FLOATING OBSIDIAN ISLANDS */
-.island{
-  position:absolute;z-index:3;pointer-events:none;
-  width:280px;height:160px;animation:islandFloat 8s ease-in-out infinite;
-}
-.island-top{
-  position:absolute;top:0;left:0;width:100%;height:39%;
-  background:linear-gradient(180deg,#685279 0%,#35243f 58%,#21182c 100%);
+.island-top {
+  position:absolute; top:0; width:100%; height:39%;
+  background:linear-gradient(#685279,#35243f 58%,#21182c);
   clip-path:polygon(13% 25%,30% 0,73% 0,91% 25%,100% 60%,84% 100%,15% 100%,0 60%);
-  border-top:1px solid #bba0ce;
 }
-.island-rock{
-  position:absolute;top:32%;left:9%;width:82%;height:64%;
+.island-rock {
+  position:absolute; top:32%; left:9%; width:82%; height:64%;
   background:linear-gradient(90deg,#34243f,#201629 35%,#453050 68%,#170f21);
   clip-path:polygon(0 0,100% 0,83% 35%,65% 47%,53% 100%,37% 70%,20% 55%,9% 30%);
 }
-.island-glow{
-  position:absolute;top:16%;left:18%;width:60%;height:2px;
-  background:#d8b4fe;box-shadow:0 0 13px 3px #a855f788;
+.island-glow {
+  position:absolute; top:16%; left:18%; width:60%; height:2px;
+  background:#d8b4fe; box-shadow:0 0 13px 3px #a855f788;
 }
-.island.i1{right:1%;bottom:23%;transform:scale(1.25);animation-delay:-3s}
-.island.i2{right:34%;top:12%;transform:scale(.56);animation-delay:-1s}
-.island.i3{left:39%;bottom:9%;transform:scale(.45);animation-delay:-5s}
-@keyframes islandFloat{0%,100%{translate:0 0}50%{translate:0 -16px}}
+.i1 { right:1%; bottom:23%; transform:scale(1.2); }
+.i2 { right:34%; top:12%; transform:scale(.55); }
+.i3 { left:39%; bottom:9%; transform:scale(.42); }
+@keyframes islandFloat { 50% { translate:0 -16px; } }
 
-/* END CASTLE SILHOUETTE */
-.castle{
-  position:absolute;z-index:3;right:7%;bottom:26%;
-  width:260px;height:220px;opacity:.68;
-  filter:drop-shadow(0 0 18px #a855f722);
-  animation:castleFloat 9s ease-in-out infinite;
-}
-.castle-base{
-  position:absolute;bottom:0;left:18%;width:65%;height:58%;
-  background:linear-gradient(90deg,#20172c,#59466a 42%,#21142e);
-  clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);
-}
-.castle-tower{
-  position:absolute;bottom:40%;width:22%;height:50%;
-  background:linear-gradient(90deg,#21152e,#59446b 55%,#24142f);
-}
-.castle-tower:before{
-  content:"";position:absolute;left:-12%;top:-26%;width:124%;height:29%;
-  background:#5a3d72;clip-path:polygon(50% 0,100% 100%,0 100%);
-}
-.castle-tower.t1{left:15%;height:68%}
-.castle-tower.t2{right:13%;height:76%}
-.castle-tower.t3{left:40%;width:27%;height:94%;bottom:35%}
-.castle-window{
-  position:absolute;left:45%;top:30%;width:10%;height:15%;
-  background:#d8b4fe;border-radius:10px 10px 0 0;
-  box-shadow:0 0 14px #a855f7;
-}
-@keyframes castleFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
-
-/* END PORTAL */
-.portal{
-  position:absolute;z-index:4;right:17%;top:26%;
-  width:150px;height:220px;pointer-events:none;
-  border:5px solid #a855f7;border-radius:50%;
+/* End portal */
+.portal {
+  position:absolute; z-index:3; right:17%; top:26%;
+  width:150px; height:220px; border:5px solid #a855f7;
+  border-radius:50%; pointer-events:none;
   transform:perspective(200px) rotateY(-12deg);
   box-shadow:0 0 15px #a855f7,0 0 45px #9333ea66,inset 0 0 24px #c084fc;
   animation:portalGlow 4s ease-in-out infinite;
 }
-.portal:before{
-  content:"";position:absolute;inset:10px;border:2px solid #d8b4fe;
-  border-radius:50%;box-shadow:inset 0 0 28px #a855f766;
+.portal:before {
+  content:""; position:absolute; inset:10px; border:2px solid #d8b4fe;
+  border-radius:50%; box-shadow:inset 0 0 28px #a855f766;
 }
-.portal:after{
-  content:"";position:absolute;inset:18px;border-radius:50%;
-  background:radial-gradient(ellipse,#c084fc55 0%,#6b21a833 45%,transparent 72%);
+.portal:after {
+  content:""; position:absolute; inset:18px; border-radius:50%;
+  background:radial-gradient(ellipse,#c084fc55,#6b21a833 45%,transparent 72%);
 }
-@keyframes portalGlow{
-  0%,100%{box-shadow:0 0 15px #a855f7,0 0 40px #9333ea44,inset 0 0 20px #c084fc}
-  50%{box-shadow:0 0 25px #c084fc,0 0 70px #9333ea88,inset 0 0 32px #c084fc}
+@keyframes portalGlow {
+  50% { box-shadow:0 0 25px #c084fc,0 0 70px #9333ea88,inset 0 0 32px #c084fc; }
 }
-.sky-fade{
-  position:absolute;z-index:5;left:0;right:0;bottom:-1px;height:150px;
-  background:linear-gradient(0deg,#080612 0%,#080612aa 25%,transparent 100%);
+
+/* Castle silhouette */
+.castle {
+  position:absolute; z-index:2; right:7%; bottom:26%;
+  width:260px; height:220px; opacity:.68;
+  filter:drop-shadow(0 0 18px #a855f722);
+  animation:castleFloat 9s ease-in-out infinite;
+}
+.castle-base {
+  position:absolute; bottom:0; left:18%; width:65%; height:58%;
+  background:linear-gradient(90deg,#20172c,#59466a 42%,#21142e);
+  clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);
+}
+.castle-tower {
+  position:absolute; bottom:40%; width:22%; height:50%;
+  background:linear-gradient(90deg,#21152e,#59446b 55%,#24142f);
+}
+.castle-tower:before {
+  content:""; position:absolute; left:-12%; top:-26%; width:124%; height:29%;
+  background:#5a3d72; clip-path:polygon(50% 0,100% 100%,0 100%);
+}
+.t1 { left:15%; height:68%; }
+.t2 { right:13%; height:76%; }
+.t3 { left:40%; width:27%; height:94%; bottom:35%; }
+.castle-window {
+  position:absolute; left:45%; top:30%; width:10%; height:15%;
+  background:#d8b4fe; border-radius:10px 10px 0 0; box-shadow:0 0 14px #a855f7;
+}
+@keyframes castleFloat { 50% { translate:0 -9px; } }
+.sky-fade {
+  position:absolute; bottom:0; left:0; right:0; height:150px;
+  background:linear-gradient(0deg,#080612,#080612aa 25%,transparent);
   pointer-events:none;
 }
 
-/* SECTIONS */
-.section{padding:95px 0;position:relative}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:35px}
-.kicker{font-size:10px;color:#c084fc;font-weight:800;letter-spacing:3px;text-transform:uppercase}
-.section h2{
-  font-family:'Orbitron',sans-serif;font-size:clamp(27px,4.3vw,43px);
-  line-height:1.25;letter-spacing:-.06em;color:#f3e8ff;margin-top:13px;
+/* Main sections */
+.section { padding:95px 0; position:relative; }
+.section-head {
+  display:flex; justify-content:space-between; align-items:end;
+  gap:25px; margin-bottom:35px;
 }
-.section-intro{max-width:370px;color:#aa9bbb;font-size:13px;line-height:1.9}
-.server-panel{
-  display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;
-  border:1px solid var(--line);border-radius:15px;padding:30px;
+.section h2 {
+  font-size:clamp(27px,4.3vw,43px); line-height:1.25;
+  letter-spacing:-.06em; color:#f3e8ff; margin-top:13px;
+}
+.section-intro { max-width:370px; color:#aa9bbb; font-size:13px; line-height:1.9; }
+.server-panel {
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:22px;
+  padding:30px; border:1px solid var(--border); border-radius:15px;
   background:linear-gradient(130deg,rgba(35,20,57,.92),rgba(15,10,29,.9));
-  box-shadow:0 20px 60px #0003,inset 0 1px #ffffff06;
-  backdrop-filter:blur(18px);position:relative;overflow:hidden;
+  box-shadow:0 20px 60px #0003; position:relative; overflow:hidden;
 }
-.server-panel:before{
-  content:"";position:absolute;top:0;left:0;width:3px;height:100%;
-  background:linear-gradient(180deg,#d8b4fe,#7e22ce);
-  box-shadow:0 0 15px #a855f7;
+.server-panel:before {
+  content:""; position:absolute; top:0; left:0; width:3px; height:100%;
+  background:linear-gradient(#d8b4fe,#7e22ce); box-shadow:0 0 15px #a855f7;
 }
-.panel-label{color:#9c88b4;font-size:10px;font-weight:800;letter-spacing:2px}
-.server-ip{
+.panel-label { color:#9c88b4; font-size:10px; font-weight:800; letter-spacing:2px; }
+.server-ip {
   font:800 clamp(17px,2.8vw,25px) 'Orbitron',sans-serif;
-  color:#d8b4fe;margin-top:12px;overflow-wrap:anywhere;
+  color:#d8b4fe; margin-top:12px; overflow-wrap:anywhere;
 }
-.server-meta{display:flex;gap:23px;flex-wrap:wrap;margin-top:14px}
-.meta-item{color:#9c8bb0;font-size:11px}
-.meta-item strong{color:#ead9ff}
-.status{display:flex;align-items:center;gap:8px;margin-top:17px;font-size:11px;color:#bba8d1}
-.status-dot{width:7px;height:7px;border-radius:50%;background:#8c7b9f}
-.status-dot.online{background:#4ade80;box-shadow:0 0 10px #4ade8077}
-.status-dot.online{background:#fb7185}
-.copy-btn{
-  padding:14px 17px;border:1px solid #a855f755;border-radius:8px;
-  color:#e9d5ff;background:#28163f;font-size:10px;font-weight:800;white-space:nowrap;
-  transition:.2s;
+.server-meta { display:flex; gap:23px; flex-wrap:wrap; margin-top:14px; }
+.meta-item { color:#9c8bb0; font-size:11px; }
+.meta-item strong { color:#ead9ff; }
+.status { display:flex; align-items:center; gap:8px; margin-top:17px; font-size:11px; color:#bba8d1; }
+.status-dot { width:7px; height:7px; border-radius:50%; background:#9c8bb0; }
+.status-dot.online { background:#4ade80; box-shadow:0 0 10px #4ade8077; }
+.status-dot.offline { background:#fb7185; }
+.copy-btn {
+  padding:14px 17px; border:1px solid #a855f755; border-radius:8px;
+  color:#e9d5ff; background:#28163f; font-size:10px; font-weight:800;
 }
-.copy-btn:hover{background:#3b1c5d;border-color:#c084fc;transform:translateY(-2px)}
-
-/* EXPERIENCE CARDS */
-.experience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-.experience-main,.experience-side{
-  position:relative;overflow:hidden;border-radius:15px;
-  border:1px solid var(--line);
+.copy-btn:hover { background:#3b1c5d; border-color:#c084fc; }
+.experience-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:18px; }
+.experience-main,.experience-side {
+  position:relative; overflow:hidden; border-radius:15px;
+  border:1px solid var(--border);
   background:linear-gradient(145deg,rgba(35,20,57,.92),rgba(15,10,29,.9));
-  box-shadow:0 18px 50px #0002;
+  box-shadow:0 18px 50px #0002; padding:32px; min-height:300px;
 }
-.experience-main{min-height:320px;padding:32px}
-.experience-main h3,.experience-side h3{
-  font:700 20px 'Orbitron',sans-serif;color:#f3e8ff;letter-spacing:-.04em;margin-top:13px;
+.experience-main h3,.experience-side h3 {
+  font-size:20px; color:#f3e8ff; margin-top:13px;
 }
-.experience-main p,.experience-side p{color:#aa9bbb;font-size:13px;line-height:1.9;max-width:330px;margin-top:12px}
-.experience-art{
-  position:absolute;right:-15px;bottom:-25px;width:65%;height:70%;
-  background:
-    radial-gradient(ellipse at 65% 45%,#a855f755 0%,#6b21a733 24%,transparent 60%),
-    linear-gradient(150deg,#382249,#100a19);
+.experience-main p,.experience-side p {
+  color:#aa9bbb; font-size:13px; line-height:1.9; max-width:330px; margin-top:12px;
+}
+.experience-art {
+  position:absolute; right:-15px; bottom:-25px; width:65%; height:70%;
+  background:radial-gradient(ellipse at 65% 45%,#a855f755,#6b21a733 24%,transparent 60%),linear-gradient(150deg,#382249,#100a19);
   clip-path:polygon(0 70%,16% 48%,30% 58%,50% 14%,66% 35%,83% 7%,100% 27%,100% 100%,0 100%);
-  opacity:.9;
 }
-.experience-art:after{
-  content:"";position:absolute;bottom:0;left:20%;width:70%;height:70%;
-  background:linear-gradient(90deg,#1d1427,#503a61,#21152f);
-  clip-path:polygon(0 35%,17% 35%,17% 5%,30% 5%,30% 25%,45% 25%,45% 0,60% 0,60% 35%,80% 35%,80% 15%,93% 15%,93% 100%,0 100%);
+.experience-side { display:flex; flex-direction:column; justify-content:space-between; }
+.side-art {
+  position:relative; height:110px; border-radius:10px; overflow:hidden; margin-top:25px;
+  background:radial-gradient(ellipse at 50% 120%,#d8b4fe55,#6b21a833 40%,transparent 70%),linear-gradient(135deg,#251333,#0d0917);
 }
-.experience-side{padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
-.side-art{
-  position:relative;height:110px;border-radius:10px;overflow:hidden;margin-top:25px;
-  background:radial-gradient(ellipse at 50% 120%,#d8b4fe55 0%,#6b21a833 40%,transparent 70%),linear-gradient(135deg,#251333,#0d0917);
-}
-.side-art:before{
-  content:"";position:absolute;left:calc(50% - 32px);top:14px;width:64px;height:78px;
-  border:4px solid #a855f7;border-radius:50% 50% 12px 12px;
+.side-art:before {
+  content:""; position:absolute; left:calc(50% - 32px); top:14px; width:64px; height:78px;
+  border:4px solid #a855f7; border-radius:50% 50% 12px 12px;
   box-shadow:0 0 18px #9333ea66,inset 0 0 18px #7e22ce55;
 }
-.side-art:after{
-  content:"";position:absolute;left:calc(50% - 21px);top:26px;width:42px;height:55px;
-  border-radius:50% 50% 12px 12px;background:radial-gradient(ellipse,#d8b4fe55,#6b21a733 70%,transparent);
+.community {
+  text-align:center; padding:65px 25px; border:1px solid var(--border);
+  border-radius:16px; background:radial-gradient(ellipse at 50% 0%,#7e22ce44,transparent 48%),linear-gradient(135deg,#1c1031,#0c0817);
+  position:relative; overflow:hidden;
 }
+.community h2 { font-size:clamp(30px,5vw,49px); margin-top:16px; }
+.community p { max-width:500px; margin:15px auto 26px; color:#b8a9cf; font-size:13px; line-height:1.9; }
+.footer {
+  padding:28px 0; border-top:1px solid #a855f722;
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  color:#877697; font-size:10px;
+}
+.footer-brand { color:#e9d5ff; font-family:'Orbitron',sans-serif; font-weight:800; letter-spacing:2px; }
+.toast {
+  position:fixed; z-index:100; left:50%; bottom:25px;
+  transform:translate(-50%,15px); opacity:0; pointer-events:none;
+  padding:13px 18px; border-radius:9px; background:#211332; color:#f3e8ff;
+  border:1px solid #a855f755; font-size:12px; font-weight:700; transition:.25s;
+}
+.toast.show { opacity:1; transform:translate(-50%,0); }
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .7s,transform .7s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
 
-/* COMMUNITY */
-.community{
-  position:relative;overflow:hidden;text-align:center;padding:65px 25px;
-  border:1px solid var(--line);border-radius:16px;
-  background:
-    radial-gradient(ellipse at 50% 0%,#7e22ce44 0%,transparent 48%),
-    linear-gradient(135deg,#1c1031,#0c0817);
-  box-shadow:0 20px 60px #0003;
+@media(max-width:800px) {
+  .navlinks { gap:12px; font-size:10px; }
+  .nav-cta { padding:10px; font-size:9px; }
+  .section-head { align-items:start; flex-direction:column; }
+  .experience-grid { grid-template-columns:1fr; }
+  .island.i1 { right:-8%; bottom:18%; }
+  .castle { right:-3%; bottom:22%; transform:scale(.8); transform-origin:bottom right; }
 }
-.community:before,.community:after{
-  content:"";position:absolute;bottom:-60px;width:220px;height:150px;
-  background:linear-gradient(#513363,#20132d);
-  clip-path:polygon(0 35%,20% 10%,37% 29%,60% 0,100% 40%,100% 100%,0 100%);
-  opacity:.3;
+@media(max-width:540px) {
+  .nav { top:9px; }
+  .brand { font-size:11px; }
+  .brand-icon { width:31px; height:31px; }
+  .navlinks { display:none; }
+  .nav-cta { margin-left:auto; }
+  .hero { min-height:760px; }
+  .hero-content { padding-top:135px; padding-bottom:160px; }
+  .hero h1 { font-size:clamp(42px,11.5vw,65px); }
+  .hero-description { font-size:13px; }
+  .hero-actions .btn { width:100%; }
+  .hero-meta { gap:12px; margin-top:32px; }
+  .sun { right:-8%; top:20%; width:210px; }
+  .island.i1 { right:-28%; bottom:17%; transform:scale(.72); }
+  .island.i2 { right:22%; top:13%; transform:scale(.42); }
+  .island.i3 { left:12%; bottom:10%; transform:scale(.36); }
+  .castle { right:-17%; bottom:22%; transform:scale(.58); transform-origin:bottom right; }
+  .portal { right:2%; top:28%; transform:scale(.56); transform-origin:top right; }
+  .server-panel { grid-template-columns:1fr; padding:24px 20px; }
+  .copy-btn { width:100%; }
+  .section h2 { font-size:29px; }
+  .experience-main,.experience-side { padding:24px; }
+  .community { padding:50px 18px; }
+  .community .btn { width:100%; }
+  .footer { flex-direction:column; }
 }
-.community:before{left:-30px}
-.community:after{right:-30px;transform:scaleX(-1)}
-.community-inner{position:relative;z-index:2}
-.community h2{font:800 clamp(30px,5vw,49px) 'Orbitron',sans-serif;letter-spacing:-.06em;color:#f3e8ff;margin-top:16px}
-.community p{max-width:500px;margin:15px auto 26px;color:#b8a9cf;font-size:13px;line-height:1.9}
-.footer{
-  padding:28px 0;border-top:1px solid #a855f722;
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  color:#877697;font-size:10px;
-}
-.footer-brand{color:#e9d5ff;font-family:'Orbitron',sans-serif;font-weight:800;letter-spacing:2px}
-.toast{
-  position:fixed;z-index:100;left:50%;bottom:25px;transform:translate(-50%,15px);
-  opacity:0;pointer-events:none;padding:13px 18px;border-radius:9px;
-  background:#211332;color:#f3e8ff;border:1px solid #a855f755;
-  font-size:12px;font-weight:700;box-shadow:0 8px 30px #0005;transition:.25s;
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:800px){
-  .nav{top:9px}
-  .navlinks{gap:14px;font-size:10px}
-  .nav-cta{padding:10px 12px;font-size:9px}
-  .hero{min-height:780px}
-  .hero-content{padding-top:155px}
-  .island.i1{right:-8%;bottom:18%;transform:scale(.9)}
-  .island.i2{right:30%;top:12%}
-  .castle{right:-3%;bottom:22%;transform:scale(.8);transform-origin:bottom right}
-  .portal{right:12%;top:27%;transform:scale(.8)}
-  .section{padding:75px 0}
-  .section-head{align-items:start;flex-direction:column}
-  .experience-grid{grid-template-columns:1fr}
-  .experience-main,.experience-side{min-height:270px}
-}
-@media(max-width:540px){
-  .container{width:89%}
-  .brand{font-size:11px;gap:8px}
-  .brand-icon{width:31px;height:31px}
-  .navlinks{display:none}
-  .nav-cta{margin-left:auto}
-  .hero{min-height:760px}
-  .hero-content{padding-top:135px;padding-bottom:160px}
-  .hero h1{font-size:clamp(42px,11.5vw,65px);letter-spacing:-.07em}
-  .hero-description{font-size:13px;max-width:350px}
-  .eyebrow{font-size:9px;letter-spacing:2px}
-  .hero-actions .btn{width:100%}
-  .hero-meta{gap:12px;margin-top:32px}
-  .meta{font-size:8px}
-  .meta-line{height:15px}
-  .sun{right:-8%;top:20%;width:210px}
-  .island.i1{right:-28%;bottom:17%;transform:scale(.72)}
-  .island.i2{right:22%;top:13%;transform:scale(.42)}
-  .island.i3{left:12%;bottom:10%;transform:scale(.36)}
-  .castle{right:-17%;bottom:22%;transform:scale(.58);transform-origin:bottom right}
-  .portal{right:2%;top:28%;transform:scale(.56);transform-origin:top right}
-  .server-panel{grid-template-columns:1fr;padding:24px 20px}
-  .copy-btn{width:100%}
-  .server-meta{gap:14px}
-  .section h2{font-size:29px}
-  .experience-main,.experience-side{padding:24px}
-  .experience-art{width:75%;height:55%}
-  .community{padding:50px 18px}
-  .community .btn{width:100%}
-  .footer{flex-direction:column}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+  .reveal { opacity:1; transform:none; }
 }
 </style>
 </head>
 
 <body>
-
 <nav class="nav">
   <a href="#home" class="brand">
     <div class="brand-icon">B.</div>
     <div class="brand-name">BLOX <span>SMP</span></div>
   </a>
-
   <div class="navlinks">
     <a href="#home">Home</a>
     <a href="#server">Server</a>
     <a href="#world">The World</a>
     <a href="#community">Community</a>
   </div>
-
   <a href="#server" class="nav-cta">ENTER THE END ↗</a>
 </nav>
 
 <header class="hero" id="home">
   <div class="sun"></div>
-  <div class="hero-light"></div>
-
-  <div class="particle p1"></div>
-  <div class="particle p2"></div>
-  <div class="particle p3"></div>
-  <div class="particle p4"></div>
-  <div class="particle p5"></div>
-  <div class="particle p6"></div>
-
+  <div class="particle p1"></div><div class="particle p2"></div>
+  <div class="particle p3"></div><div class="particle p4"></div><div class="particle p5"></div>
   <div class="portal"></div>
 
-  <div class="island i1">
-    <div class="island-top"></div><div class="island-rock"></div><div class="island-glow"></div>
-  </div>
-  <div class="island i2">
-    <div class="island-top"></div><div class="island-rock"></div><div class="island-glow"></div>
-  </div>
-  <div class="island i3">
-    <div class="island-top"></div><div class="island-rock"></div><div class="island-glow"></div>
-  </div>
+  <div class="island i1"><div class="island-top"></div><div class="island-rock"></div><div class="island-glow"></div></div>
+  <div class="island i2"><div class="island-top"></div><div class="island-rock"></div><div class="island-glow"></div></div>
+  <div class="island i3"><div class="island-top"></div><div class="island-rock"></div><div class="island-glow"></div></div>
 
   <div class="castle" aria-hidden="true">
     <div class="castle-base"></div>
@@ -458,114 +377,87 @@ button:focus-visible,a:focus-visible{outline:2px solid #d8b4fe;outline-offset:4p
   </div>
 
   <div class="hero-content">
-    <div class="eyebrow"><span class="eyebrow-line"></span> WELCOME TO THE UNKNOWN</div>
-
-    <h1>
-      ENTER THE
-      <span class="line2">NEW EMPIRE.</span>
-    </h1>
-
+    <div class="eyebrow">WELCOME TO THE UNKNOWN</div>
+    <h1>ENTER THE <span>NEW EMPIRE.</span></h1>
     <p class="hero-description">
       Step beyond the ordinary. Discover a world of mystery,
       build your legacy and forge your own story in BLOX SMP.
       The void is calling. Are you ready?
     </p>
-
     <div class="hero-actions">
-      <a href="#server" class="btn btn-primary">ENTER THE WORLD <span class="arrow">↗</span></a>
-      <a href="https://discord.gg/24WVRUPWJE" class="btn btn-light" target="_blank" rel="noopener noreferrer">JOIN THE COMMUNITY</a>
+      <a href="#server" class="btn btn-primary">ENTER THE WORLD ↗</a>
+      <a href="https://discord.gg/24WVRUPWJE" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">JOIN THE COMMUNITY</a>
     </div>
-
     <div class="hero-meta">
       <div class="meta"><span>✦</span> MINECRAFT BEDROCK</div>
-      <div class="meta-line"></div>
       <div class="meta"><span>✦</span> BEYOND THE VOID</div>
     </div>
   </div>
-
   <div class="sky-fade"></div>
 </header>
 
 <main>
-  <section class="section container reveal" id="server">
-    <div class="section-head">
+<section class="section container reveal" id="server">
+  <div class="section-head">
+    <div>
+      <div class="kicker">01 / YOUR GATEWAY</div>
+      <h2>One connection.<br>Infinite possibilities.</h2>
+    </div>
+    <p class="section-intro">Your next adventure begins here. Connect to BLOX SMP, meet your allies and make your mark on the world.</p>
+  </div>
+
+  <div class="server-panel">
+    <div>
+      <div class="panel-label">MINECRAFT BEDROCK SERVER</div>
+      <div class="server-ip" id="serverIp">BloxSMP02</div>
+      <div class="server-meta">
+        <div class="meta-item">PORT &nbsp;<strong id="serverPort">19132</strong></div>
+        <div class="meta-item">PLAYERS &nbsp;<strong id="players">—</strong></div>
+        <div class="meta-item">EDITION &nbsp;<strong>BEDROCK</strong></div>
+      </div>
+      <div class="status">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Checking server status…</span>
+      </div>
+    </div>
+    <button type="button" class="copy-btn" id="copyButton">COPY SERVER IP ↗</button>
+  </div>
+</section>
+
+<section class="section container reveal" id="world">
+  <div class="section-head">
+    <div>
+      <div class="kicker">02 / BEYOND THE ORDINARY</div>
+      <h2>Not just a server.<br>Your own legacy.</h2>
+    </div>
+    <p class="section-intro">The world is yours to shape. Explore unfamiliar lands, create incredible builds and turn your ideas into reality.</p>
+  </div>
+  <div class="experience-grid">
+    <article class="experience-main">
+      <div class="kicker">EXPLORE</div>
+      <h3>Venture into the unknown.</h3>
+      <p>Cross new horizons, discover hidden places and write your own story in the world of BLOX SMP.</p>
+      <div class="experience-art" aria-hidden="true"></div>
+    </article>
+    <article class="experience-side">
       <div>
-        <div class="kicker">01 / YOUR GATEWAY</div>
-        <h2>One connection.<br>Infinite possibilities.</h2>
+        <div class="kicker">CREATE</div>
+        <h3>Build your empire.</h3>
+        <p>From secret bases to legendary creations, let your imagination define your world.</p>
       </div>
-      <p class="section-intro">
-        Your next adventure begins here. Connect to BLOX SMP,
-        meet your allies and make your mark on the world.
-      </p>
-    </div>
+      <div class="side-art" aria-hidden="true"></div>
+    </article>
+  </div>
+</section>
 
-    <div class="server-panel">
-      <div>
-        <div class="panel-label">MINECRAFT BEDROCK SERVER</div>
-        <div class="server-ip" id="serverIp">YOUR_SERVER_IP</div>
-
-        <div class="server-meta">
-          <div class="meta-item">PORT &nbsp;<strong id="serverPort">19132</strong></div>
-          <div class="meta-item">PLAYERS &nbsp;<strong id="players">—</strong></div>
-          <div class="meta-item">EDITION &nbsp;<strong>BEDROCK</strong></div>
-        </div>
-
-        <div class="status">
-          <span class="status-dot" id="statusDot"></span>
-          <span id="statusText">Configure your server IP</span>
-        </div>
-      </div>
-
-      <button type="button" class="copy-btn" id="copyButton">COPY SERVER IP ↗</button>
-    </div>
-  </section>
-
-  <section class="section container reveal" id="world">
-    <div class="section-head">
-      <div>
-        <div class="kicker">02 / BEYOND THE ORDINARY</div>
-        <h2>Not just a server.<br>Your own legacy.</h2>
-      </div>
-      <p class="section-intro">
-        The world is yours to shape. Explore unfamiliar lands,
-        create incredible builds and turn your ideas into reality.
-      </p>
-    </div>
-
-    <div class="experience-grid">
-      <article class="experience-main">
-        <div class="kicker">EXPLORE</div>
-        <h3>Venture into the unknown.</h3>
-        <p>Cross new horizons, discover hidden places and write your own story in the world of BLOX SMP.</p>
-        <div class="experience-art" aria-hidden="true"></div>
-      </article>
-
-      <article class="experience-side">
-        <div>
-          <div class="kicker">CREATE</div>
-          <h3>Build your empire.</h3>
-          <p>From secret bases to legendary creations, let your imagination define your world.</p>
-        </div>
-        <div class="side-art" aria-hidden="true"></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section container reveal" id="community">
-    <div class="community">
-      <div class="community-inner">
-        <div class="kicker">03 / YOUR STORY STARTS NOW</div>
-        <h2>THE VOID AWAITS.</h2>
-        <p>
-          Gather your friends, join the adventure and become
-          part of the BLOX SMP community. Your legacy starts here.
-        </p>
-        <a href="https://discord.gg/24WVRUPWJE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          JOIN DISCORD <span class="arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
+<section class="section container reveal" id="community">
+  <div class="community">
+    <div class="kicker">03 / YOUR STORY STARTS NOW</div>
+    <h2>THE VOID AWAITS.</h2>
+    <p>Gather your friends, join the adventure and become part of the BLOX SMP community. Your legacy starts here.</p>
+    <a href="https://discord.gg/24WVRUPWJE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">JOIN DISCORD ↗</a>
+  </div>
+</section>
 </main>
 
 <footer class="container footer">
@@ -577,25 +469,16 @@ button:focus-visible,a:focus-visible{outline:2px solid #d8b4fe;outline-offset:4p
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ==========================================
-   BLOX SMP — CHANGE YOUR SERVER DETAILS HERE
-   ========================================== */
 const SERVER_IP = "BloxSMP02";
 const SERVER_PORT = 19132;
 const DISCORD_LINK = "https://discord.gg/24WVRUPWJE";
-
-/* Apply configured links */
-document.querySelectorAll('a[href="https://discord.gg/24WVRUPWJE"]').forEach(link => {
-  link.href = DISCORD_LINK;
-});
 
 document.getElementById("year").textContent = new Date().getFullYear();
 document.getElementById("serverIp").textContent = SERVER_IP;
 document.getElementById("serverPort").textContent = SERVER_PORT;
 
 let toastTimer;
-
-function showToast(message){
+function showToast(message) {
   const toast = document.getElementById("toast");
   toast.textContent = message;
   toast.classList.add("show");
@@ -603,94 +486,65 @@ function showToast(message){
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
 }
 
-/* Copy server IP */
 document.getElementById("copyButton").addEventListener("click", async () => {
-  if(!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP"){
-    showToast("Add your server IP in the code first.");
-    return;
-  }
-
-  try{
+  try {
     await navigator.clipboard.writeText(SERVER_IP);
     showToast("Server IP copied!");
-  }catch(error){
+  } catch (error) {
     const area = document.createElement("textarea");
     area.value = SERVER_IP;
-    area.style.position = "fixed";
-    area.style.opacity = "0";
     document.body.appendChild(area);
     area.select();
-
     const copied = document.execCommand("copy");
     area.remove();
-
-    showToast(copied ? "Server IP copied!" : "Copy failed. IP: " + SERVER_IP);
+    showToast(copied ? "Server IP copied!" : "Server IP: " + SERVER_IP);
   }
 });
 
-/* Bedrock live server status using mcsrvstat.us */
-async function checkServer(){
+async function checkServer() {
   const statusText = document.getElementById("statusText");
   const statusDot = document.getElementById("statusDot");
   const players = document.getElementById("players");
 
-  if(!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP"){
-    statusText.textContent = "Configure your server IP";
-    statusDot.className = "status-dot";
-    players.textContent = "—";
-    return;
-  }
-
-  statusText.textContent = "Checking server status…";
-  statusDot.className = "status-dot";
-
-  try{
-    const endpoint =
-      "https://api.mcsrvstat.us/bedrock/3/" +
+  try {
+    const url = "https://api.mcsrvstat.us/bedrock/3/" +
       encodeURIComponent(SERVER_IP) + ":" + SERVER_PORT;
-
-    const response = await fetch(endpoint);
-    if(!response.ok) throw new Error("Status API unavailable");
-
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Status unavailable");
     const data = await response.json();
 
-    if(data.online){
+    if (data.online) {
       statusText.textContent = "Server is online";
       statusDot.className = "status-dot online";
-
       players.textContent = data.players
         ? data.players.online + " / " + data.players.max
         : "Online";
-    }else{
-      statusText.textContent = "Online";
-      statusDot.className = "status-dot online";
+    } else {
+      statusText.textContent = "Offline or unreachable";
+      statusDot.className = "status-dot offline";
       players.textContent = "0";
     }
-  }catch(error){
+  } catch (error) {
     statusText.textContent = "Live status temporarily unavailable";
     statusDot.className = "status-dot";
     players.textContent = "—";
   }
 }
-
 checkServer();
 setInterval(checkServer, 60000);
 
-/* Scroll reveal animation */
 const revealItems = document.querySelectorAll(".reveal");
-
-if("IntersectionObserver" in window){
+if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
-  }, {threshold:.12});
-
+  }, { threshold: .12 });
   revealItems.forEach(item => observer.observe(item));
-}else{
+} else {
   revealItems.forEach(item => item.classList.add("visible"));
 }
 </script>
