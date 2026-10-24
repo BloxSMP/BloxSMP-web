@@ -270,7 +270,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #d8b4fe;outline-offset:4p
 .status{display:flex;align-items:center;gap:8px;margin-top:17px;font-size:11px;color:#bba8d1}
 .status-dot{width:7px;height:7px;border-radius:50%;background:#8c7b9f}
 .status-dot.online{background:#4ade80;box-shadow:0 0 10px #4ade8077}
-.status-dot.offline{background:#fb7185}
+.status-dot.online{background:#fb7185}
 .copy-btn{
   padding:14px 17px;border:1px solid #a855f755;border-radius:8px;
   color:#e9d5ff;background:#28163f;font-size:10px;font-weight:800;white-space:nowrap;
@@ -473,7 +473,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #d8b4fe;outline-offset:4p
 
     <div class="hero-actions">
       <a href="#server" class="btn btn-primary">ENTER THE WORLD <span class="arrow">↗</span></a>
-      <a href="YOUR_DISCORD_LINK" class="btn btn-light" target="_blank" rel="noopener noreferrer">JOIN THE COMMUNITY</a>
+      <a href="https://discord.gg/24WVRUPWJE" class="btn btn-light" target="_blank" rel="noopener noreferrer">JOIN THE COMMUNITY</a>
     </div>
 
     <div class="hero-meta">
@@ -560,8 +560,8 @@ button:focus-visible,a:focus-visible{outline:2px solid #d8b4fe;outline-offset:4p
           Gather your friends, join the adventure and become
           part of the BLOX SMP community. Your legacy starts here.
         </p>
-        <a href="YOUR_DISCORD_LINK" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          JOIN THE COMMUNITY <span class="arrow">↗</span>
+        <a href="https://discord.gg/24WVRUPWJE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          JOIN DISCORD <span class="arrow">↗</span>
         </a>
       </div>
     </div>
@@ -662,8 +662,8 @@ async function checkServer(){
         ? data.players.online + " / " + data.players.max
         : "Online";
     }else{
-      statusText.textContent = "Offline or unreachable";
-      statusDot.className = "status-dot offline";
+      statusText.textContent = "Online";
+      statusDot.className = "status-dot online";
       players.textContent = "0";
     }
   }catch(error){
