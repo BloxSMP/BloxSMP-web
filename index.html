@@ -1,350 +1,454 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07060d">
-<title>BLOX SMP — Beyond The End</title>
-<meta name="description" content="Enter BLOX SMP. Explore the void, build your legacy, and discover a new Minecraft adventure.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eaf7ff">
+<meta name="description" content="Enter BLOX SMP, a world beyond the clouds.">
+<title>BLOX SMP — A World Above The Clouds</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#07060d;
-  --panel:#100f1a;
-  --ice:#8ceaff;
-  --blue:#43bfff;
-  --purple:#9e72ff;
-  --muted:#9998ac;
-  --line:rgba(199,207,255,.13);
-  --white:#f6f5ff;
+  --sky:#eaf7ff;
+  --blue:#74cfff;
+  --deep:#183f65;
+  --gold:#e9ba68;
+  --ink:#16334e;
+  --muted:#6b879f;
+  --glass:rgba(255,255,255,.63);
+  --line:rgba(255,255,255,.82);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
 body{
-  color:var(--white);
-  background:var(--bg);
   font-family:"DM Sans",sans-serif;
+  color:var(--ink);
+  background:#edf8ff;
   overflow-x:hidden;
 }
-body::selection{background:#72dfff;color:#07060d}
 a{color:inherit;text-decoration:none}
-button{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-button:focus-visible,a:focus-visible{outline:2px solid var(--ice);outline-offset:4px}
-.container{width:min(1180px,90%);margin:auto}
-.noise{
-  position:fixed;inset:0;pointer-events:none;z-index:10;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
-#stars{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid #298dd1;outline-offset:4px}
+.container{width:min(1160px,89%);margin:auto}
+
+/* Navigation */
 .nav{
-  position:fixed;top:18px;left:50%;transform:translateX(-50%);
-  width:min(1180px,94%);z-index:30;
+  position:fixed;top:17px;left:50%;transform:translateX(-50%);
+  width:min(1180px,94%);z-index:50;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:12px 17px;
-  border:1px solid var(--line);border-radius:15px;
-  background:rgba(10,9,19,.78);
-  backdrop-filter:blur(22px);
-  box-shadow:0 12px 45px #0003;
+  padding:12px 17px;border:1px solid #ffffffb8;border-radius:16px;
+  background:rgba(255,255,255,.62);backdrop-filter:blur(22px);
+  box-shadow:0 8px 35px #477e9d15;
 }
-.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:2px;font-size:14px}
-.brand-mark{
-  width:35px;height:35px;display:grid;place-items:center;
-  border:1px solid #8ceaff55;border-radius:9px;
-  color:var(--ice);font-family:Manrope,sans-serif;font-size:17px;font-weight:800;
-  background:linear-gradient(145deg,#8ceaff22,#9e72ff15);
-  box-shadow:inset 0 0 18px #8ceaff0d;
+.brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:800;letter-spacing:2px}
+.brand-icon{
+  width:36px;height:36px;display:grid;place-items:center;
+  border-radius:11px;background:linear-gradient(145deg,#b9edff,#62bdf4);
+  color:#174768;font-size:18px;box-shadow:inset 0 1px white,0 5px 14px #5baee533;
 }
-.brand span span{color:var(--ice)}
-.navlinks{display:flex;align-items:center;gap:27px;color:#b5b3c8;font-size:12px}
+.brand-name span{color:#3799d5}
+.navlinks{display:flex;gap:26px;color:#56758d;font-size:12px;font-weight:700}
 .navlinks a{transition:color .2s}
-.navlinks a:hover{color:var(--ice)}
+.navlinks a:hover{color:#168aca}
 .nav-cta{
-  padding:11px 15px;border-radius:8px;background:var(--ice);color:#071018;
+  padding:12px 16px;border-radius:9px;background:#214e72;color:white;
   font-size:11px;font-weight:800;transition:.25s;
+  box-shadow:0 5px 15px #214e7220;
 }
-.nav-cta:hover{background:white;box-shadow:0 0 25px #8ceaff40}
+.nav-cta:hover{background:#3278a8;transform:translateY(-2px)}
+
+/* Hero sky */
 .hero{
-  min-height:800px;min-height:100svh;position:relative;isolation:isolate;
-  display:flex;align-items:center;overflow:hidden;
+  min-height:790px;min-height:100svh;
+  position:relative;isolation:isolate;overflow:hidden;
+  display:flex;align-items:center;
   background:
-    radial-gradient(ellipse at 75% 43%,#34226a55,transparent 40%),
-    radial-gradient(ellipse at 85% 70%,#176ba72b,transparent 35%),
-    linear-gradient(90deg,#07060d 0%,#07060de8 34%,#07060d55 70%,#07060d88 100%),
-    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2200&q=90") center/cover;
+    radial-gradient(ellipse at 75% 28%,#fffce5 0%,#fff8d555 15%,transparent 42%),
+    radial-gradient(ellipse at 75% 40%,#a4dfff 0%,transparent 55%),
+    linear-gradient(180deg,#a5dcfa 0%,#e5f6ff 52%,#fffdf5 100%);
 }
-.hero:after{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(0deg,var(--bg) 0%,transparent 23%,transparent 75%,#07060d88 100%);
+.sun{
+  position:absolute;width:clamp(160px,23vw,300px);aspect-ratio:1;
+  top:10%;right:14%;border-radius:50%;
+  background:radial-gradient(circle,#fffef4 0%,#fff9d9 25%,#ffe8a788 50%,transparent 72%);
+  filter:blur(2px);z-index:-1;
+  animation:sunGlow 7s ease-in-out infinite;
 }
-.hero-content{position:relative;z-index:2;width:min(1180px,90%);margin:auto;padding:155px 0 100px}
+@keyframes sunGlow{0%,100%{opacity:.78;transform:scale(.97)}50%{opacity:1;transform:scale(1.04)}}
+.hero-light{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(110deg,#ffffff35 0%,transparent 35%,#fff6d22b 75%,transparent 100%);
+}
+.hero-content{position:relative;z-index:8;width:min(1160px,89%);margin:auto;padding:155px 0 150px}
 .eyebrow{
-  display:flex;align-items:center;gap:11px;
-  color:var(--ice);font-size:10px;font-weight:800;
-  letter-spacing:3px;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+  color:#427fa3;font-size:10px;font-weight:800;letter-spacing:3px;
 }
-.eyebrow-line{width:30px;height:1px;background:var(--ice);box-shadow:0 0 9px var(--ice)}
+.eyebrow-line{width:28px;height:1px;background:var(--gold)}
 .hero h1{
   font-family:Manrope,sans-serif;
-  font-size:clamp(55px,9.5vw,122px);
-  font-weight:800;line-height:.99;letter-spacing:-.085em;
-  margin:29px 0 25px;max-width:800px;
+  font-size:clamp(53px,9vw,112px);font-weight:800;
+  letter-spacing:-.085em;line-height:.99;
+  color:#173c5b;margin:27px 0 24px;
+  text-shadow:0 2px 0 #ffffff7a;
 }
-.hero h1 .outline{
-  display:block;color:transparent;
-  -webkit-text-stroke:1px #c7c3e6;
-  text-shadow:0 0 38px #8ceaff0a;
-}
-.hero h1 .accent{
-  display:block;color:var(--ice);
-  text-shadow:0 0 48px #43bfff25;
-}
+.hero h1 .line2{display:block;color:#3c91c4}
+.hero h1 .serif{font-weight:500;letter-spacing:-.08em}
 .hero-description{
-  color:#b7b6c8;font-size:15px;line-height:1.9;
-  max-width:460px;
+  max-width:470px;color:#466b85;
+  font-size:15px;line-height:1.95;
 }
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .btn{
-  min-height:48px;padding:0 20px;border-radius:8px;
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  font-size:12px;font-weight:800;border:1px solid transparent;
-  transition:transform .2s,background .2s,border-color .2s,box-shadow .2s;
+  min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:13px;
+  padding:0 20px;border-radius:9px;font-size:12px;font-weight:800;
+  transition:transform .2s,box-shadow .2s,background .2s;
 }
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--ice);color:#061018}
-.btn-primary:hover{background:#d7f8ff;box-shadow:0 8px 30px #43bfff28}
-.btn-secondary{background:#ffffff08;border-color:#ffffff23;color:white}
-.btn-secondary:hover{background:#ffffff12;border-color:#8ceaff65}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{
+  color:white;background:linear-gradient(135deg,#367eac,#1f527b);
+  box-shadow:0 8px 22px #286b9630;
+}
+.btn-primary:hover{box-shadow:0 12px 30px #286b9640}
+.btn-light{background:#ffffff8c;border:1px solid #ffffffd9;color:#214c6c}
+.btn-light:hover{background:#ffffffd9}
 .arrow{font-size:16px}
-.hero-foot{
-  display:flex;align-items:center;gap:26px;flex-wrap:wrap;
-  margin-top:55px;color:#8d8ba3;font-size:10px;letter-spacing:1px;
+.hero-meta{display:flex;align-items:center;gap:23px;flex-wrap:wrap;margin-top:44px}
+.meta{display:flex;align-items:center;gap:9px;color:#55758d;font-size:10px;font-weight:800;letter-spacing:1px}
+.meta-line{height:20px;width:1px;background:#83abc2}
+
+/* Handmade cloud shapes */
+.cloud{
+  position:absolute;z-index:2;pointer-events:none;
+  height:55px;width:190px;border-radius:60px;
+  background:linear-gradient(180deg,#ffffff 0%,#f5fbff 75%,#d7edfa 100%);
+  filter:drop-shadow(0 12px 12px #4f9cc015);
+  opacity:.92;
 }
-.hero-foot span{display:flex;align-items:center;gap:9px}
-.foot-dot{width:5px;height:5px;background:var(--ice);border-radius:50%}
-.hero-side{
-  position:absolute;right:5%;bottom:100px;z-index:2;
-  writing-mode:vertical-rl;color:#a19cb9;font-size:9px;letter-spacing:4px;
+.cloud:before,.cloud:after{
+  content:"";position:absolute;bottom:14px;border-radius:50%;
+  background:linear-gradient(180deg,#fff,#f3faff);
 }
-.portal{
-  position:absolute;z-index:1;right:7%;top:19%;
-  width:clamp(260px,35vw,480px);aspect-ratio:1;
-  pointer-events:none;opacity:.8;
+.cloud:before{width:85px;height:85px;left:22px}
+.cloud:after{width:65px;height:65px;right:22px}
+.cloud.c1{top:22%;left:47%;transform:scale(.8);animation:cloudDrift 19s ease-in-out infinite}
+.cloud.c2{top:43%;right:-35px;transform:scale(1.2);animation:cloudDrift 24s ease-in-out infinite reverse}
+.cloud.c3{top:70%;left:30%;transform:scale(.6);opacity:.7;animation:cloudDrift 22s ease-in-out infinite}
+.cloud.c4{top:15%;left:-75px;transform:scale(1.2);animation:cloudDrift 25s ease-in-out infinite}
+@keyframes cloudDrift{0%,100%{translate:0 0}50%{translate:30px 0}}
+
+/* Floating voxel islands */
+.island{
+  position:absolute;z-index:3;pointer-events:none;
+  width:280px;height:145px;
+  animation:islandFloat 8s ease-in-out infinite;
 }
-.portal-halo{
-  position:absolute;inset:0;border-radius:50%;
-  background:radial-gradient(ellipse,#48caff22 0%,#8c5dff14 35%,transparent 70%);
-  filter:blur(22px);animation:breathe 5s ease-in-out infinite;
+.island-top{
+  position:absolute;top:0;left:0;width:100%;height:45%;
+  background:linear-gradient(180deg,#91d55d 0%,#5ab05d 70%,#468f4d 100%);
+  clip-path:polygon(13% 25%,30% 0,73% 0,91% 25%,100% 60%,84% 100%,15% 100%,0 60%);
 }
-.portal-ring{
-  position:absolute;inset:12%;border-radius:50%;
-  border:2px solid #8ceaff55;
-  box-shadow:0 0 16px #43bfff2b,inset 0 0 22px #43bfff22;
-  transform:rotateX(12deg) rotateZ(-18deg);
-  animation:ring 24s linear infinite;
+.island-rock{
+  position:absolute;top:38%;left:9%;width:82%;height:60%;
+  background:linear-gradient(90deg,#a6b6b9 0%,#e0e4d7 34%,#8dabb0 68%,#587b89 100%);
+  clip-path:polygon(0 0,100% 0,83% 35%,65% 47%,53% 100%,37% 70%,20% 55%,9% 30%);
 }
-.portal-ring:before,.portal-ring:after{
-  content:"";position:absolute;inset:9%;border-radius:50%;
-  border:1px solid #a38aff69;
+.island-grass{
+  position:absolute;top:13%;left:25%;width:36%;height:14%;
+  background:#b8e879;transform:skewX(-28deg);
+  opacity:.8;
 }
-.portal-ring:after{inset:19%;border-color:#8ceaff50}
-.portal-core{
-  position:absolute;inset:29%;border-radius:50%;
-  background:radial-gradient(ellipse at 40% 35%,#7ceaff99,#5941a866 42%,#06050e 75%);
-  box-shadow:0 0 70px #3cbfff24,inset 0 0 35px #8ceaff1a;
-  animation:breathe 4s ease-in-out infinite;
+.island.i1{right:3%;bottom:25%;transform:scale(1.25);animation-delay:-3s}
+.island.i2{right:34%;top:13%;transform:scale(.57);animation-delay:-1s}
+.island.i3{left:40%;bottom:10%;transform:scale(.48);animation-delay:-5s}
+@keyframes islandFloat{0%,100%{translate:0 0}50%{translate:0 -17px}}
+
+/* Heavenly castle silhouette */
+.castle{
+  position:absolute;z-index:3;right:7%;bottom:27%;
+  width:260px;height:220px;opacity:.64;
+  animation:castleFloat 9s ease-in-out infinite;
 }
-.portal-spark{
-  position:absolute;width:5px;height:5px;border-radius:50%;
-  background:#d8faff;box-shadow:0 0 14px 4px #42d4ff75;
+.castle-base{
+  position:absolute;bottom:0;left:18%;width:65%;height:58%;
+  background:linear-gradient(90deg,#e7f2f5,#fff 40%,#c7e1ef);
+  clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);
 }
-.s1{top:17%;left:30%}.s2{top:28%;right:13%}.s3{bottom:23%;left:15%}.s4{bottom:15%;right:29%}
-@keyframes ring{to{transform:rotateX(12deg) rotateZ(342deg)}}
-@keyframes breathe{0%,100%{opacity:.65;scale:.98}50%{opacity:1;scale:1.04}}
-.section{padding:105px 0;position:relative}
-.section-top{
-  display:flex;align-items:end;justify-content:space-between;
-  gap:25px;margin-bottom:37px;
+.castle-tower{
+  position:absolute;bottom:40%;width:22%;height:50%;
+  background:linear-gradient(90deg,#c2dce8,#fff 55%,#d2e6f1);
 }
-.kicker{color:var(--ice);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.castle-tower:before{
+  content:"";position:absolute;left:-12%;top:-26%;width:124%;height:29%;
+  background:#b8d7e8;clip-path:polygon(50% 0,100% 100%,0 100%);
+}
+.castle-tower.t1{left:15%;height:68%}
+.castle-tower.t2{right:13%;height:76%}
+.castle-tower.t3{left:40%;width:27%;height:94%;bottom:35%}
+.castle-window{
+  position:absolute;left:45%;top:30%;width:10%;height:15%;
+  background:#70c7f2;border-radius:10px 10px 0 0;
+  box-shadow:0 0 14px #72d6ff99;
+}
+@keyframes castleFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+
+/* Sky section transition */
+.sky-fade{
+  position:absolute;z-index:4;left:0;right:0;bottom:-1px;height:180px;
+  background:linear-gradient(0deg,#f3faff 0%,#f3faffaa 25%,transparent 100%);
+  pointer-events:none;
+}
+
+/* Sections */
+.section{padding:95px 0;position:relative}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:35px}
+.kicker{font-size:10px;color:#4c9cc9;font-weight:800;letter-spacing:3px;text-transform:uppercase}
 .section h2{
-  font:700 clamp(30px,5vw,52px)/1.12 Manrope,sans-serif;
-  letter-spacing:-.055em;margin-top:13px;
+  font-family:Manrope,sans-serif;font-size:clamp(30px,5vw,48px);
+  line-height:1.12;letter-spacing:-.06em;color:#173c5b;margin-top:13px;
 }
-.section-intro{max-width:380px;color:var(--muted);font-size:13px;line-height:1.9}
+.section-intro{max-width:370px;color:#6c879d;font-size:13px;line-height:1.9}
 .server-panel{
-  position:relative;overflow:hidden;display:grid;
-  grid-template-columns:1fr auto;align-items:center;gap:25px;
-  padding:34px;border:1px solid #8ceaff24;border-radius:14px;
-  background:linear-gradient(115deg,#141525f2,#0c0b16f2);
-  box-shadow:0 20px 80px #0003;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;
+  border:1px solid #ffffff;border-radius:16px;padding:30px;
+  background:linear-gradient(130deg,#ffffffdc,#e8f6ffbd);
+  box-shadow:0 20px 60px #527f9b15,inset 0 1px white;
+  backdrop-filter:blur(18px);position:relative;overflow:hidden;
 }
-.server-panel:after{
-  content:"";position:absolute;top:0;left:0;width:2px;height:100%;
-  background:linear-gradient(transparent,var(--ice),transparent);
+.server-panel:before{
+  content:"";position:absolute;top:0;left:0;width:4px;height:100%;
+  background:linear-gradient(180deg,#7bd8ff,#e8c477);
 }
-.panel-label{color:#8889a4;font-size:10px;font-weight:700;letter-spacing:2px}
-.server-ip{font:700 clamp(18px,3vw,28px) Manrope,sans-serif;margin-top:12px;overflow-wrap:anywhere}
-.server-ip span{color:var(--ice)}
-.server-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:16px}
-.meta-item{font-size:11px;color:#9695aa}
-.meta-item strong{color:#ececff;font-weight:700}
-.status{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:11px;color:#8ceaff}
-.status-light{width:7px;height:7px;border-radius:50%;background:#6e7890}
-.status-light.online{background:#6dffb0;box-shadow:0 0 12px #6dffb0}
-.status-light.offline{background:#ff7777}
+.panel-label{color:#7994a9;font-size:10px;font-weight:800;letter-spacing:2px}
+.server-ip{font:800 clamp(18px,3vw,26px) Manrope,sans-serif;color:#194b70;margin-top:11px;overflow-wrap:anywhere}
+.server-meta{display:flex;gap:23px;flex-wrap:wrap;margin-top:14px}
+.meta-item{color:#6b879d;font-size:11px}
+.meta-item strong{color:#224d6c}
+.status{display:flex;align-items:center;gap:8px;margin-top:17px;font-size:11px;color:#447da2}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#9db5c7}
+.status-dot.online{background:#3bbd85;box-shadow:0 0 10px #3bbd8555}
+.status-dot.offline{background:#e16c78}
 .copy-btn{
-  background:transparent;border:1px solid #8ceaff6b;color:var(--ice);
-  border-radius:8px;padding:14px 18px;font-size:11px;font-weight:800;
-  white-space:nowrap;transition:.2s;
+  padding:14px 17px;border:1px solid #c0ddeb;border-radius:9px;
+  color:#225579;background:#ffffffb5;font-size:11px;font-weight:800;white-space:nowrap;
+  transition:.2s;
 }
-.copy-btn:hover{background:#8ceaff12;border-color:var(--ice)}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.feature{
-  min-height:240px;padding:27px;border:1px solid var(--line);
-  border-radius:12px;background:linear-gradient(145deg,#141320,#0c0b12);
-  transition:transform .25s,border-color .25s;
+.copy-btn:hover{background:white;border-color:#6dc8f5;transform:translateY(-2px)}
+
+/* Experience panels */
+.experience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.experience-main,.experience-side{
+  position:relative;overflow:hidden;border-radius:16px;
+  border:1px solid #fff;background:linear-gradient(145deg,#ffffffd9,#e4f4ffcf);
+  box-shadow:0 18px 50px #4d789c10;
 }
-.feature:hover{transform:translateY(-5px);border-color:#8ceaff50}
-.feature-number{font-size:10px;letter-spacing:2px;color:#74748f}
-.feature-symbol{
-  margin:27px 0 21px;width:38px;height:38px;border-radius:10px;
-  border:1px solid #8ceaff42;display:grid;place-items:center;
-  color:var(--ice);font-size:20px;background:#8ceaff0b;
+.experience-main{min-height:320px;padding:32px}
+.experience-main h3,.experience-side h3{
+  font:700 23px Manrope,sans-serif;color:#1b4b6d;letter-spacing:-.04em;
 }
-.feature h3{font:700 16px Manrope,sans-serif;margin-bottom:10px}
-.feature p{color:var(--muted);font-size:12px;line-height:1.9}
+.experience-main p,.experience-side p{color:#68859c;font-size:13px;line-height:1.9;max-width:330px;margin-top:12px}
+.experience-art{
+  position:absolute;right:-15px;bottom:-25px;width:65%;height:70%;
+  background:
+    radial-gradient(ellipse at 65% 45%,#fff8d8 0%,#f5e7ad77 24%,transparent 60%),
+    linear-gradient(150deg,#d9f2ff,#81c6ed);
+  clip-path:polygon(0 70%,16% 48%,30% 58%,50% 14%,66% 35%,83% 7%,100% 27%,100% 100%,0 100%);
+  opacity:.8;
+}
+.experience-art:after{
+  content:"";position:absolute;bottom:0;left:20%;width:70%;height:70%;
+  background:linear-gradient(90deg,#8caeb9,#d6e7e7,#799fac);
+  clip-path:polygon(0 35%,17% 35%,17% 5%,30% 5%,30% 25%,45% 25%,45% 0,60% 0,60% 35%,80% 35%,80% 15%,93% 15%,93% 100%,0 100%);
+}
+.experience-side{padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+.side-art{
+  position:relative;height:110px;border-radius:11px;overflow:hidden;margin-top:25px;
+  background:radial-gradient(ellipse at 50% 120%,#fff 0%,#c9ecff 34%,transparent 70%),linear-gradient(135deg,#9fdfff,#e9f7ff);
+}
+.side-art:before{
+  content:"";position:absolute;left:calc(50% - 32px);top:14px;width:64px;height:78px;
+  border:5px solid #fff;border-radius:50% 50% 12px 12px;
+  box-shadow:0 0 18px #51baff66,inset 0 0 18px #7bd5ff55;
+}
+.side-art:after{
+  content:"";position:absolute;left:calc(50% - 21px);top:26px;width:42px;height:55px;
+  border-radius:50% 50% 12px 12px;background:radial-gradient(ellipse,#ffffff,#9fe5ff 70%,#7ec9ed);
+}
+
+/* CTA */
 .community{
-  text-align:center;padding:70px 25px;
-  border:1px solid #8ceaff26;border-radius:15px;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 0%,#26638c24,transparent 60%),#0c0b14;
+  position:relative;overflow:hidden;text-align:center;padding:65px 25px;
+  border:1px solid #fff;border-radius:18px;
+  background:
+    radial-gradient(ellipse at 50% 0%,#fff8dc 0%,transparent 45%),
+    linear-gradient(135deg,#d9f2ff,#f5fbff 60%,#e7f4ff);
+  box-shadow:0 20px 60px #5284a418;
 }
-.community h2{font-size:clamp(32px,6vw,60px);margin-top:17px}
-.community p{color:var(--muted);font-size:13px;line-height:1.9;max-width:500px;margin:17px auto 27px}
+.community:before,.community:after{
+  content:"";position:absolute;bottom:-60px;width:220px;height:150px;
+  background:linear-gradient(#a7d5eb,#82b7d2);
+  clip-path:polygon(0 35%,20% 10%,37% 29%,60% 0,100% 40%,100% 100%,0 100%);
+  opacity:.3;
+}
+.community:before{left:-30px}
+.community:after{right:-30px;transform:scaleX(-1)}
+.community-inner{position:relative;z-index:2}
+.community h2{font:800 clamp(33px,6vw,57px) Manrope,sans-serif;letter-spacing:-.07em;color:#1c4b6c;margin-top:16px}
+.community p{max-width:500px;margin:15px auto 26px;color:#68859b;font-size:13px;line-height:1.9}
 .footer{
-  border-top:1px solid var(--line);padding:27px 0;
-  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
-  color:#77778d;font-size:10px;
+  padding:28px 0;border-top:1px solid #d8eaf3;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  color:#7893a7;font-size:10px;
 }
-.footer-brand{color:#e8e7f5;font-weight:800;letter-spacing:2px}
+.footer-brand{color:#214b6b;font-weight:800;letter-spacing:2px}
 .toast{
-  position:fixed;left:50%;bottom:25px;transform:translate(-50%,15px);
-  z-index:60;opacity:0;pointer-events:none;transition:.25s;
-  background:#111522;border:1px solid #8ceaff69;border-radius:9px;
-  color:var(--ice);padding:13px 18px;font-size:12px;
-  box-shadow:0 8px 35px #0008;
+  position:fixed;z-index:100;left:50%;bottom:25px;transform:translate(-50%,15px);
+  opacity:0;pointer-events:none;padding:13px 18px;border-radius:10px;
+  background:#fff;color:#235778;border:1px solid #b5dff4;
+  font-size:12px;font-weight:700;box-shadow:0 8px 30px #2858781f;
+  transition:.25s;
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
 @media(max-width:800px){
-  .nav{top:9px;padding:10px 12px}
+  .nav{top:9px}
   .navlinks{gap:14px;font-size:11px}
-  .nav-cta{padding:10px;font-size:10px}
-  .hero{min-height:760px}
-  .portal{right:-18%;top:19%;width:70vw;opacity:.48}
+  .nav-cta{padding:10px 12px;font-size:10px}
+  .hero{min-height:780px}
   .hero-content{padding-top:155px}
-  .hero h1{font-size:clamp(57px,12vw,90px)}
-  .hero-side{display:none}
+  .island.i1{right:-8%;bottom:19%;transform:scale(.9)}
+  .island.i2{right:30%;top:12%}
+  .castle{right:-3%;bottom:23%;transform:scale(.8);transform-origin:bottom right}
   .section{padding:75px 0}
-  .section-top{align-items:start;flex-direction:column}
-  .features-grid{grid-template-columns:1fr}
-  .feature{min-height:0}
-  .feature-symbol{margin:19px 0 15px}
+  .section-head{align-items:start;flex-direction:column}
+  .experience-grid{grid-template-columns:1fr}
+  .experience-main,.experience-side{min-height:270px}
 }
 @media(max-width:540px){
   .container{width:89%}
   .brand{font-size:12px;gap:8px}
-  .brand-mark{width:31px;height:31px}
+  .brand-icon{width:31px;height:31px}
   .navlinks{display:none}
   .nav-cta{margin-left:auto}
-  .hero{min-height:740px}
-  .hero-content{padding:140px 0 90px}
-  .hero h1{font-size:clamp(49px,13vw,72px);letter-spacing:-.075em}
-  .hero-description{font-size:13px;max-width:340px}
+  .hero{min-height:760px}
+  .hero-content{padding-top:135px;padding-bottom:160px}
+  .hero h1{font-size:clamp(53px,14vw,75px)}
+  .hero-description{font-size:13px;max-width:350px}
   .eyebrow{font-size:9px;letter-spacing:2px}
-  .hero-foot{gap:15px;margin-top:38px;font-size:9px}
   .hero-actions .btn{width:100%}
-  .portal{top:25%;right:-32%;width:85vw;opacity:.38}
+  .hero-meta{gap:12px;margin-top:32px}
+  .meta{font-size:9px}
+  .meta-line{height:15px}
+  .sun{right:-8%;top:20%;width:210px}
+  .island.i1{right:-28%;bottom:17%;transform:scale(.72)}
+  .island.i2{right:22%;top:13%;transform:scale(.42)}
+  .island.i3{left:12%;bottom:10%;transform:scale(.36)}
+  .castle{right:-17%;bottom:23%;transform:scale(.58);transform-origin:bottom right}
+  .cloud.c1{left:24%;top:27%;transform:scale(.55)}
+  .cloud.c2{top:47%;transform:scale(.8)}
   .server-panel{grid-template-columns:1fr;padding:24px 20px}
   .copy-btn{width:100%}
   .server-meta{gap:14px}
-  .section h2{font-size:34px}
-  .community{padding:50px 20px}
+  .section h2{font-size:35px}
+  .experience-main,.experience-side{padding:24px}
+  .experience-art{width:75%;height:55%}
+  .community{padding:50px 18px}
   .community .btn{width:100%}
   .footer{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
-<body>
-<div class="noise"></div>
 
+<body>
 <nav class="nav">
   <a href="#home" class="brand">
-    <div class="brand-mark">B.</div>
-    <span>BLOX <span>SMP</span></span>
+    <div class="brand-icon">B.</div>
+    <div class="brand-name">BLOX <span>SMP</span></div>
   </a>
   <div class="navlinks">
-    <a href="#home">Overview</a>
-    <a href="#server">Connect</a>
-    <a href="#features">The World</a>
+    <a href="#home">Home</a>
+    <a href="#server">Server</a>
+    <a href="#world">The World</a>
     <a href="#community">Community</a>
   </div>
   <a href="#server" class="nav-cta">ENTER WORLD ↗</a>
 </nav>
 
 <header class="hero" id="home">
-  <canvas id="stars"></canvas>
-  <div class="portal" aria-hidden="true">
-    <div class="portal-halo"></div>
-    <div class="portal-ring"></div>
-    <div class="portal-core"></div>
-    <i class="portal-spark s1"></i><i class="portal-spark s2"></i>
-    <i class="portal-spark s3"></i><i class="portal-spark s4"></i>
+  <div class="sun"></div>
+  <div class="hero-light"></div>
+
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
+
+  <div class="island i1">
+    <div class="island-top"></div><div class="island-grass"></div><div class="island-rock"></div>
+  </div>
+  <div class="island i2">
+    <div class="island-top"></div><div class="island-grass"></div><div class="island-rock"></div>
+  </div>
+  <div class="island i3">
+    <div class="island-top"></div><div class="island-grass"></div><div class="island-rock"></div>
+  </div>
+
+  <div class="castle" aria-hidden="true">
+    <div class="castle-base"></div>
+    <div class="castle-tower t1"></div>
+    <div class="castle-tower t2"></div>
+    <div class="castle-tower t3"></div>
+    <div class="castle-window"></div>
   </div>
 
   <div class="hero-content">
-    <div class="eyebrow"><span class="eyebrow-line"></span> A WORLD BEYOND REALITY</div>
-    <h1>BEYOND <span class="outline">THE</span><span class="accent">END.</span></h1>
+    <div class="eyebrow"><span class="eyebrow-line"></span> A NEW WORLD ABOVE THE CLOUDS</div>
+    <h1>FIND YOUR <span class="line2 serif">HEAVEN.</span></h1>
     <p class="hero-description">
-      A new dimension of adventure awaits. Step into BLOX SMP,
-      discover the unknown, forge your own path and leave your mark
-      on a world that never stops evolving.
+      Beyond the clouds lies a world of endless possibilities.
+      Discover new horizons, create your own legacy and begin
+      your next adventure in BLOX SMP.
     </p>
     <div class="hero-actions">
       <a href="#server" class="btn btn-primary">Enter the world <span class="arrow">↗</span></a>
-      <a href="YOUR_DISCORD_LINK" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Join the community</a>
+      <a href="YOUR_DISCORD_LINK" class="btn btn-light" target="_blank" rel="noopener noreferrer">Explore our community</a>
     </div>
-    <div class="hero-foot">
-      <span><i class="foot-dot"></i> MINECRAFT BEDROCK</span>
-      <span><i class="foot-dot"></i> YOUR NEXT ADVENTURE</span>
+    <div class="hero-meta">
+      <div class="meta"><span>✧</span> MINECRAFT BEDROCK</div>
+      <div class="meta-line"></div>
+      <div class="meta"><span>✧</span> YOUR WORLD, YOUR STORY</div>
     </div>
   </div>
-  <div class="hero-side">EXPLORE WHAT LIES BEYOND</div>
+
+  <div class="sky-fade"></div>
 </header>
 
 <main>
   <section class="section container reveal" id="server">
-    <div class="section-top">
+    <div class="section-head">
       <div>
-        <div class="kicker">01 / ESTABLISH CONNECTION</div>
-        <h2>Your gateway<br>to another world.</h2>
+        <div class="kicker">01 / YOUR GATEWAY</div>
+        <h2>One connection.<br>A whole new world.</h2>
       </div>
-      <p class="section-intro">One address. An infinite world to explore. Connect to BLOX SMP and begin writing your story.</p>
+      <p class="section-intro">
+        Your next adventure is waiting above the clouds.
+        Connect to BLOX SMP and make this world your own.
+      </p>
     </div>
 
     <div class="server-panel">
       <div>
-        <div class="panel-label">BEDROCK SERVER ADDRESS</div>
+        <div class="panel-label">MINECRAFT BEDROCK SERVER</div>
         <div class="server-ip" id="serverIp">YOUR_SERVER_IP</div>
         <div class="server-meta">
           <div class="meta-item">PORT &nbsp;<strong id="serverPort">19132</strong></div>
@@ -352,51 +456,58 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ice);outline-offset
           <div class="meta-item">EDITION &nbsp;<strong>BEDROCK</strong></div>
         </div>
         <div class="status">
-          <span class="status-light" id="statusLight"></span>
-          <span id="statusText">Waiting for server configuration</span>
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Configure your server IP</span>
         </div>
       </div>
-      <button class="copy-btn" id="copyButton" type="button">COPY SERVER IP &nbsp; ↗</button>
+      <button type="button" class="copy-btn" id="copyButton">COPY SERVER IP &nbsp; ↗</button>
     </div>
   </section>
 
-  <section class="section container reveal" id="features">
-    <div class="section-top">
+  <section class="section container reveal" id="world">
+    <div class="section-head">
       <div>
-        <div class="kicker">02 / THE EXPERIENCE</div>
-        <h2>Not just another<br>Minecraft world.</h2>
+        <div class="kicker">02 / BEYOND THE ORDINARY</div>
+        <h2>A world worth<br>calling your own.</h2>
       </div>
-      <p class="section-intro">Your journey is yours to define. Explore new horizons, create something lasting and find your place in the universe.</p>
+      <p class="section-intro">
+        A beautiful world is only the beginning. The greatest adventures
+        are the ones you create with the people you meet.
+      </p>
     </div>
 
-    <div class="features-grid">
-      <article class="feature">
-        <div class="feature-number">01 — DISCOVER</div>
-        <div class="feature-symbol" aria-hidden="true">◇</div>
-        <h3>Explore the unknown</h3>
-        <p>Venture beyond the familiar, uncover hidden places and make every expedition count.</p>
+    <div class="experience-grid">
+      <article class="experience-main">
+        <div class="kicker">DISCOVER</div>
+        <h3>Reach new horizons.</h3>
+        <p>Explore distant lands, uncover hidden places and find inspiration in every corner of your world.</p>
+        <div class="experience-art" aria-hidden="true"></div>
       </article>
-      <article class="feature">
-        <div class="feature-number">02 — CREATE</div>
-        <div class="feature-symbol" aria-hidden="true">⌘</div>
-        <h3>Build your legacy</h3>
-        <p>Turn your ideas into incredible creations. Build a home, a kingdom or something nobody has imagined.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-number">03 — CONNECT</div>
-        <div class="feature-symbol" aria-hidden="true">↗</div>
-        <h3>Find your people</h3>
-        <p>Join the community, team up with other players and create stories worth remembering.</p>
+
+      <article class="experience-side">
+        <div>
+          <div class="kicker">CREATE</div>
+          <h3>Build something timeless.</h3>
+          <p>From peaceful homes in the clouds to legendary builds, your imagination sets the limits.</p>
+        </div>
+        <div class="side-art" aria-hidden="true"></div>
       </article>
     </div>
   </section>
 
   <section class="section container reveal" id="community">
     <div class="community">
-      <div class="kicker">03 / YOUR STORY STARTS HERE</div>
-      <h2>THE VOID<br>IS CALLING.</h2>
-      <p>Every great world starts with a single step. Join BLOX SMP, bring your friends and discover what lies beyond.</p>
-      <a class="btn btn-primary" href="YOUR_DISCORD_LINK" target="_blank" rel="noopener noreferrer">Join the community <span class="arrow">↗</span></a>
+      <div class="community-inner">
+        <div class="kicker">03 / YOUR ADVENTURE STARTS HERE</div>
+        <h2>THE SKY IS YOURS.</h2>
+        <p>
+          Bring your friends, discover your next favourite world
+          and become part of the BLOX SMP community.
+        </p>
+        <a href="YOUR_DISCORD_LINK" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Join the community <span class="arrow">↗</span>
+        </a>
+      </div>
     </div>
   </section>
 </main>
@@ -410,78 +521,82 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ice);outline-offset
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ===== CHANGE THESE TWO VALUES ===== */
+/* CUSTOMISE THESE VALUES */
 const SERVER_IP = "YOUR_SERVER_IP";
 const SERVER_PORT = 19132;
-/* ================================== */
+/* YOUR_DISCORD_LINK is set in the links above. */
 
 document.getElementById("year").textContent = new Date().getFullYear();
 document.getElementById("serverIp").textContent = SERVER_IP;
 document.getElementById("serverPort").textContent = SERVER_PORT;
 
-const toastEl = document.getElementById("toast");
 let toastTimer;
-
-function showToast(message) {
-  toastEl.textContent = message;
-  toastEl.classList.add("show");
+function showToast(message){
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2400);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
 }
 
 document.getElementById("copyButton").addEventListener("click", async () => {
-  if (SERVER_IP === "YOUR_SERVER_IP") {
-    showToast("Add your server IP in the code first.");
+  if(!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP"){
+    showToast("Please add your server IP in the code.");
     return;
   }
-  try {
+  try{
     await navigator.clipboard.writeText(SERVER_IP);
-    showToast("Server IP copied to clipboard.");
-  } catch (error) {
-    const field = document.createElement("textarea");
-    field.value = SERVER_IP;
-    field.style.position = "fixed";
-    field.style.opacity = "0";
-    document.body.appendChild(field);
-    field.select();
-    const success = document.execCommand("copy");
-    field.remove();
-    showToast(success ? "Server IP copied to clipboard." : "Copy failed — " + SERVER_IP);
+    showToast("Server IP copied!");
+  }catch(error){
+    const area = document.createElement("textarea");
+    area.value = SERVER_IP;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    const copied = document.execCommand("copy");
+    area.remove();
+    showToast(copied ? "Server IP copied!" : "Copy failed. IP: " + SERVER_IP);
   }
 });
 
-async function checkServer() {
+/* Bedrock server status. Status depends on the external API. */
+async function checkServer(){
   const statusText = document.getElementById("statusText");
-  const statusLight = document.getElementById("statusLight");
+  const statusDot = document.getElementById("statusDot");
   const players = document.getElementById("players");
 
-  if (!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP") {
-    statusText.textContent = "Add your server IP to enable status";
+  if(!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP"){
+    statusText.textContent = "Configure your server IP";
     players.textContent = "—";
     return;
   }
 
   statusText.textContent = "Checking server status…";
-  statusLight.className = "status-light";
+  statusDot.className = "status-dot";
 
-  try {
-    const url = "https://api.mcsrvstat.us/bedrock/3/" + encodeURIComponent(SERVER_IP);
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Status service unavailable");
+  try{
+    const endpoint =
+      "https://api.mcsrvstat.us/bedrock/3/" +
+      encodeURIComponent(SERVER_IP) +
+      ":" + SERVER_PORT;
 
+    const response = await fetch(endpoint);
+    if(!response.ok) throw new Error("Status API unavailable");
     const data = await response.json();
-    if (data.online) {
-      statusText.textContent = "Server online";
-      statusLight.className = "status-light online";
+
+    if(data.online){
+      statusText.textContent = "Server is online";
+      statusDot.className = "status-dot online";
       players.textContent = data.players
         ? data.players.online + " / " + data.players.max
         : "Online";
-    } else {
+    }else{
       statusText.textContent = "Offline or unreachable";
-      statusLight.className = "status-light offline";
+      statusDot.className = "status-dot offline";
       players.textContent = "0";
     }
-  } catch (error) {
+  }catch(error){
     statusText.textContent = "Live status temporarily unavailable";
     players.textContent = "—";
   }
@@ -490,71 +605,21 @@ async function checkServer() {
 checkServer();
 setInterval(checkServer, 60000);
 
-/* Subtle star particles */
-(() => {
-  const canvas = document.getElementById("stars");
-  const ctx = canvas.getContext("2d");
-  const hero = document.querySelector(".hero");
-  let width = 0, height = 0, stars = [];
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = hero.clientWidth;
-    height = hero.clientHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.min(130, Math.floor(width * height / 8500));
-    stars = Array.from({length: count}, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 1.2 + .25,
-      alpha: Math.random() * .65 + .15,
-      speed: Math.random() * .18 + .025
-    }));
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    for (const star of stars) {
-      star.y -= star.speed;
-      if (star.y < 0) {
-        star.y = height;
-        star.x = Math.random() * width;
+/* Reveal content gently as sections enter the viewport. */
+const revealItems = document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(170,225,255," + star.alpha + ")";
-      ctx.fill();
-    }
-    if (!reduceMotion) requestAnimationFrame(draw);
-  }
-
-  window.addEventListener("resize", resize);
-  resize();
-  draw();
-})();
-
-/* Reveal sections as they enter the viewport */
-const revealObserver = "IntersectionObserver" in window
-  ? new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, {threshold: 0.12})
-  : null;
-
-document.querySelectorAll(".reveal").forEach(el => {
-  if (revealObserver) revealObserver.observe(el);
-  else el.classList.add("visible");
-});
+    });
+  }, {threshold:.12});
+  revealItems.forEach(item => observer.observe(item));
+}else{
+  revealItems.forEach(item => item.classList.add("visible"));
+}
 </script>
 </body>
 </html>
