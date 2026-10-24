@@ -1,626 +1,381 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#eaf7ff">
-<meta name="description" content="Enter BLOX SMP, a world beyond the clouds.">
-<title>BLOX SMP — A World Above The Clouds</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>BLOX SMP | Minecraft Universe</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --sky:#eaf7ff;
-  --blue:#74cfff;
-  --deep:#183f65;
-  --gold:#e9ba68;
-  --ink:#16334e;
-  --muted:#6b879f;
-  --glass:rgba(255,255,255,.63);
-  --line:rgba(255,255,255,.82);
+:root {
+  --grass:#65b82e;
+  --grass-dark:#347a25;
+  --dirt:#70462b;
+  --gold:#ffe56b;
+  --blue:#39d9ff;
+  --dark:#101810;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:95px}
+html{scroll-behavior:smooth}
 body{
-  font-family:"DM Sans",sans-serif;
-  color:var(--ink);
-  background:#edf8ff;
+  color:white;background:#11180f;font-family:Inter,sans-serif;
   overflow-x:hidden;
+  background-image:
+    linear-gradient(#0a1209b8,#0a1209e8),
+    url("https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=2000&q=85");
+  background-size:cover;background-position:center;background-attachment:fixed;
 }
 a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-button:focus-visible,a:focus-visible{outline:2px solid #298dd1;outline-offset:4px}
-.container{width:min(1160px,89%);margin:auto}
-
-/* Navigation */
-.nav{
-  position:fixed;top:17px;left:50%;transform:translateX(-50%);
-  width:min(1180px,94%);z-index:50;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:12px 17px;border:1px solid #ffffffb8;border-radius:16px;
-  background:rgba(255,255,255,.62);backdrop-filter:blur(22px);
-  box-shadow:0 8px 35px #477e9d15;
+button{font-family:inherit;cursor:pointer}
+.pixel{font-family:"Press Start 2P",monospace}
+.topbar{
+  height:7px;background:repeating-linear-gradient(90deg,#5db72e 0 35px,#8ce34c 35px 70px);
+  box-shadow:0 3px 0 #263e1d;
 }
-.brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:800;letter-spacing:2px}
-.brand-icon{
-  width:36px;height:36px;display:grid;place-items:center;
-  border-radius:11px;background:linear-gradient(145deg,#b9edff,#62bdf4);
-  color:#174768;font-size:18px;box-shadow:inset 0 1px white,0 5px 14px #5baee533;
+nav{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;padding:15px 5%;
+  background:#172216ed;border-bottom:4px solid #31492b;
+  box-shadow:0 5px 0 #0005;
 }
-.brand-name span{color:#3799d5}
-.navlinks{display:flex;gap:26px;color:#56758d;font-size:12px;font-weight:700}
-.navlinks a{transition:color .2s}
-.navlinks a:hover{color:#168aca}
-.nav-cta{
-  padding:12px 16px;border-radius:9px;background:#214e72;color:white;
-  font-size:11px;font-weight:800;transition:.25s;
-  box-shadow:0 5px 15px #214e7220;
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px}
+.grass-logo{
+  width:45px;height:45px;flex-shrink:0;position:relative;
+  background:linear-gradient(#79d33e 0 28%,#8b633c 28% 100%);
+  border:3px solid #253c20;
+  box-shadow:inset -5px -5px #0003,4px 4px #0006;
+  display:grid;place-items:center;font-size:23px;
 }
-.nav-cta:hover{background:#3278a8;transform:translateY(-2px)}
-
-/* Hero sky */
+.brand-name{font-size:17px}
+.brand-name span{color:#8ce34c}
+.navlinks{display:flex;gap:23px;font-size:12px;font-weight:800}
+.navlinks a{color:#d0dfc8;transition:.2s}
+.navlinks a:hover{color:var(--gold)}
+.nav-btn,.btn{
+  border:3px solid #172915;background:#67bc32;color:#fff;
+  font-weight:900;text-shadow:2px 2px #31541d;
+  padding:13px 17px;box-shadow:inset 0 -5px #34751f,4px 4px #0007;
+  transition:transform .15s,filter .15s;
+}
+.nav-btn:hover,.btn:hover{transform:translateY(-3px);filter:brightness(1.15)}
 .hero{
-  min-height:790px;min-height:100svh;
-  position:relative;isolation:isolate;overflow:hidden;
-  display:flex;align-items:center;
-  background:
-    radial-gradient(ellipse at 75% 28%,#fffce5 0%,#fff8d555 15%,transparent 42%),
-    radial-gradient(ellipse at 75% 40%,#a4dfff 0%,transparent 55%),
-    linear-gradient(180deg,#a5dcfa 0%,#e5f6ff 52%,#fffdf5 100%);
+  min-height:690px;display:flex;align-items:center;justify-content:center;
+  padding:95px 20px 105px;text-align:center;position:relative;isolation:isolate;
+  background:linear-gradient(180deg,#0710092b,#07100960 75%,#101810);
+  overflow:hidden;
 }
-.sun{
-  position:absolute;width:clamp(160px,23vw,300px);aspect-ratio:1;
-  top:10%;right:14%;border-radius:50%;
-  background:radial-gradient(circle,#fffef4 0%,#fff9d9 25%,#ffe8a788 50%,transparent 72%);
-  filter:blur(2px);z-index:-1;
-  animation:sunGlow 7s ease-in-out infinite;
+.hero:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(ellipse at 50% 45%,#6bd33c24,transparent 55%);
 }
-@keyframes sunGlow{0%,100%{opacity:.78;transform:scale(.97)}50%{opacity:1;transform:scale(1.04)}}
-.hero-light{
-  position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(110deg,#ffffff35 0%,transparent 35%,#fff6d22b 75%,transparent 100%);
+.hero-content{max-width:1000px}
+.server-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 16px;background:#142313e8;border:2px solid #548a40;
+  box-shadow:4px 4px #0007;color:#d8f5ca;
+  font-size:10px;font-weight:900;letter-spacing:1px;
 }
-.hero-content{position:relative;z-index:8;width:min(1160px,89%);margin:auto;padding:155px 0 150px}
-.eyebrow{
-  display:flex;align-items:center;gap:10px;
-  color:#427fa3;font-size:10px;font-weight:800;letter-spacing:3px;
+.online-dot{width:9px;height:9px;background:#7dff55;box-shadow:0 0 10px #7dff55}
+h1{
+  font-size:clamp(34px,7.4vw,83px);line-height:1.35;
+  letter-spacing:-2px;margin:35px 0 20px;
+  color:#fff;text-shadow:5px 6px #28471e,9px 10px #0009;
 }
-.eyebrow-line{width:28px;height:1px;background:var(--gold)}
-.hero h1{
-  font-family:Manrope,sans-serif;
-  font-size:clamp(53px,9vw,112px);font-weight:800;
-  letter-spacing:-.085em;line-height:.99;
-  color:#173c5b;margin:27px 0 24px;
-  text-shadow:0 2px 0 #ffffff7a;
+h1 .green{
+  display:block;color:#8ae34a;
+  text-shadow:4px 4px #2f7025,7px 7px #111;
 }
-.hero h1 .line2{display:block;color:#3c91c4}
-.hero h1 .serif{font-weight:500;letter-spacing:-.08em}
-.hero-description{
-  max-width:470px;color:#466b85;
-  font-size:15px;line-height:1.95;
+.hero p{
+  max-width:630px;margin:auto;color:#e0ead8;
+  font-size:15px;line-height:1.9;text-shadow:2px 2px #000;
 }
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{
-  min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:13px;
-  padding:0 20px;border-radius:9px;font-size:12px;font-weight:800;
-  transition:transform .2s,box-shadow .2s,background .2s;
+.actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:12px;padding:17px 22px}
+.btn-gold{background:#e7b73e;box-shadow:inset 0 -5px #9e6b1d,4px 4px #0008;border-color:#533d1c}
+.btn-dark{background:#354a30;box-shadow:inset 0 -5px #1c2d1b,4px 4px #0008}
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:13px;
+  max-width:700px;margin:55px auto 0;
 }
-.btn:hover{transform:translateY(-3px)}
-.btn-primary{
-  color:white;background:linear-gradient(135deg,#367eac,#1f527b);
-  box-shadow:0 8px 22px #286b9630;
+.stat{
+  background:#172316e8;border:2px solid #496b3b;
+  padding:20px 10px;box-shadow:5px 5px #0005;
 }
-.btn-primary:hover{box-shadow:0 12px 30px #286b9640}
-.btn-light{background:#ffffff8c;border:1px solid #ffffffd9;color:#214c6c}
-.btn-light:hover{background:#ffffffd9}
-.arrow{font-size:16px}
-.hero-meta{display:flex;align-items:center;gap:23px;flex-wrap:wrap;margin-top:44px}
-.meta{display:flex;align-items:center;gap:9px;color:#55758d;font-size:10px;font-weight:800;letter-spacing:1px}
-.meta-line{height:20px;width:1px;background:#83abc2}
-
-/* Handmade cloud shapes */
-.cloud{
-  position:absolute;z-index:2;pointer-events:none;
-  height:55px;width:190px;border-radius:60px;
-  background:linear-gradient(180deg,#ffffff 0%,#f5fbff 75%,#d7edfa 100%);
-  filter:drop-shadow(0 12px 12px #4f9cc015);
-  opacity:.92;
+.stat strong{display:block;color:#a4f56c;font-size:24px;margin-bottom:9px}
+.stat span{font-size:9px;font-weight:900;letter-spacing:1px;color:#d0dec8}
+.block{
+  position:absolute;width:65px;height:65px;
+  border:3px solid #233a1c;
+  box-shadow:inset -9px -9px #0003,7px 7px #0005;
+  animation:float 5s ease-in-out infinite;z-index:-1;
 }
-.cloud:before,.cloud:after{
-  content:"";position:absolute;bottom:14px;border-radius:50%;
-  background:linear-gradient(180deg,#fff,#f3faff);
+.block.grass{background:linear-gradient(#79ce3b 0 25%,#8a633c 25%)}
+.block.diamond{background:linear-gradient(135deg,#8af8ff,#168eaf 55%,#075a77)}
+.block.tnt{background:repeating-linear-gradient(0deg,#d73b32 0 13px,#f4f0db 13px 26px)}
+.b1{top:23%;left:8%;transform:rotate(-12deg)}
+.b2{top:35%;right:8%;animation-delay:-2s}
+.b3{bottom:16%;left:16%;animation-delay:-1s}
+.b4{bottom:20%;right:17%;animation-delay:-3s}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -20px}}
+.section{padding:85px 5%;max-width:1200px;margin:auto}
+.heading{text-align:center;margin-bottom:38px}
+.eyebrow{color:#9cf66b;font-size:10px;letter-spacing:2px;font-weight:900;margin-bottom:17px}
+h2{font-size:clamp(21px,3vw,33px);line-height:1.6;text-shadow:3px 3px #000}
+.heading p{color:#c1d0b8;font-size:13px;line-height:1.8;margin-top:9px}
+.server-box{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;
+  padding:28px;background:#172417f2;
+  border:3px solid #4c773c;box-shadow:7px 7px #0007;
 }
-.cloud:before{width:85px;height:85px;left:22px}
-.cloud:after{width:65px;height:65px;right:22px}
-.cloud.c1{top:22%;left:47%;transform:scale(.8);animation:cloudDrift 19s ease-in-out infinite}
-.cloud.c2{top:43%;right:-35px;transform:scale(1.2);animation:cloudDrift 24s ease-in-out infinite reverse}
-.cloud.c3{top:70%;left:30%;transform:scale(.6);opacity:.7;animation:cloudDrift 22s ease-in-out infinite}
-.cloud.c4{top:15%;left:-75px;transform:scale(1.2);animation:cloudDrift 25s ease-in-out infinite}
-@keyframes cloudDrift{0%,100%{translate:0 0}50%{translate:30px 0}}
-
-/* Floating voxel islands */
-.island{
-  position:absolute;z-index:3;pointer-events:none;
-  width:280px;height:145px;
-  animation:islandFloat 8s ease-in-out infinite;
+.label{font-size:10px;color:#a9c99a;font-weight:900;letter-spacing:2px}
+.ip{font-weight:900;font-size:clamp(15px,3vw,24px);margin-top:13px;overflow-wrap:anywhere}
+.server-info{font-size:12px;color:#c5d6bc;margin-top:13px;line-height:2}
+.server-info b{color:#a3f56c}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:#1a2819f2;border:3px solid #456638;
+  box-shadow:6px 6px #0006;overflow:hidden;transition:.2s;
 }
-.island-top{
-  position:absolute;top:0;left:0;width:100%;height:45%;
-  background:linear-gradient(180deg,#91d55d 0%,#5ab05d 70%,#468f4d 100%);
-  clip-path:polygon(13% 25%,30% 0,73% 0,91% 25%,100% 60%,84% 100%,15% 100%,0 60%);
+.card:hover{transform:translateY(-6px);border-color:#9ce56c}
+.card-art{
+  height:145px;display:grid;place-items:center;font-size:58px;
+  background:linear-gradient(140deg,#426c32,#182a18);
+  border-bottom:3px solid #456638;
+  text-shadow:5px 5px #0007;
 }
-.island-rock{
-  position:absolute;top:38%;left:9%;width:82%;height:60%;
-  background:linear-gradient(90deg,#a6b6b9 0%,#e0e4d7 34%,#8dabb0 68%,#587b89 100%);
-  clip-path:polygon(0 0,100% 0,83% 35%,65% 47%,53% 100%,37% 70%,20% 55%,9% 30%);
+.card:nth-child(2) .card-art{background:linear-gradient(140deg,#145b68,#172b30)}
+.card:nth-child(3) .card-art{background:linear-gradient(140deg,#64458a,#29203f)}
+.card-content{padding:23px}
+.card h3{font-size:15px;margin-bottom:13px}
+.card p{font-size:12px;line-height:1.9;color:#c0d0b8}
+.card-tag{
+  display:inline-block;margin-top:18px;padding:8px 10px;
+  background:#304a28;color:#b9f49b;font-size:9px;font-weight:900;
 }
-.island-grass{
-  position:absolute;top:13%;left:25%;width:36%;height:14%;
-  background:#b8e879;transform:skewX(-28deg);
-  opacity:.8;
+.join-box{
+  text-align:center;padding:55px 22px;
+  background:linear-gradient(#192817f5,#101c10f5);
+  border:4px solid #568344;box-shadow:8px 8px #0007;
 }
-.island.i1{right:3%;bottom:25%;transform:scale(1.25);animation-delay:-3s}
-.island.i2{right:34%;top:13%;transform:scale(.57);animation-delay:-1s}
-.island.i3{left:40%;bottom:10%;transform:scale(.48);animation-delay:-5s}
-@keyframes islandFloat{0%,100%{translate:0 0}50%{translate:0 -17px}}
-
-/* Heavenly castle silhouette */
-.castle{
-  position:absolute;z-index:3;right:7%;bottom:27%;
-  width:260px;height:220px;opacity:.64;
-  animation:castleFloat 9s ease-in-out infinite;
+.join-box p{max-width:560px;margin:17px auto 25px;color:#c5d7bb;line-height:1.9;font-size:13px}
+footer{
+  background:#101a10;border-top:4px solid #426235;
+  padding:26px 5%;display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:15px;color:#a7b99c;font-size:11px;
 }
-.castle-base{
-  position:absolute;bottom:0;left:18%;width:65%;height:58%;
-  background:linear-gradient(90deg,#e7f2f5,#fff 40%,#c7e1ef);
-  clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);
-}
-.castle-tower{
-  position:absolute;bottom:40%;width:22%;height:50%;
-  background:linear-gradient(90deg,#c2dce8,#fff 55%,#d2e6f1);
-}
-.castle-tower:before{
-  content:"";position:absolute;left:-12%;top:-26%;width:124%;height:29%;
-  background:#b8d7e8;clip-path:polygon(50% 0,100% 100%,0 100%);
-}
-.castle-tower.t1{left:15%;height:68%}
-.castle-tower.t2{right:13%;height:76%}
-.castle-tower.t3{left:40%;width:27%;height:94%;bottom:35%}
-.castle-window{
-  position:absolute;left:45%;top:30%;width:10%;height:15%;
-  background:#70c7f2;border-radius:10px 10px 0 0;
-  box-shadow:0 0 14px #72d6ff99;
-}
-@keyframes castleFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
-
-/* Sky section transition */
-.sky-fade{
-  position:absolute;z-index:4;left:0;right:0;bottom:-1px;height:180px;
-  background:linear-gradient(0deg,#f3faff 0%,#f3faffaa 25%,transparent 100%);
-  pointer-events:none;
-}
-
-/* Sections */
-.section{padding:95px 0;position:relative}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:35px}
-.kicker{font-size:10px;color:#4c9cc9;font-weight:800;letter-spacing:3px;text-transform:uppercase}
-.section h2{
-  font-family:Manrope,sans-serif;font-size:clamp(30px,5vw,48px);
-  line-height:1.12;letter-spacing:-.06em;color:#173c5b;margin-top:13px;
-}
-.section-intro{max-width:370px;color:#6c879d;font-size:13px;line-height:1.9}
-.server-panel{
-  display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;
-  border:1px solid #ffffff;border-radius:16px;padding:30px;
-  background:linear-gradient(130deg,#ffffffdc,#e8f6ffbd);
-  box-shadow:0 20px 60px #527f9b15,inset 0 1px white;
-  backdrop-filter:blur(18px);position:relative;overflow:hidden;
-}
-.server-panel:before{
-  content:"";position:absolute;top:0;left:0;width:4px;height:100%;
-  background:linear-gradient(180deg,#7bd8ff,#e8c477);
-}
-.panel-label{color:#7994a9;font-size:10px;font-weight:800;letter-spacing:2px}
-.server-ip{font:800 clamp(18px,3vw,26px) Manrope,sans-serif;color:#194b70;margin-top:11px;overflow-wrap:anywhere}
-.server-meta{display:flex;gap:23px;flex-wrap:wrap;margin-top:14px}
-.meta-item{color:#6b879d;font-size:11px}
-.meta-item strong{color:#224d6c}
-.status{display:flex;align-items:center;gap:8px;margin-top:17px;font-size:11px;color:#447da2}
-.status-dot{width:7px;height:7px;border-radius:50%;background:#9db5c7}
-.status-dot.online{background:#3bbd85;box-shadow:0 0 10px #3bbd8555}
-.status-dot.offline{background:#e16c78}
-.copy-btn{
-  padding:14px 17px;border:1px solid #c0ddeb;border-radius:9px;
-  color:#225579;background:#ffffffb5;font-size:11px;font-weight:800;white-space:nowrap;
-  transition:.2s;
-}
-.copy-btn:hover{background:white;border-color:#6dc8f5;transform:translateY(-2px)}
-
-/* Experience panels */
-.experience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-.experience-main,.experience-side{
-  position:relative;overflow:hidden;border-radius:16px;
-  border:1px solid #fff;background:linear-gradient(145deg,#ffffffd9,#e4f4ffcf);
-  box-shadow:0 18px 50px #4d789c10;
-}
-.experience-main{min-height:320px;padding:32px}
-.experience-main h3,.experience-side h3{
-  font:700 23px Manrope,sans-serif;color:#1b4b6d;letter-spacing:-.04em;
-}
-.experience-main p,.experience-side p{color:#68859c;font-size:13px;line-height:1.9;max-width:330px;margin-top:12px}
-.experience-art{
-  position:absolute;right:-15px;bottom:-25px;width:65%;height:70%;
-  background:
-    radial-gradient(ellipse at 65% 45%,#fff8d8 0%,#f5e7ad77 24%,transparent 60%),
-    linear-gradient(150deg,#d9f2ff,#81c6ed);
-  clip-path:polygon(0 70%,16% 48%,30% 58%,50% 14%,66% 35%,83% 7%,100% 27%,100% 100%,0 100%);
-  opacity:.8;
-}
-.experience-art:after{
-  content:"";position:absolute;bottom:0;left:20%;width:70%;height:70%;
-  background:linear-gradient(90deg,#8caeb9,#d6e7e7,#799fac);
-  clip-path:polygon(0 35%,17% 35%,17% 5%,30% 5%,30% 25%,45% 25%,45% 0,60% 0,60% 35%,80% 35%,80% 15%,93% 15%,93% 100%,0 100%);
-}
-.experience-side{padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
-.side-art{
-  position:relative;height:110px;border-radius:11px;overflow:hidden;margin-top:25px;
-  background:radial-gradient(ellipse at 50% 120%,#fff 0%,#c9ecff 34%,transparent 70%),linear-gradient(135deg,#9fdfff,#e9f7ff);
-}
-.side-art:before{
-  content:"";position:absolute;left:calc(50% - 32px);top:14px;width:64px;height:78px;
-  border:5px solid #fff;border-radius:50% 50% 12px 12px;
-  box-shadow:0 0 18px #51baff66,inset 0 0 18px #7bd5ff55;
-}
-.side-art:after{
-  content:"";position:absolute;left:calc(50% - 21px);top:26px;width:42px;height:55px;
-  border-radius:50% 50% 12px 12px;background:radial-gradient(ellipse,#ffffff,#9fe5ff 70%,#7ec9ed);
-}
-
-/* CTA */
-.community{
-  position:relative;overflow:hidden;text-align:center;padding:65px 25px;
-  border:1px solid #fff;border-radius:18px;
-  background:
-    radial-gradient(ellipse at 50% 0%,#fff8dc 0%,transparent 45%),
-    linear-gradient(135deg,#d9f2ff,#f5fbff 60%,#e7f4ff);
-  box-shadow:0 20px 60px #5284a418;
-}
-.community:before,.community:after{
-  content:"";position:absolute;bottom:-60px;width:220px;height:150px;
-  background:linear-gradient(#a7d5eb,#82b7d2);
-  clip-path:polygon(0 35%,20% 10%,37% 29%,60% 0,100% 40%,100% 100%,0 100%);
-  opacity:.3;
-}
-.community:before{left:-30px}
-.community:after{right:-30px;transform:scaleX(-1)}
-.community-inner{position:relative;z-index:2}
-.community h2{font:800 clamp(33px,6vw,57px) Manrope,sans-serif;letter-spacing:-.07em;color:#1c4b6c;margin-top:16px}
-.community p{max-width:500px;margin:15px auto 26px;color:#68859b;font-size:13px;line-height:1.9}
-.footer{
-  padding:28px 0;border-top:1px solid #d8eaf3;
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  color:#7893a7;font-size:10px;
-}
-.footer-brand{color:#214b6b;font-weight:800;letter-spacing:2px}
 .toast{
-  position:fixed;z-index:100;left:50%;bottom:25px;transform:translate(-50%,15px);
-  opacity:0;pointer-events:none;padding:13px 18px;border-radius:10px;
-  background:#fff;color:#235778;border:1px solid #b5dff4;
-  font-size:12px;font-weight:700;box-shadow:0 8px 30px #2858781f;
-  transition:.25s;
+  position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);
+  background:#203b1a;border:2px solid #8ae34a;
+  padding:15px 20px;font-weight:800;font-size:12px;
+  opacity:0;transition:.2s;z-index:40;pointer-events:none;
+  box-shadow:4px 4px #0007;
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:800px){
-  .nav{top:9px}
-  .navlinks{gap:14px;font-size:11px}
-  .nav-cta{padding:10px 12px;font-size:10px}
-  .hero{min-height:780px}
-  .hero-content{padding-top:155px}
-  .island.i1{right:-8%;bottom:19%;transform:scale(.9)}
-  .island.i2{right:30%;top:12%}
-  .castle{right:-3%;bottom:23%;transform:scale(.8);transform-origin:bottom right}
-  .section{padding:75px 0}
-  .section-head{align-items:start;flex-direction:column}
-  .experience-grid{grid-template-columns:1fr}
-  .experience-main,.experience-side{min-height:270px}
-}
-@media(max-width:540px){
-  .container{width:89%}
-  .brand{font-size:12px;gap:8px}
-  .brand-icon{width:31px;height:31px}
-  .navlinks{display:none}
-  .nav-cta{margin-left:auto}
-  .hero{min-height:760px}
-  .hero-content{padding-top:135px;padding-bottom:160px}
-  .hero h1{font-size:clamp(53px,14vw,75px)}
-  .hero-description{font-size:13px;max-width:350px}
-  .eyebrow{font-size:9px;letter-spacing:2px}
-  .hero-actions .btn{width:100%}
-  .hero-meta{gap:12px;margin-top:32px}
-  .meta{font-size:9px}
-  .meta-line{height:15px}
-  .sun{right:-8%;top:20%;width:210px}
-  .island.i1{right:-28%;bottom:17%;transform:scale(.72)}
-  .island.i2{right:22%;top:13%;transform:scale(.42)}
-  .island.i3{left:12%;bottom:10%;transform:scale(.36)}
-  .castle{right:-17%;bottom:23%;transform:scale(.58);transform-origin:bottom right}
-  .cloud.c1{left:24%;top:27%;transform:scale(.55)}
-  .cloud.c2{top:47%;transform:scale(.8)}
-  .server-panel{grid-template-columns:1fr;padding:24px 20px}
-  .copy-btn{width:100%}
-  .server-meta{gap:14px}
-  .section h2{font-size:35px}
-  .experience-main,.experience-side{padding:24px}
-  .experience-art{width:75%;height:55%}
-  .community{padding:50px 18px}
-  .community .btn{width:100%}
-  .footer{flex-direction:column}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+@media(max-width:760px){
+  nav{padding:12px 4%;flex-wrap:wrap}
+  .brand-name{font-size:13px}
+  .navlinks{order:3;width:100%;justify-content:center;gap:16px;font-size:11px}
+  .nav-btn{padding:10px;font-size:10px}
+  .hero{min-height:630px;padding-top:90px}
+  .block{width:37px;height:37px}
+  .b1{left:3%;top:17%}.b2{right:3%;top:21%}
+  .b3{left:5%;bottom:10%}.b4{right:5%;bottom:12%}
+  .stats{gap:7px}
+  .stat{padding:15px 5px}
+  .stat strong{font-size:19px}
+  .stat span{font-size:8px}
+  .server-box{grid-template-columns:1fr;padding:21px}
+  .features{grid-template-columns:1fr}
+  .section{padding:60px 5%}
+  footer{justify-content:center;text-align:center}
 }
 </style>
 </head>
 
 <body>
-<nav class="nav">
+<div class="topbar"></div>
+
+<nav>
   <a href="#home" class="brand">
-    <div class="brand-icon">B.</div>
+    <div class="grass-logo">⛏</div>
     <div class="brand-name">BLOX <span>SMP</span></div>
   </a>
   <div class="navlinks">
-    <a href="#home">Home</a>
-    <a href="#server">Server</a>
-    <a href="#world">The World</a>
-    <a href="#community">Community</a>
+    <a href="#home">HOME</a>
+    <a href="#server">SERVER</a>
+    <a href="#features">FEATURES</a>
+    <a href="#community">COMMUNITY</a>
   </div>
-  <a href="#server" class="nav-cta">ENTER WORLD ↗</a>
+  <a class="nav-btn" href="#server">PLAY NOW ↗</a>
 </nav>
 
 <header class="hero" id="home">
-  <div class="sun"></div>
-  <div class="hero-light"></div>
-
-  <div class="cloud c1"></div>
-  <div class="cloud c2"></div>
-  <div class="cloud c3"></div>
-  <div class="cloud c4"></div>
-
-  <div class="island i1">
-    <div class="island-top"></div><div class="island-grass"></div><div class="island-rock"></div>
-  </div>
-  <div class="island i2">
-    <div class="island-top"></div><div class="island-grass"></div><div class="island-rock"></div>
-  </div>
-  <div class="island i3">
-    <div class="island-top"></div><div class="island-grass"></div><div class="island-rock"></div>
-  </div>
-
-  <div class="castle" aria-hidden="true">
-    <div class="castle-base"></div>
-    <div class="castle-tower t1"></div>
-    <div class="castle-tower t2"></div>
-    <div class="castle-tower t3"></div>
-    <div class="castle-window"></div>
-  </div>
+  <div class="block grass b1"></div>
+  <div class="block diamond b2"></div>
+  <div class="block tnt b3"></div>
+  <div class="block grass b4"></div>
 
   <div class="hero-content">
-    <div class="eyebrow"><span class="eyebrow-line"></span> A NEW WORLD ABOVE THE CLOUDS</div>
-    <h1>FIND YOUR <span class="line2 serif">HEAVEN.</span></h1>
-    <p class="hero-description">
-      Beyond the clouds lies a world of endless possibilities.
-      Discover new horizons, create your own legacy and begin
-      your next adventure in BLOX SMP.
-    </p>
-    <div class="hero-actions">
-      <a href="#server" class="btn btn-primary">Enter the world <span class="arrow">↗</span></a>
-      <a href="YOUR_DISCORD_LINK" class="btn btn-light" target="_blank" rel="noopener noreferrer">Explore our community</a>
+    <div class="server-badge">
+      <span class="online-dot"></span>
+      WELCOME TO THE BLOX UNIVERSE
     </div>
-    <div class="hero-meta">
-      <div class="meta"><span>✧</span> MINECRAFT BEDROCK</div>
-      <div class="meta-line"></div>
-      <div class="meta"><span>✧</span> YOUR WORLD, YOUR STORY</div>
+    <h1 class="pixel">BLOX <span class="green">SMP</span></h1>
+    <p>
+      Your world. Your rules. Your adventure.<br>
+      Mine diamonds, build legendary bases and create your own story
+      in the ultimate Minecraft community.
+    </p>
+    <div class="actions">
+      <a href="#server" class="btn">⛏ JOIN THE SERVER</a>
+      <a href="YOUR_DISCORD_LINK" class="btn btn-gold" target="_blank" rel="noopener">◈ DISCORD</a>
+      <a href="#features" class="btn btn-dark">EXPLORE WORLD ↓</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>⛏</strong><span>MINE & BUILD</span></div>
+      <div class="stat"><strong>⚔</strong><span>FIGHT & SURVIVE</span></div>
+      <div class="stat"><strong>✦</strong><span>PLAY TOGETHER</span></div>
     </div>
   </div>
-
-  <div class="sky-fade"></div>
 </header>
 
-<main>
-  <section class="section container reveal" id="server">
-    <div class="section-head">
-      <div>
-        <div class="kicker">01 / YOUR GATEWAY</div>
-        <h2>One connection.<br>A whole new world.</h2>
-      </div>
-      <p class="section-intro">
-        Your next adventure is waiting above the clouds.
-        Connect to BLOX SMP and make this world your own.
-      </p>
-    </div>
+<section class="section" id="server">
+  <div class="heading">
+    <div class="eyebrow">◆ SERVER CONNECTION ◆</div>
+    <h2 class="pixel">JOIN THE WORLD</h2>
+    <p>Ready your tools, adventurer. Your journey starts here.</p>
+  </div>
 
-    <div class="server-panel">
-      <div>
-        <div class="panel-label">MINECRAFT BEDROCK SERVER</div>
-        <div class="server-ip" id="serverIp">YOUR_SERVER_IP</div>
-        <div class="server-meta">
-          <div class="meta-item">PORT &nbsp;<strong id="serverPort">19132</strong></div>
-          <div class="meta-item">PLAYERS &nbsp;<strong id="players">—</strong></div>
-          <div class="meta-item">EDITION &nbsp;<strong>BEDROCK</strong></div>
-        </div>
-        <div class="status">
-          <span class="status-dot" id="statusDot"></span>
-          <span id="statusText">Configure your server IP</span>
-        </div>
-      </div>
-      <button type="button" class="copy-btn" id="copyButton">COPY SERVER IP &nbsp; ↗</button>
-    </div>
-  </section>
-
-  <section class="section container reveal" id="world">
-    <div class="section-head">
-      <div>
-        <div class="kicker">02 / BEYOND THE ORDINARY</div>
-        <h2>A world worth<br>calling your own.</h2>
-      </div>
-      <p class="section-intro">
-        A beautiful world is only the beginning. The greatest adventures
-        are the ones you create with the people you meet.
-      </p>
-    </div>
-
-    <div class="experience-grid">
-      <article class="experience-main">
-        <div class="kicker">DISCOVER</div>
-        <h3>Reach new horizons.</h3>
-        <p>Explore distant lands, uncover hidden places and find inspiration in every corner of your world.</p>
-        <div class="experience-art" aria-hidden="true"></div>
-      </article>
-
-      <article class="experience-side">
-        <div>
-          <div class="kicker">CREATE</div>
-          <h3>Build something timeless.</h3>
-          <p>From peaceful homes in the clouds to legendary builds, your imagination sets the limits.</p>
-        </div>
-        <div class="side-art" aria-hidden="true"></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section container reveal" id="community">
-    <div class="community">
-      <div class="community-inner">
-        <div class="kicker">03 / YOUR ADVENTURE STARTS HERE</div>
-        <h2>THE SKY IS YOURS.</h2>
-        <p>
-          Bring your friends, discover your next favourite world
-          and become part of the BLOX SMP community.
-        </p>
-        <a href="YOUR_DISCORD_LINK" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Join the community <span class="arrow">↗</span>
-        </a>
+  <div class="server-box">
+    <div>
+      <div class="label">MINECRAFT BEDROCK EDITION</div>
+      <div class="ip" id="serverIp">YOUR_SERVER_IP</div>
+      <div class="server-info">
+        PORT: <b id="serverPort">19132</b><br>
+        STATUS: <b id="status">Checking server...</b><br>
+        PLAYERS: <b id="players">—</b>
       </div>
     </div>
-  </section>
-</main>
+    <button class="btn" onclick="copyIP()">COPY SERVER IP 📋</button>
+  </div>
+</section>
 
-<footer class="container footer">
-  <div class="footer-brand">BLOX SMP</div>
-  <div>AN INDEPENDENT MINECRAFT COMMUNITY</div>
-  <div>© <span id="year"></span> BLOX SMP</div>
+<section class="section" id="features">
+  <div class="heading">
+    <div class="eyebrow">◆ EXPLORE • CREATE • SURVIVE ◆</div>
+    <h2 class="pixel">YOUR ADVENTURE</h2>
+    <p>There is always something waiting beyond the next block.</p>
+  </div>
+
+  <div class="features">
+    <article class="card">
+      <div class="card-art">🌳</div>
+      <div class="card-content">
+        <h3>BUILD YOUR KINGDOM</h3>
+        <p>Collect resources, discover new places and build a base that makes the whole server jealous.</p>
+        <span class="card-tag">BUILD • CREATE</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-art">💎</div>
+      <div class="card-content">
+        <h3>FIND THE DIAMONDS</h3>
+        <p>Explore the world, search for rare loot and gear up for your next big adventure.</p>
+        <span class="card-tag">MINE • EXPLORE</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-art">🛡️</div>
+      <div class="card-content">
+        <h3>YOUR SMP FAMILY</h3>
+        <p>Meet other players, make allies and create epic memories in the BLOX SMP community.</p>
+        <span class="card-tag">TEAM • SURVIVE</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="community">
+  <div class="join-box">
+    <div class="eyebrow">◆ YOUR NEXT CHAPTER BEGINS ◆</div>
+    <h2 class="pixel">SPAWN INTO BLOX</h2>
+    <p>Bring your friends, grab your pickaxe and become part of the BLOX SMP universe.</p>
+    <div class="actions">
+      <a class="btn" href="#server">JOIN SERVER ⛏</a>
+      <a class="btn btn-gold" href="YOUR_DISCORD_LINK" target="_blank" rel="noopener">JOIN DISCORD ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><div class="grass-logo">⛏</div><div class="brand-name">BLOX <span>SMP</span></div></div>
+  <span>UNOFFICIAL MINECRAFT COMMUNITY SERVER</span>
+  <span>© <span id="year"></span> BLOX SMP</span>
 </footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="toast" id="toast">SERVER IP COPIED!</div>
 
 <script>
-/* CUSTOMISE THESE VALUES */
 const SERVER_IP = "YOUR_SERVER_IP";
 const SERVER_PORT = 19132;
-/* YOUR_DISCORD_LINK is set in the links above. */
 
 document.getElementById("year").textContent = new Date().getFullYear();
 document.getElementById("serverIp").textContent = SERVER_IP;
 document.getElementById("serverPort").textContent = SERVER_PORT;
 
-let toastTimer;
-function showToast(message){
-  const toast = document.getElementById("toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+async function copyIP(){
+  try {
+    await navigator.clipboard.writeText(SERVER_IP);
+    toast("SERVER IP COPIED!");
+  } catch(e) {
+    const input = document.createElement("textarea");
+    input.value = SERVER_IP;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+    toast("SERVER IP COPIED!");
+  }
+}
+function toast(message){
+  const el = document.getElementById("toast");
+  el.textContent = message;
+  el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),2200);
 }
 
-document.getElementById("copyButton").addEventListener("click", async () => {
-  if(!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP"){
-    showToast("Please add your server IP in the code.");
-    return;
-  }
-  try{
-    await navigator.clipboard.writeText(SERVER_IP);
-    showToast("Server IP copied!");
-  }catch(error){
-    const area = document.createElement("textarea");
-    area.value = SERVER_IP;
-    area.style.position = "fixed";
-    area.style.opacity = "0";
-    document.body.appendChild(area);
-    area.select();
-    const copied = document.execCommand("copy");
-    area.remove();
-    showToast(copied ? "Server IP copied!" : "Copy failed. IP: " + SERVER_IP);
-  }
-});
-
-/* Bedrock server status. Status depends on the external API. */
 async function checkServer(){
-  const statusText = document.getElementById("statusText");
-  const statusDot = document.getElementById("statusDot");
+  const status = document.getElementById("status");
   const players = document.getElementById("players");
 
-  if(!SERVER_IP || SERVER_IP === "YOUR_SERVER_IP"){
-    statusText.textContent = "Configure your server IP";
-    players.textContent = "—";
+  if(SERVER_IP === "YOUR_SERVER_IP"){
+    status.textContent = "ADD YOUR SERVER IP";
     return;
   }
-
-  statusText.textContent = "Checking server status…";
-  statusDot.className = "status-dot";
-
   try{
-    const endpoint =
+    const response = await fetch(
       "https://api.mcsrvstat.us/bedrock/3/" +
-      encodeURIComponent(SERVER_IP) +
-      ":" + SERVER_PORT;
-
-    const response = await fetch(endpoint);
-    if(!response.ok) throw new Error("Status API unavailable");
+      encodeURIComponent(SERVER_IP)
+    );
     const data = await response.json();
-
     if(data.online){
-      statusText.textContent = "Server is online";
-      statusDot.className = "status-dot online";
+      status.textContent = "ONLINE";
       players.textContent = data.players
         ? data.players.online + " / " + data.players.max
-        : "Online";
+        : "ONLINE";
     }else{
-      statusText.textContent = "Offline or unreachable";
-      statusDot.className = "status-dot offline";
+      status.textContent = "OFFLINE / UNREACHABLE";
       players.textContent = "0";
     }
-  }catch(error){
-    statusText.textContent = "Live status temporarily unavailable";
-    players.textContent = "—";
+  }catch(e){
+    status.textContent = "STATUS UNAVAILABLE";
   }
 }
-
 checkServer();
-setInterval(checkServer, 60000);
-
-/* Reveal content gently as sections enter the viewport. */
-const revealItems = document.querySelectorAll(".reveal");
-if("IntersectionObserver" in window){
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:.12});
-  revealItems.forEach(item => observer.observe(item));
-}else{
-  revealItems.forEach(item => item.classList.add("visible"));
-}
+setInterval(checkServer,60000);
 </script>
 </body>
 </html>
-```
