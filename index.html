@@ -16,192 +16,243 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Minecraft Pixel Font -->
+    <!-- Minecraft Fonts -->
     <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <style>
         .mc-font {
-            font-family: 'Minecraft', sans-serif;
+            font-family: 'Minecraft', 'Press Start 2P', monospace;
         }
-        
+
+        .mc-[#20D8E8] {
+            color: #20D8E8;
+            text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+        }
+
         .mc-text-shadow {
             text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
         }
 
-        .main-screen {
-            background-color: #0f1115;
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(32, 216, 232, 0.08) 0%, transparent 60%),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M0 0h16v16H0zm16 16h16v16H16z'/%3E%3C/svg%3E");
+        body {
+            background-color: #0d0d11;
+            background-image: radial-gradient(rgba(32, 216, 232, 0.12) 2px, transparent 0);
+            background-size: 24px 24px;
         }
 
-        .mc-card {
-            background: #181a20;
-            border: 3px solid #2d3139;
-            box-shadow: inset -4px -4px 0px 0px #0d0e11, inset 4px 4px 0px 0px #383e4a;
+        /* Minecraft Pixel Block Panel */
+        .mc-box {
+            background: #14171d;
+            border: 4px solid #323846;
+            box-shadow: 
+                inset -4px -4px 0px 0px #0a0b0e,
+                inset 4px 4px 0px 0px #4e5668,
+                0px 8px 16px rgba(0, 0, 0, 0.6);
         }
 
+        .mc-box-light {
+            background: #1e222b;
+            border: 3px solid #3c4454;
+            box-shadow: inset -3px -3px 0px 0px #0f1116, inset 3px 3px 0px 0px #576278;
+        }
+
+        /* Minecraft GUI 3D Button Style */
         .mc-btn {
-            box-shadow: inset -3px -3px 0px 0px rgba(0,0,0,0.4), inset 3px 3px 0px 0px rgba(255,255,255,0.2);
-            transition: all 0.1s ease;
+            font-family: 'Minecraft', monospace;
+            background: #20d8e8;
+            color: #000000;
+            border: 3px solid #1493a0;
+            box-shadow: 
+                inset -3px -3px 0px 0px #0f6c76,
+                inset 3px 3px 0px 0px #82f1fc,
+                2px 4px 0px 0px #000;
+            transition: all 0.08s ease-in-out;
+            text-shadow: none;
+        }
+
+        .mc-btn:hover {
+            background: #3ce0ef;
+            transform: translateY(-2px);
         }
 
         .mc-btn:active {
-            box-shadow: inset 3px 3px 0px 0px rgba(0,0,0,0.4);
             transform: translateY(2px);
+            box-shadow: inset 3px 3px 0px 0px #0f6c76, 0px 0px 0px 0px #000;
+        }
+
+        .mc-btn-dark {
+            background: #2b313e;
+            color: #ffffff;
+            border: 3px solid #1a1e27;
+            box-shadow: 
+                inset -3px -3px 0px 0px #13161d,
+                inset 3px 3px 0px 0px #485268,
+                2px 4px 0px 0px #000;
+        }
+
+        .mc-btn-dark:hover {
+            background: #363e4f;
         }
 
         .sidebar {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1);
         }
     </style>
 </head>
-<body class="bg-[#0b0c0e] text-white font-sans antialiased overflow-x-hidden">
+<body class="text-white font-sans antialiased overflow-x-hidden">
 
     <!-- Top Navigation Bar -->
-    <header class="fixed top-0 left-0 w-full bg-[#121418]/95 backdrop-blur-md border-b-2 border-[#252830] z-40 flex items-center justify-between px-4 py-3">
+    <header class="fixed top-0 left-0 w-full bg-[#101217]/95 backdrop-blur-md border-b-4 border-[#252a36] z-40 flex items-center justify-between px-4 py-2.5">
         <div class="flex items-center space-x-3">
-            <button id="menu-btn" class="text-neutral-300 hover:text-white text-xl focus:outline-none p-1">
+            <button id="menu-btn" class="text-neutral-300 hover:text-[#20D8E8] text-xl focus:outline-none p-1">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="flex items-center space-x-2.5 cursor-pointer" onclick="showHome()">
-                <i class="fas fa-cube text-xl text-[#20D8E8]"></i>
-                <span class="mc-font font-bold text-lg tracking-wider text-[#20D8E8] mc-text-shadow">BLOX SMP</span>
+                <div class="w-7 h-7 bg-[#20D8E8] border-2 border-white flex items-center justify-center text-black font-bold text-xs shadow-md">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <span class="mc-font font-bold text-base sm:text-lg tracking-wider text-[#20D8E8] mc-text-shadow">BLOX SMP</span>
             </div>
         </div>
         
         <div class="flex items-center space-x-3">
             <!-- Server Status Badge -->
-            <div class="hidden md:flex items-center space-x-2 bg-black/40 border border-white/10 px-3 py-1 rounded-md text-xs font-mono">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-neutral-400">PLAYERS:</span>
-                <span id="nav-player-count" class="text-emerald-400 font-bold">--</span>
+            <div class="hidden md:flex items-center space-x-2 bg-black/60 border-2 border-[#2b313e] px-3 py-1 text-xs font-mono">
+                <span class="w-2.5 h-2.5 bg-emerald-500 animate-pulse"></span>
+                <span class="text-neutral-400">ONLINE:</span>
+                <span id="nav-player-count" class="text-emerald-400 font-bold mc-font">--</span>
             </div>
 
-            <a href="https://www.youtube.com/@BloxSMPOfficial" target="_blank" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-600/40 px-3 py-1.5 rounded-md text-xs font-bold transition flex items-center space-x-1.5 mc-btn">
-                <i class="fab fa-youtube text-sm"></i>
+            <a href="https://www.youtube.com/@BloxSMPOfficial" target="_blank" class="mc-btn-dark px-3 py-1.5 text-xs font-bold transition flex items-center space-x-1.5">
+                <i class="fab fa-youtube text-red-500"></i>
                 <span class="hidden sm:inline">YouTube</span>
             </a>
-            <button onclick="openSection('server-section')" class="mc-btn text-white px-4 py-1.5 rounded-md text-xs font-bold bg-gradient-to-r from-[#20D8E8] to-[#1689E8] text-black">
+            <button onclick="openSection('server-section')" class="mc-btn px-4 py-1.5 text-xs font-bold">
                 SERVER IP
             </button>
         </div>
     </header>
 
     <!-- Sliding Sidebar Menu -->
-    <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-72 bg-[#121418] border-r-2 border-[#252830] z-50 transform -translate-x-full flex flex-col shadow-2xl">
-        <div class="flex items-center justify-between p-4 border-b border-[#252830]">
-            <span class="mc-font font-bold tracking-wide text-xs text-[#20D8E8]">MAIN MENU</span>
+    <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-72 bg-[#101217] border-r-4 border-[#252a36] z-50 transform -translate-x-full flex flex-col shadow-2xl">
+        <div class="flex items-center justify-between p-4 border-b-2 border-[#252a36]">
+            <span class="mc-font font-bold text-xs text-[#20D8E8]">SERVER MENU</span>
             <button id="close-btn" class="text-neutral-400 hover:text-white text-lg">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="p-4 flex-1 overflow-y-auto space-y-2">
-            <a href="#" onclick="showHome(); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+        <div class="p-3 flex-1 overflow-y-auto space-y-2">
+            <a href="#" onclick="showHome(); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fas fa-home w-5 text-[#20D8E8]"></i>
-                <span>Home</span>
+                <span class="mc-font text-xs">Home</span>
             </a>
-            <a href="#" onclick="openSection('server-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+            <a href="#" onclick="openSection('server-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fas fa-server w-5 text-[#1689E8]"></i>
-                <span>Server & Rules</span>
+                <span class="mc-font text-xs">Server & Rules</span>
             </a>
-            <a href="#" onclick="openSection('staff-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+            <a href="#" onclick="openSection('staff-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fas fa-users-cog w-5 text-[#6B55E8]"></i>
-                <span>Staff Team</span>
+                <span class="mc-font text-xs">Staff Team</span>
             </a>
-            <a href="#" onclick="openSection('videos-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+            <a href="#" onclick="openSection('videos-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fas fa-video w-5 text-[#20D8E8]"></i>
-                <span>YouTube Videos</span>
+                <span class="mc-font text-xs">YouTube Videos</span>
             </a>
-            <a href="#" onclick="openSection('letterhead-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+            <a href="#" onclick="openSection('letterhead-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fas fa-file-lines w-5 text-[#1689E8]"></i>
-                <span>Letter Head</span>
+                <span class="mc-font text-xs">Letter Head</span>
             </a>
-            <a href="#" onclick="openSection('joining-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+            <a href="#" onclick="openSection('joining-section'); closeSidebar();" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fas fa-user-plus w-5 text-[#6B55E8]"></i>
-                <span>Joining Form</span>
+                <span class="mc-font text-xs">Joining Form</span>
             </a>
-            <a href="https://www.youtube.com/@BloxSMPOfficial" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-[#1a1d24] text-neutral-300 hover:text-white transition">
+            <a href="https://www.youtube.com/@BloxSMPOfficial" target="_blank" class="flex items-center space-x-3 px-3 py-2.5 rounded hover:bg-[#1c202a] text-neutral-300 hover:text-white transition">
                 <i class="fab fa-youtube w-5 text-red-500"></i>
-                <span>YouTube Channel</span>
+                <span class="mc-font text-xs">YouTube Channel</span>
             </a>
         </div>
-        <div class="p-4 border-t border-[#252830] text-xs text-neutral-500 text-center font-mono">
-            &copy; 2026 Blox SMP. All rights reserved.
+        <div class="p-4 border-t-2 border-[#252a36] text-[10px] text-neutral-500 text-center mc-font">
+            &copy; 2026 BLOX SMP
         </div>
     </div>
 
     <!-- Backdrop for Sidebar -->
-    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/70 z-40 hidden backdrop-blur-sm"></div>
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/80 z-40 hidden backdrop-blur-xs"></div>
 
     <!-- MAIN SCREEN -->
-    <main id="home-screen" class="main-screen h-screen flex flex-col items-center justify-center text-center px-4 pt-16">
-        <div class="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full text-emerald-400 text-xs font-mono mb-4">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-            <span id="hero-status">SERVER ONLINE</span>
-        </div>
-        
-        <h1 class="mc-font text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-widest text-[#20D8E8] mc-text-shadow leading-tight">
-            BLOX SMP
-        </h1>
-        
-        <p class="mt-4 text-neutral-300 text-sm sm:text-base max-w-lg font-medium">
-            The Ultimate Indian Survival Experience. Join our custom world, build epic bases, and play with the community!
-        </p>
+    <main id="home-screen" class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 pb-12">
+        <div class="mc-box p-8 max-w-2xl w-full flex flex-col items-center relative">
+            
+            <div class="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/40 px-3 py-1 text-emerald-400 text-xs font-mono mb-6">
+                <span class="w-2 h-2 bg-emerald-500 animate-ping"></span>
+                <span id="hero-status">SERVER IS ONLINE</span>
+            </div>
+            
+            <h1 class="mc-font text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-widest text-[#20D8E8] mc-text-shadow leading-tight">
+                BLOX SMP
+            </h1>
+            
+            <p class="mt-4 text-neutral-300 text-xs sm:text-sm max-w-md font-mono leading-relaxed">
+                The Ultimate Survival Experience in India. Join now, build your legacy, and fight in epic custom events!
+            </p>
 
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <button onclick="openSection('server-section')" class="mc-card mc-btn text-white font-bold px-6 py-3 rounded-md bg-[#20D8E8] text-black hover:bg-[#1bc0ce]">
-                JOIN SERVER <i class="fas fa-play ml-2 text-xs"></i>
-            </button>
-            <button onclick="openSection('staff-section')" class="mc-card mc-btn bg-[#181a20] hover:bg-[#20232b] text-white font-bold px-6 py-3 rounded-md">
-                STAFF TEAM <i class="fas fa-shield-halved ml-2 text-[#20D8E8]"></i>
-            </button>
-            <button onclick="openSection('joining-section')" class="mc-card mc-btn bg-[#181a20] hover:bg-[#20232b] text-white font-bold px-6 py-3 rounded-md">
-                JOINING FORM <i class="fas fa-file-pen ml-2 text-[#1689E8]"></i>
-            </button>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-md justify-center">
+                <button onclick="openSection('server-section')" class="mc-btn px-6 py-3 text-xs font-bold w-full">
+                    JOIN SERVER <i class="fas fa-play ml-1"></i>
+                </button>
+                <button onclick="openSection('staff-section')" class="mc-btn-dark px-6 py-3 text-xs font-bold w-full">
+                    STAFF TEAM <i class="fas fa-shield-halved ml-1 text-[#20D8E8]"></i>
+                </button>
+            </div>
+            
+            <div class="mt-3 w-full max-w-xs sm:max-w-md">
+                <button onclick="openSection('joining-section')" class="mc-btn-dark px-6 py-2.5 text-xs font-bold w-full">
+                    JOINING FORM <i class="fas fa-file-pen ml-1 text-[#1689E8]"></i>
+                </button>
+            </div>
         </div>
     </main>
 
     <!-- SERVER DETAILS SECTION -->
     <section id="server-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-4xl mx-auto">
-        <div class="border-b border-[#252830] pb-4 mb-8 flex items-center justify-between">
-            <h2 class="mc-font text-xl font-bold tracking-wider text-white flex items-center mc-text-shadow">
-                <i class="fas fa-server mr-3 text-[#1689E8]"></i> SERVER DETAILS
+        <div class="border-b-2 border-[#252a36] pb-4 mb-8 flex items-center justify-between">
+            <h2 class="mc-font text-lg font-bold text-white flex items-center mc-text-shadow">
+                <i class="fas fa-server mr-3 text-[#1689E8]"></i> SERVER INFO
             </h2>
-            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-[#181a20] px-3 py-1.5 rounded border border-[#252830]">Back to Home</button>
+            <button onclick="showHome()" class="mc-btn-dark text-xs px-3 py-1.5">Back to Home</button>
         </div>
 
-        <div class="mc-card rounded-lg p-6 mb-6">
+        <div class="mc-box p-6 mb-6">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="mc-font text-sm text-[#20D8E8]">JAVA & BEDROCK IP</h3>
-                <span id="ip-ping-badge" class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">Checking Status...</span>
+                <h3 class="mc-font text-xs text-[#20D8E8]">SERVER ADDRESS</h3>
+                <span id="ip-ping-badge" class="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2.5 py-1 border border-emerald-500/30">Checking Ping...</span>
             </div>
             
-            <div class="flex flex-col sm:flex-row items-center justify-between bg-black/50 border border-white/10 p-4 rounded-md gap-3">
+            <div class="flex flex-col sm:flex-row items-center justify-between bg-black/80 border-2 border-[#2f3545] p-4 gap-3">
                 <div>
-                    <span class="text-xs text-neutral-500 block font-mono">SERVER ADDRESS:</span>
-                    <span id="server-ip" class="mc-font text-base sm:text-lg text-white select-all">play.bloxsmp.com</span>
+                    <span class="text-[10px] text-neutral-500 block font-mono">JAVA & BEDROCK IP:</span>
+                    <span id="server-ip" class="mc-font text-sm sm:text-base text-white select-all">play.bloxsmp.com</span>
                 </div>
-                <button onclick="copyIP()" class="mc-btn w-full sm:w-auto text-black text-xs font-bold px-5 py-2.5 rounded bg-[#20D8E8] hover:bg-[#1a2028]">
-                    <i class="fas fa-copy mr-1.5"></i> COPY IP
+                <button onclick="copyIP()" class="mc-btn w-full sm:w-auto text-xs px-5 py-2.5">
+                    <i class="fas fa-copy mr-1"></i> COPY IP
                 </button>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="mc-card p-5 rounded-lg">
-                <h4 class="mc-font text-xs text-amber-400 mb-2"><i class="fas fa-book-open mr-2"></i>SERVER RULES</h4>
-                <ul class="text-xs text-neutral-300 space-y-2 list-disc list-inside">
-                    <li>No hacking, x-ray, or unauthorized mods.</li>
-                    <li>Respect all players and staff members.</li>
-                    <li>No griefing or stealing in claimed zones.</li>
-                    <li>Keep chat clean and free from spam/toxicity.</li>
+            <div class="mc-box-light p-5">
+                <h4 class="mc-font text-xs text-amber-400 mb-3"><i class="fas fa-scroll mr-2"></i>SERVER RULES</h4>
+                <ul class="text-xs font-mono text-neutral-300 space-y-2 list-disc list-inside">
+                    <li>No X-Ray, hacking, or client cheats.</li>
+                    <li>Respect all players & staff members.</li>
+                    <li>No griefing or looting claimed bases.</li>
+                    <li>Keep chat clean from spam & toxic slurs.</li>
                 </ul>
             </div>
-            <div class="mc-card p-5 rounded-lg">
-                <h4 class="mc-font text-xs text-[#20D8E8] mb-2"><i class="fas fa-circle-info mr-2"></i>INFO</h4>
-                <p class="text-xs text-neutral-300">
-                    Blox SMP supports both Java and Bedrock (MCPE) players! Use the standard port for Bedrock edition.
+            <div class="mc-box-light p-5">
+                <h4 class="mc-font text-xs text-[#20D8E8] mb-3"><i class="fas fa-gamepad mr-2"></i>CROSS-PLAY SUPPORT</h4>
+                <p class="text-xs font-mono text-neutral-300 leading-relaxed">
+                    Blox SMP fully supports Java Edition & Bedrock (MCPE/Console) players! Connect using the IP above with default Bedrock port (19132).
                 </p>
             </div>
         </div>
@@ -209,61 +260,61 @@
 
     <!-- STAFF / ADMIN TEAM SECTION -->
     <section id="staff-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-5xl mx-auto">
-        <div class="border-b border-[#252830] pb-4 mb-8 flex items-center justify-between">
-            <h2 class="mc-font text-xl font-bold tracking-wider text-white flex items-center mc-text-shadow">
+        <div class="border-b-2 border-[#252a36] pb-4 mb-8 flex items-center justify-between">
+            <h2 class="mc-font text-lg font-bold text-white flex items-center mc-text-shadow">
                 <i class="fas fa-users-cog mr-3 text-[#20D8E8]"></i> STAFF TEAM
             </h2>
-            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-[#181a20] px-3 py-1.5 rounded border border-[#252830]">Back to Home</button>
+            <button onclick="showHome()" class="mc-btn-dark text-xs px-3 py-1.5">Back to Home</button>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <!-- Owner Card -->
-            <div class="mc-card p-6 text-center rounded-lg relative">
-                <div class="w-16 h-16 mx-auto mb-4 rounded bg-neutral-900 border-2 border-[#20D8E8] flex items-center justify-center text-3xl">
+            <div class="mc-box p-6 text-center flex flex-col items-center">
+                <div class="w-16 h-16 mb-4 bg-black border-2 border-[#20D8E8] flex items-center justify-center text-3xl shadow-inner">
                     👑
                 </div>
-                <h3 class="mc-font text-sm text-white">OWNER</h3>
-                <span class="inline-block px-2.5 py-0.5 mt-2 text-[10px] font-bold rounded bg-[#20D8E8]/20 text-[#20D8E8] border border-[#20D8E8]/40">FOUNDER</span>
-                <p class="text-xs text-neutral-400 mt-3">Manages overall server development, hosting, and core infrastructure.</p>
+                <h3 class="mc-font text-xs text-white">OWNER</h3>
+                <span class="inline-block px-2 py-0.5 mt-2 text-[9px] font-bold bg-[#20D8E8]/20 text-[#20D8E8] border border-[#20D8E8]/40 mc-font">FOUNDER</span>
+                <p class="text-xs font-mono text-neutral-400 mt-3">Oversees overall server management, core hosting, and updates.</p>
             </div>
 
             <!-- Admin Card -->
-            <div class="mc-card p-6 text-center rounded-lg relative">
-                <div class="w-16 h-16 mx-auto mb-4 rounded bg-neutral-900 border-2 border-[#1689E8] flex items-center justify-center text-3xl">
+            <div class="mc-box p-6 text-center flex flex-col items-center">
+                <div class="w-16 h-16 mb-4 bg-black border-2 border-[#1689E8] flex items-center justify-center text-3xl shadow-inner">
                     ⚡
                 </div>
-                <h3 class="mc-font text-sm text-white">ADMIN</h3>
-                <span class="inline-block px-2.5 py-0.5 mt-2 text-[10px] font-bold rounded bg-[#1689E8]/20 text-[#1689E8] border border-[#1689E8]/40">HEAD ADMIN</span>
-                <p class="text-xs text-neutral-400 mt-3">Handles plugins, community events, and in-game support requests.</p>
+                <h3 class="mc-font text-xs text-white">ADMIN</h3>
+                <span class="inline-block px-2 py-0.5 mt-2 text-[9px] font-bold bg-[#1689E8]/20 text-[#1689E8] border border-[#1689E8]/40 mc-font">HEAD ADMIN</span>
+                <p class="text-xs font-mono text-neutral-400 mt-3">Manages plugins, in-game events, player issues, and support.</p>
             </div>
 
             <!-- Moderator Card -->
-            <div class="mc-card p-6 text-center rounded-lg relative">
-                <div class="w-16 h-16 mx-auto mb-4 rounded bg-neutral-900 border-2 border-[#6B55E8] flex items-center justify-center text-3xl">
+            <div class="mc-box p-6 text-center flex flex-col items-center">
+                <div class="w-16 h-16 mb-4 bg-black border-2 border-[#6B55E8] flex items-center justify-center text-3xl shadow-inner">
                     🛡️
                 </div>
-                <h3 class="mc-font text-sm text-white">MODERATOR</h3>
-                <span class="inline-block px-2.5 py-0.5 mt-2 text-[10px] font-bold rounded bg-[#6B55E8]/20 text-[#6B55E8] border border-[#6B55E8]/40">MOD TEAM</span>
-                <p class="text-xs text-neutral-400 mt-3">Monitors server chat, enforces rules, and helps new players get started.</p>
+                <h3 class="mc-font text-xs text-white">MODERATOR</h3>
+                <span class="inline-block px-2 py-0.5 mt-2 text-[9px] font-bold bg-[#6B55E8]/20 text-[#6B55E8] border border-[#6B55E8]/40 mc-font">MOD TEAM</span>
+                <p class="text-xs font-mono text-neutral-400 mt-3">Monitors public chat, enforces rules, and helps new players.</p>
             </div>
         </div>
     </section>
 
     <!-- YOUTUBE VIDEOS SECTION -->
     <section id="videos-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-6xl mx-auto">
-        <div class="border-b border-[#252830] pb-4 mb-8 flex items-center justify-between">
-            <h2 class="mc-font text-xl font-bold tracking-wider text-white flex items-center mc-text-shadow">
+        <div class="border-b-2 border-[#252a36] pb-4 mb-8 flex items-center justify-between">
+            <h2 class="mc-font text-lg font-bold text-white flex items-center mc-text-shadow">
                 <i class="fab fa-youtube text-red-500 mr-3"></i> LATEST VIDEOS
             </h2>
-            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-[#181a20] px-3 py-1.5 rounded border border-[#252830]">Back to Home</button>
+            <button onclick="showHome()" class="mc-btn-dark text-xs px-3 py-1.5">Back to Home</button>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="mc-card rounded-lg overflow-hidden flex flex-col">
-                <div class="h-48 w-full bg-neutral-950 relative overflow-hidden">
+            <div class="mc-box overflow-hidden flex flex-col">
+                <div class="h-48 w-full bg-black relative border-b-2 border-[#252a36]">
                     <img src="https://images.unsplash.com/photo-1627856013091-fedde1e43463?auto=format&fit=crop&w=800&q=80" alt="Video" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4">
-                    <h3 class="font-bold text-white text-sm">Building Our Mega Base in Blox SMP!</h3>
+                    <h3 class="font-bold text-white text-xs font-mono">Building Our Mega Base in Blox SMP!</h3>
                 </div>
             </div>
         </div>
@@ -271,17 +322,17 @@
 
     <!-- LETTER HEAD SECTION -->
     <section id="letterhead-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-3xl mx-auto">
-        <div class="border-b border-[#252830] pb-4 mb-6 flex items-center justify-between">
-            <h2 class="mc-font text-xl font-bold tracking-wider text-white flex items-center mc-text-shadow">
+        <div class="border-b-2 border-[#252a36] pb-4 mb-6 flex items-center justify-between">
+            <h2 class="mc-font text-lg font-bold text-white flex items-center mc-text-shadow">
                 <i class="fas fa-file-lines mr-3 text-[#20D8E8]"></i> LETTER HEAD
             </h2>
-            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-[#181a20] px-3 py-1.5 rounded border border-[#252830]">Back to Home</button>
+            <button onclick="showHome()" class="mc-btn-dark text-xs px-3 py-1.5">Back to Home</button>
         </div>
 
-        <div class="bg-white rounded-lg shadow-2xl p-4 flex flex-col items-center">
-            <img src="1000045573.png" alt="My Letter Head" class="w-full h-auto rounded border border-neutral-300">
+        <div class="bg-white p-4 flex flex-col items-center border-4 border-black">
+            <img src="1000045573.png" alt="My Letter Head" class="w-full h-auto border border-neutral-300">
             <div class="mt-4">
-                <button onclick="window.print()" class="mc-btn bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold px-6 py-2.5 rounded shadow flex items-center space-x-2">
+                <button onclick="window.print()" class="mc-btn-dark text-xs font-bold px-6 py-2.5 flex items-center space-x-2">
                     <i class="fas fa-print"></i>
                     <span>Print Letterhead</span>
                 </button>
@@ -291,23 +342,23 @@
 
     <!-- JOINING REQUEST FORM SECTION -->
     <section id="joining-section" class="hidden min-h-screen pt-24 pb-16 px-4 max-w-3xl mx-auto">
-        <div class="border-b border-[#252830] pb-4 mb-6 flex items-center justify-between">
-            <h2 class="mc-font text-xl font-bold tracking-wider text-white flex items-center mc-text-shadow">
+        <div class="border-b-2 border-[#252a36] pb-4 mb-6 flex items-center justify-between">
+            <h2 class="mc-font text-lg font-bold text-white flex items-center mc-text-shadow">
                 <i class="fas fa-user-plus mr-3 text-[#1689E8]"></i> JOINING FORM
             </h2>
-            <button onclick="showHome()" class="text-xs text-neutral-400 hover:text-white bg-[#181a20] px-3 py-1.5 rounded border border-[#252830]">Back to Home</button>
+            <button onclick="showHome()" class="mc-btn-dark text-xs px-3 py-1.5">Back to Home</button>
         </div>
 
-        <div class="bg-white rounded-lg shadow-2xl p-6 flex flex-col items-center">
-            <div id="joining-upload-box" class="mb-4 text-center w-full p-4 border-2 border-dashed border-neutral-400 rounded bg-neutral-50" style="display: none;">
+        <div class="bg-white p-6 flex flex-col items-center border-4 border-black">
+            <div id="joining-upload-box" class="mb-4 text-center w-full p-4 border-2 border-dashed border-neutral-400 bg-neutral-50" style="display: none;">
                 <p class="text-xs font-semibold text-neutral-700 mb-2">Agar form image show na ho, toh 'joiningletter.png' select karein:</p>
-                <input type="file" id="joining-file-input" accept="image/*" class="text-xs text-neutral-600 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-neutral-900 file:text-white cursor-pointer">
+                <input type="file" id="joining-file-input" accept="image/*" class="text-xs text-neutral-600 file:mr-2 file:py-1.5 file:px-3 file:border-0 file:text-xs file:font-semibold file:bg-neutral-900 file:text-white cursor-pointer">
             </div>
 
-            <img id="joining-img" src="joiningletter.png" alt="Joining Request Form" class="w-full h-auto rounded border border-neutral-300" onerror="handleJoiningError()">
+            <img id="joining-img" src="joiningletter.png" alt="Joining Request Form" class="w-full h-auto border border-neutral-300" onerror="handleJoiningError()">
             
             <div class="mt-6">
-                <button onclick="window.print()" class="mc-btn bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold px-6 py-2.5 rounded shadow flex items-center space-x-2">
+                <button onclick="window.print()" class="mc-btn-dark text-xs font-bold px-6 py-2.5 flex items-center space-x-2">
                     <i class="fas fa-print"></i>
                     <span>Print Joining Form</span>
                 </button>
@@ -315,10 +366,10 @@
         </div>
     </section>
 
-    <!-- Toast Alert -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-[#20D8E8] text-black font-bold px-4 py-2.5 rounded shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 text-xs flex items-center space-x-2 z-50">
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 mc-box bg-[#20D8E8] text-black font-bold px-4 py-3 transform translate-y-24 opacity-0 transition-all duration-300 text-xs flex items-center space-x-2 z-50">
         <i class="fas fa-check-circle"></i>
-        <span id="toast-msg">IP Copied!</span>
+        <span id="toast-msg" class="mc-font">IP Copied!</span>
     </div>
 
     <!-- JavaScript Logic -->
@@ -334,12 +385,11 @@
                         const onlineCount = data.players ? data.players.online : 0;
                         const maxCount = data.players ? data.players.max : 20;
                         countElem.innerText = `${onlineCount}/${maxCount}`;
-                        badgeElem.innerText = `Online (${onlineCount} Online)`;
-                        badgeElem.className = 'text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20';
+                        badgeElem.innerText = `Online (${onlineCount} Players)`;
                     } else {
                         countElem.innerText = 'Offline';
                         badgeElem.innerText = 'Offline';
-                        badgeElem.className = 'text-xs font-mono text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded border border-rose-500/20';
+                        badgeElem.className = 'text-[10px] font-mono text-rose-400 bg-rose-950/80 px-2.5 py-1 border border-rose-500/30';
                     }
                 })
                 .catch(() => {
@@ -408,11 +458,11 @@
             navigator.clipboard.writeText(ipText);
             
             const toast = document.getElementById('toast');
-            document.getElementById('toast-msg').innerText = 'Server IP Copied: ' + ipText;
-            toast.classList.remove('translate-y-20', 'opacity-0');
+            document.getElementById('toast-msg').innerText = 'Copied: ' + ipText;
+            toast.classList.remove('translate-y-24', 'opacity-0');
             
             setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-24', 'opacity-0');
             }, 3000);
         }
     </script>
