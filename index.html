@@ -266,7 +266,7 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn { font-family:'Orbitron',sans-serif; }
     <a href="#community">Community</a>
   </div>
 
-  <!-- NEW PLAYER PORTAL BUTTON -->
+  <!-- PLAYER PORTAL BUTTON -->
   <button type="button" class="nav-cta" id="playerPortalOpen">PLAYER PORTAL ↗</button>
 </nav>
 
@@ -397,7 +397,7 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn { font-family:'Orbitron',sans-serif; }
   <div>© <span id="year"></span> BLOX SMP</div>
 </footer>
 
-<!-- PLAYER PORTAL MODAL ADD-ON -->
+<!-- PLAYER PORTAL MODAL -->
 <div id="bloxPlayerModal" aria-hidden="true">
   <div class="blox-portal-box">
     <div class="blox-portal-top">
@@ -453,7 +453,7 @@ const SERVER_IP = "BloxSMP02.aternos.me";
 const SERVER_PORT = 19132;
 const DISCORD_LINK = "https://discord.gg/24WVRUPWJE";
 
-// PASTE YOUR DEPLOYED APPS SCRIPT /EXEC URL HERE
+// GOOGLE APPS SCRIPT WEB APP API
 const BLOX_PLAYER_API = "https://script.google.com/macros/s/AKfycbxCE9GoHIhaaofjaOKeYPXKJszSn2TkUsSWEIfnf3Nf7t8zdivX9gd9_6RIYMHb3MhBbA/exec";
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -576,7 +576,8 @@ BLOX_VIDEO_IDS.forEach((id, index) => {
 });
 
 /* =====================================
-   BLOX SMP PLAYER PORTAL ADD-ON
+   BLOX SMP PLAYER PORTAL
+   LOGIN + REGISTER + SAVED SESSION
    ===================================== */
 
 const portalModal = document.getElementById("bloxPlayerModal");
@@ -586,20 +587,75 @@ const portalDashboard = document.getElementById("bloxPortalDashboard");
 const portalMessage = document.getElementById("bloxPortalMessage");
 const portalTitle = document.getElementById("bloxPortalTitle");
 const portalCard = document.getElementById("bloxPlayerCard");
+const portalOpenBtn = document.getElementById("playerPortalOpen");
 
 let bloxCurrentPlayer = null;
 
+const BLOX_SESSION_KEY = "bloxLoggedInPlayer";
+
+/* UPDATE HEADER BUTTON */
+function updateBloxPortalButton() {
+  if (bloxCurrentPlayer && bloxCurrentPlayer.username) {
+    portalOpenBtn.textContent = bloxCurrentPlayer.username + " ↗";
+  } else {
+    portalOpenBtn.textContent = "PLAYER PORTAL ↗";
+  }
+}
+
+/* SAVE SESSION */
+function saveBloxSession(player) {
+  bloxCurrentPlayer = player;
+
+  try {
+    localStorage.setItem(BLOX_SESSION_KEY, JSON.stringify(player));
+  } catch (error) {
+    console.warn("Unable to save player session.", error);
+  }
+
+  updateBloxPortalButton();
+}
+
+/* RESTORE SESSION ON PAGE LOAD */
+function restoreBloxSession() {
+  try {
+    const savedPlayer = localStorage.getItem(BLOX_SESSION_KEY);
+
+    if (savedPlayer) {
+      const player = JSON.parse(savedPlayer);
+
+      if (player && player.username) {
+        bloxCurrentPlayer = player;
+      } else {
+        localStorage.removeItem(BLOX_SESSION_KEY);
+      }
+    }
+  } catch (error) {
+    localStorage.removeItem(BLOX_SESSION_KEY);
+    bloxCurrentPlayer = null;
+  }
+
+  updateBloxPortalButton();
+}
+
+/* OPEN PORTAL */
 function openBloxPortal() {
   portalModal.classList.add("open");
   portalModal.setAttribute("aria-hidden", "false");
-  showBloxLogin();
+
+  if (bloxCurrentPlayer) {
+    showBloxDashboard(bloxCurrentPlayer);
+  } else {
+    showBloxLogin();
+  }
 }
 
+/* CLOSE PORTAL - SESSION REMAINS SAVED */
 function closeBloxPortal() {
   portalModal.classList.remove("open");
   portalModal.setAttribute("aria-hidden", "true");
 }
 
+/* LOGIN SCREEN */
 function showBloxLogin() {
   portalLogin.hidden = false;
   portalRegister.hidden = true;
@@ -608,6 +664,7 @@ function showBloxLogin() {
   portalMessage.textContent = "";
 }
 
+/* REGISTER SCREEN */
 function showBloxRegister() {
   portalLogin.hidden = true;
   portalRegister.hidden = false;
@@ -616,8 +673,11 @@ function showBloxRegister() {
   portalMessage.textContent = "";
 }
 
+/* PLAYER DASHBOARD */
 function showBloxDashboard(player) {
   bloxCurrentPlayer = player;
+  updateBloxPortalButton();
+
   portalLogin.hidden = true;
   portalRegister.hidden = true;
   portalDashboard.hidden = false;
@@ -648,6 +708,7 @@ function showBloxDashboard(player) {
   portalCard.append(label, id, username, email, status, joined);
 }
 
+/* APPS SCRIPT API REQUEST */
 async function bloxApiRequest(payload) {
   if (!BLOX_PLAYER_API || BLOX_PLAYER_API === "PASTE_YOUR_WEB_APP_URL_HERE") {
     throw new Error("API URL is not configured yet.");
@@ -661,34 +722,43 @@ async function bloxApiRequest(payload) {
     body: JSON.stringify(payload)
   });
 
-  if (!response.ok) throw new Error("Server request failed. Please try again.");
+  if (!response.ok) {
+    throw new Error("Server request failed. Please try again.");
+  }
+
   return await response.json();
 }
 
-// OPEN PORTAL
-document.getElementById("playerPortalOpen")
-  .addEventListener("click", openBloxPortal);
+/* OPEN PORTAL BUTTON */
+portalOpenBtn.addEventListener("click", openBloxPortal);
 
+/* CLOSE BUTTON */
 document.getElementById("bloxPortalClose")
   .addEventListener("click", closeBloxPortal);
 
+/* CLICK OUTSIDE MODAL */
 portalModal.addEventListener("click", function(event) {
-  if (event.target === portalModal) closeBloxPortal();
+  if (event.target === portalModal) {
+    closeBloxPortal();
+  }
 });
 
+/* ESCAPE KEY */
 document.addEventListener("keydown", function(event) {
   if (event.key === "Escape" && portalModal.classList.contains("open")) {
     closeBloxPortal();
   }
 });
 
+/* SWITCH TO REGISTER */
 document.getElementById("bloxShowRegister")
   .addEventListener("click", showBloxRegister);
 
+/* SWITCH TO LOGIN */
 document.getElementById("bloxShowLogin")
   .addEventListener("click", showBloxLogin);
 
-// REGISTER FORM
+/* REGISTER FORM */
 document.getElementById("bloxRegisterForm")
   .addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -712,7 +782,12 @@ document.getElementById("bloxRegisterForm")
       }
 
       this.reset();
+
+      /* SAVE LOGIN SESSION AFTER REGISTRATION */
+      saveBloxSession(result.player);
+
       showBloxDashboard(result.player);
+
     } catch (error) {
       portalMessage.textContent = error.message || "Connection error. Please try again.";
     } finally {
@@ -721,7 +796,7 @@ document.getElementById("bloxRegisterForm")
     }
   });
 
-// LOGIN FORM
+/* LOGIN FORM */
 document.getElementById("bloxLoginForm")
   .addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -744,7 +819,12 @@ document.getElementById("bloxLoginForm")
       }
 
       this.reset();
+
+      /* SAVE LOGIN SESSION AFTER LOGIN */
+      saveBloxSession(result.player);
+
       showBloxDashboard(result.player);
+
     } catch (error) {
       portalMessage.textContent = error.message || "Connection error. Please try again.";
     } finally {
@@ -753,14 +833,22 @@ document.getElementById("bloxLoginForm")
     }
   });
 
-// LOGOUT
+/* LOGOUT */
 document.getElementById("bloxPortalLogout")
   .addEventListener("click", function() {
     bloxCurrentPlayer = null;
+
+    /* REMOVE SAVED SESSION */
+    localStorage.removeItem(BLOX_SESSION_KEY);
+
+    updateBloxPortalButton();
     portalCard.replaceChildren();
     showBloxLogin();
     portalMessage.textContent = "Logged out.";
   });
+
+/* RESTORE SESSION WHEN WEBSITE LOADS */
+restoreBloxSession();
 
 /* END BLOX SMP PLAYER PORTAL */
 </script>
