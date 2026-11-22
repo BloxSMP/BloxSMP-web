@@ -454,7 +454,7 @@ const SERVER_PORT = 19132;
 const DISCORD_LINK = "https://discord.gg/24WVRUPWJE";
 
 // PASTE YOUR DEPLOYED APPS SCRIPT /EXEC URL HERE
-const BLOX_PLAYER_API = "https://script.google.com/macros/s/AKfycbx8kHXRuNUqEL1RnNnqHQqg_ScUzsERY4DAGYyzWV6mVENuDQmQBGpG4HhqZShHJvBjxg/exec";
+const BLOX_PLAYER_API = "https://script.google.com/macros/s/AKfycbxCE9GoHIhaaofjaOKeYPXKJszSn2TkUsSWEIfnf3Nf7t8zdivX9gd9_6RIYMHb3MhBbA/exec";
 
 document.getElementById("year").textContent = new Date().getFullYear();
 document.getElementById("serverIp").textContent = SERVER_IP;
@@ -649,7 +649,7 @@ function showBloxDashboard(player) {
 }
 
 async function bloxApiRequest(payload) {
-  if (!BLOX_PLAYER_API || BLOX_PLAYER_API === "https://script.google.com/macros/s/AKfycbx8kHXRuNUqEL1RnNnqHQqg_ScUzsERY4DAGYyzWV6mVENuDQmQBGpG4HhqZShHJvBjxg/exec") {
+  if (!BLOX_PLAYER_API || BLOX_PLAYER_API === "https://script.google.com/macros/s/AKfycbxCE9GoHIhaaofjaOKeYPXKJszSn2TkUsSWEIfnf3Nf7t8zdivX9gd9_6RIYMHb3MhBbA/exec") {
     throw new Error("API URL is not configured yet.");
   }
 
