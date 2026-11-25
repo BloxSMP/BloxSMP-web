@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090d">
+<title>BLOX SMP | The Kingdom War</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --gold:#e8c47c;
+ --gold-dark:#8c652e;
+ --red:#d94e4e;
+ --orange:#ef9a45;
+ --bg:#08090d;
+ --panel:#13141b;
+ --muted:#aaa8a4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+ background:var(--bg);color:#f5f0e7;
+ font-family:Inter,Arial,sans-serif;
+ overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;z-index:-2;
+ background:
+ radial-gradient(ellipse at 15% 15%,#8b302522,transparent 35%),
+ radial-gradient(ellipse at 85% 35%,#b77b2520,transparent 40%),
+ linear-gradient(140deg,#08090d,#111018 55%,#09090d);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+header{
+ position:sticky;top:0;z-index:50;
+ height:74px;padding:0 7%;
+ display:flex;align-items:center;justify-content:space-between;
+ background:#09090df0;backdrop-filter:blur(14px);
+ border-bottom:1px solid #d6ad6230;
+}
+.logo{font:900 19px Cinzel,serif;letter-spacing:3px}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:24px;align-items:center}
+nav a{font-size:9px;font-weight:800;letter-spacing:1.5px;color:#c5c1ba;transition:.2s}
+nav a:hover{color:var(--gold)}
+.home-link{padding:11px 16px;border:1px solid #d6ad6270;color:var(--gold)}
+.hero{
+ min-height:740px;position:relative;isolation:isolate;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;padding:100px 20px;
+ overflow:hidden;
+ background:
+ linear-gradient(180deg,#08090d35 0%,#08090d35 45%,#08090d 100%),
+ url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1800&q=75") center/cover;
+}
+.hero:before{
+ content:"";position:absolute;inset:0;z-index:-1;
+ background:radial-gradient(ellipse at center,#a66e2920,transparent 58%);
+ animation:glow 5s ease-in-out infinite alternate;
+}
+.hero:after{
+ content:"";position:absolute;bottom:0;left:0;right:0;height:140px;
+ background:linear-gradient(transparent,var(--bg));
+}
+@keyframes glow{to{opacity:.45;transform:scale(1.08)}}
+.hero-content{position:relative;z-index:2;max-width:950px}
+.eyebrow{font-size:10px;letter-spacing:6px;color:var(--gold);font-weight:800}
+.hero h1{
+ font:900 clamp(47px,9vw,105px)/1.05 Cinzel,serif;
+ letter-spacing:2px;margin-top:27px;
+ text-shadow:0 5px 45px #000;
+}
+.hero h1 span{
+ display:block;color:var(--gold);
+ text-shadow:0 0 22px #d6ad6260,0 0 60px #d6ad6230;
+}
+.hero-sub{font:600 12px Cinzel,serif;letter-spacing:4px;color:#e0d2b9;margin-top:25px}
+.hero-desc{max-width:600px;margin:22px auto 32px;color:#c0bbb4;font-size:13px;line-height:2}
+.buttons{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:48px;padding:0 23px;
+ color:#18120b;background:linear-gradient(110deg,#f0d59a,#bc8b49);
+ border:1px solid #f1d59a;font-size:10px;font-weight:900;letter-spacing:1.5px;
+ transition:.25s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #d6ad6250}
+.btn-outline{background:#101015bb;color:var(--gold);border-color:#d6ad6270}
+.particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{
+ position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;
+ background:#ffbd72;box-shadow:0 0 9px 2px #ed943b;
+ opacity:0;animation:floatUp linear infinite;
+}
+.particle:nth-child(1){left:8%;animation-duration:10s}
+.particle:nth-child(2){left:20%;animation-duration:13s;animation-delay:2s}
+.particle:nth-child(3){left:35%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:52%;animation-duration:12s;animation-delay:1s}
+.particle:nth-child(5){left:68%;animation-duration:10s;animation-delay:3s}
+.particle:nth-child(6){left:83%;animation-duration:14s;animation-delay:5s}
+.particle:nth-child(7){left:94%;animation-duration:12s;animation-delay:2s}
+@keyframes floatUp{
+ 0%{transform:translateY(0);opacity:0}
+ 20%{opacity:.8}
+ 85%{opacity:.5}
+ 100%{transform:translateY(-650px) translateX(30px);opacity:0}
+}
+section{padding:90px 7%}
+.heading{text-align:center;margin-bottom:45px}
+.kicker{font-size:10px;letter-spacing:5px;color:var(--gold);font-weight:800}
+h2{font:700 clamp(27px,4vw,43px) Cinzel,serif;margin-top:13px}
+.subtitle{font-size:12px;color:var(--muted);line-height:1.9;margin-top:12px}
+.rule-line{height:1px;width:90px;margin:20px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.clock{
+ min-width:100px;padding:19px 14px;text-align:center;
+ background:linear-gradient(145deg,#1c1b21,#101116);
+ border:1px solid #d6ad6245;box-shadow:inset 0 0 20px #d6ad6208;
+}
+.clock strong{display:block;font:700 30px Cinzel,serif;color:var(--gold)}
+.clock small{font-size:9px;letter-spacing:2px;color:#aaa}
+.note{text-align:center;color:#a49b8c;font-size:9px;letter-spacing:2px;margin-top:22px}
+.dark-section{background:#0d0e13;border-top:1px solid #ffffff0d;border-bottom:1px solid #ffffff0d}
+.kingdoms{display:grid;grid-template-columns:1fr 90px 1fr;gap:18px;align-items:center}
+.kingdom{
+ position:relative;overflow:hidden;min-height:390px;
+ display:flex;flex-direction:column;justify-content:center;align-items:center;
+ text-align:center;padding:35px 25px;
+ background:linear-gradient(145deg,#1b171b,#101116);
+ border:1px solid #ffffff20;transition:.25s;
+}
+.kingdom:hover{transform:translateY(-5px)}
+.kingdom.blazer{border-top:3px solid var(--red)}
+.kingdom.flames{border-top:3px solid var(--orange);background:linear-gradient(145deg,#211a13,#101116)}
+.kingdom.blazer:before,.kingdom.flames:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(ellipse at 50% 0%,#d94e4e24,transparent 65%);
+}
+.kingdom.flames:before{background:radial-gradient(ellipse at 50% 0%,#ef9a4524,transparent 65%)}
+.crest{font-size:65px;filter:drop-shadow(0 0 16px #d6ad6250)}
+.kingdom h3{font:800 clamp(20px,3vw,29px) Cinzel,serif;margin:16px 0}
+.blazer h3{color:#f07872}
+.flames h3{color:#f2a65f}
+.kingdom p{max-width:330px;font-size:12px;color:#aaa;line-height:1.9;margin-bottom:20px}
+.kingdom small{font-size:9px;color:var(--gold);letter-spacing:2px}
+.vs{font:900 36px Cinzel,serif;color:var(--gold);text-shadow:0 0 24px #d6ad6260;text-align:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+ position:relative;overflow:hidden;padding:28px;
+ background:linear-gradient(145deg,#191a22,#101116);
+ border:1px solid #ffffff14;transition:.25s;
+}
+.card:hover{border-color:#d6ad6270;transform:translateY(-4px)}
+.card:after{
+ content:"";position:absolute;right:-40px;top:-40px;
+ width:110px;height:110px;border-radius:50%;background:#d6ad6210;filter:blur(12px);
+}
+.card-icon{font-size:29px;margin-bottom:17px}
+.card h3{font:700 18px Cinzel,serif}
+.card p{font-size:12px;color:#999;line-height:1.9;margin-top:12px}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rule{
+ display:flex;gap:16px;padding:20px;background:#171820;
+ border:1px solid #ffffff12;
+}
+.rule b{font:700 21px Cinzel,serif;color:var(--gold)}
+.rule h3{font-size:12px;margin:2px 0 8px}
+.rule p{font-size:11px;color:#999;line-height:1.8}
+.table-wrap{max-width:950px;margin:auto;overflow-x:auto;border:1px solid #d6ad6235}
+table{width:100%;border-collapse:collapse;min-width:490px}
+th,td{padding:18px;text-align:left;font-size:12px}
+th{background:#1b1a20;color:var(--gold);font-size:9px;letter-spacing:2px}
+td{border-top:1px solid #ffffff12;color:#ccc}
+.pending{font-size:9px;color:var(--gold);letter-spacing:1px}
+.member-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.member{
+ background:#171820;border:1px solid #ffffff16;
+ padding:24px;text-align:center;
+}
+.skin{
+ width:76px;height:76px;margin:0 auto 15px;
+ display:grid;place-items:center;font-size:37px;
+ background:linear-gradient(145deg,#292b34,#12131a);
+ border:1px solid #d6ad6250;
+}
+.member h3{font:700 16px Cinzel,serif}
+.member p{font-size:10px;color:#aaa;margin-top:8px}
+.member .rank{color:var(--gold);font-size:9px;letter-spacing:2px;margin-top:12px}
+.announcement{
+ max-width:850px;margin:auto;display:grid;gap:13px;
+}
+.news{
+ display:flex;gap:18px;padding:22px;
+ background:#171820;border-left:2px solid var(--gold);
+}
+.news-icon{font-size:24px}
+.news small{font-size:9px;color:var(--gold);letter-spacing:2px}
+.news h3{font:700 17px Cinzel,serif;margin-top:8px}
+.news p{font-size:11px;color:#999;line-height:1.8;margin-top:8px}
+.hall{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.hall-card{text-align:center;padding:30px 15px;background:#171820;border:1px solid #d6ad6230}
+.hall-card div{font-size:33px}
+.hall-card h3{font:700 15px Cinzel,serif;margin:15px 0 8px}
+.hall-card p{font-size:10px;color:#999}
+.final{text-align:center;background:radial-gradient(ellipse at center,#aa772420,transparent 65%)}
+.final h2{font-size:clamp(30px,5vw,52px)}
+footer{padding:36px 7%;text-align:center;border-top:1px solid #ffffff14;color:#777;font-size:10px}
+footer strong{font:800 17px Cinzel,serif;color:var(--gold)}
+footer a{color:var(--gold)}
+@media(max-width:750px){
+ header{padding:0 4%;height:65px}
+ nav{gap:10px}
+ nav a{font-size:8px;letter-spacing:.4px}
+ nav .hide{display:none}
+ .hero{min-height:630px}
+ section{padding:70px 5%}
+ .kingdoms{grid-template-columns:1fr}
+ .vs{font-size:25px}
+ .grid3,.member-grid,.hall{grid-template-columns:1fr}
+ .rules{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <a href="index.html" class="logo">BLOX <span>SMP</span></a>
+ <nav>
+  <a href="#kingdoms">KINGDOMS</a>
+  <a href="#features">BATTLE</a>
+  <a href="#members" class="hide">MEMBERS</a>
+  <a href="#rules" class="hide">RULES</a>
+  <a href="#rankings" class="hide">RANKINGS</a>
+  <a href="index.html" class="home-link">← HOME</a>
+ </nav>
+</header>
+
+<main>
+<section class="hero">
+ <div class="particles">
+  <i class="particle"></i><i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i>
+ </div>
+ <div class="hero-content">
+  <div class="eyebrow">✦ BLOX SMP ORIGINAL EVENT ✦</div>
+  <h1>THE KINGDOM <span>WAR</span></h1>
+  <div class="hero-sub">SEASON I · THE RISE OF TWO KINGDOMS</div>
+  <p class="hero-desc">Two kingdoms. One battlefield. One crown.
+  The greatest war in BLOX SMP history is about to begin.</p>
+  <div class="buttons">
+   <a class="btn" href="#kingdoms">ENTER THE KINGDOMS</a>
+   <a class="btn btn-outline" href="#schedule">EXPLORE THE WAR</a>
+  </div>
+ </div>
+</section>
+
+<section id="schedule">
+ <div class="heading">
+  <div class="kicker">THE FINAL HOUR APPROACHES</div>
+  <h2>THE COUNTDOWN</h2><div class="rule-line"></div>
+  <p class="subtitle">The first chapter of BLOX SMP history begins in January 2027.</p>
+ </div>
+ <div class="countdown">
+  <div class="clock"><strong id="days">--</strong><small>DAYS</small></div>
+  <div class="clock"><strong id="hours">--</strong><small>HOURS</small></div>
+  <div class="clock"><strong id="minutes">--</strong><small>MINUTES</small></div>
+  <div class="clock"><strong id="seconds">--</strong><small>SECONDS</small></div>
+ </div>
+ <p class="note">OFFICIAL EVENT DATE · TO BE ANNOUNCED</p>
+</section>
+
+<section class="dark-section" id="kingdoms">
+ <div class="heading">
+  <div class="kicker">CHOOSE YOUR DESTINY</div>
+  <h2>THE TWO GREAT KINGDOMS</h2><div class="rule-line"></div>
+  <p class="subtitle">An ancient rivalry. A battle for the ultimate throne.</p>
+ </div>
+ <div class="kingdoms">
+  <article class="kingdom blazer">
+   <div class="crest">🛡️</div>
+   <div class="kicker">THE RED LEGION</div>
+   <h3>KINGDOM BLAZER</h3>
+   <p>Forged through courage. United by loyalty. The warriors of Blazer fight with honour and unbreakable strength.</p>
+   <small>MEMBERS · TO BE ANNOUNCED</small>
+  </article>
+  <div class="vs">VS</div>
+  <article class="kingdom flames">
+   <div class="crest">🔥</div>
+   <div class="kicker">THE FIRE EMPIRE</div>
+   <h3>KINGDOM FLAMES</h3>
+   <p>Born from fire. Driven by ambition. The Flames rise with one purpose: conquer the battlefield and claim the crown.</p>
+   <small>MEMBERS · TO BE ANNOUNCED</small>
+  </article>
+ </div>
+</section>
+
+<section id="features">
+ <div class="heading">
+  <div class="kicker">MORE THAN A BATTLE</div>
+  <h2>THE WAR EXPERIENCE</h2><div class="rule-line"></div>
+  <p class="subtitle">Every warrior has a role. Every victory has a price.</p>
+ </div>
+ <div class="grid3">
+  <article class="card"><div class="card-icon">⚔️</div><h3>Epic Battles</h3><p>Kingdom warriors face each other in organised combat and special challenges.</p></article>
+  <article class="card"><div class="card-icon">🏰</div><h3>Castle Warfare</h3><p>Defend your kingdom, protect your territory and fight for control.</p></article>
+  <article class="card"><div class="card-icon">👑</div><h3>The Crown</h3><p>One kingdom will rise above the other and become the Season 1 champion.</p></article>
+ </div>
+</section>
+
+<section class="dark-section" id="members">
+ <div class="heading">
+  <div class="kicker">THE WARRIORS OF BLOX SMP</div>
+  <h2>KINGDOM MEMBERS</h2><div class="rule-line"></div>
+  <p class="subtitle">Meet the warriors who will enter the battlefield.</p>
+ </div>
+ <div class="member-grid">
+  <article class="member">
+   <div class="skin">👑</div>
+   <h3>Blazer Member</h3>
+   <p>Kingdom Blazer</p>
+   <div class="rank">RANK · TO BE ASSIGNED</div>
+  </article>
+  <article class="member">
+   <div class="skin">🔥</div>
+   <h3>Flames Member</h3>
+   <p>Kingdom Flames</p>
+   <div class="rank">RANK · TO BE ASSIGNED</div>
+  </article>
+  <article class="member">
+   <div class="skin">⚔️</div>
+   <h3>Warrior Profile</h3>
+   <p>Player details coming soon</p>
+   <div class="rank">RANK · TO BE ASSIGNED</div>
+  </article>
+ </div>
+ <p class="note">DEMO PLACEHOLDERS · REAL PLAYER DATA NOT CONNECTED YET</p>
+</section>
+
+<section>
+ <div class="heading">
+  <div class="kicker">THE CODE OF WAR</div>
+  <h2>OFFICIAL BATTLE RULES</h2><div class="rule-line"></div>
+  <p class="subtitle">Victory means nothing without honour.</p>
+ </div>
+ <div class="rules">
+  <div class="rule"><b>01</b><div><h3>RESPECT ALL PLAYERS</h3><p>No harassment, abuse or personal attacks against players.</p></div></div>
+  <div class="rule"><b>02</b><div><h3>NO CHEATING</h3><p>Hacks, exploits and unfair modifications are forbidden.</p></div></div>
+  <div class="rule"><b>03</b><div><h3>FOLLOW EVENT ADMINS</h3><p>Official event organisers manage battles and resolve disputes.</p></div></div>
+  <div class="rule"><b>04</b><div><h3>NO UNFAIR ALLIANCES</h3><p>Follow the official team and alliance arrangements.</p></div></div>
+  <div class="rule"><b>05</b><div><h3>PLAY FAIR</h3><p>Do not exploit bugs or unintended game mechanics.</p></div></div>
+  <div class="rule"><b>06</b><div><h3>RESPECT FINAL DECISIONS</h3><p>Final event rules and organiser decisions apply.</p></div></div>
+ </div>
+</section>
+
+<section class="dark-section" id="rankings">
+ <div class="heading">
+  <div class="kicker">THE RACE FOR GLORY</div>
+  <h2>WAR LEADERBOARD</h2><div class="rule-line"></div>
+  <p class="subtitle">Official kingdom scores will appear here during the event.</p>
+ </div>
+ <div class="table-wrap">
+  <table>
+   <thead><tr><th>RANK</th><th>KINGDOM</th><th>POINTS</th><th>STATUS</th></tr></thead>
+   <tbody>
+    <tr><td>01</td><td>🔥 Kingdom Flames</td><td>—</td><td class="pending">PENDING</td></tr>
+    <tr><td>02</td><td>🛡️ Kingdom Blazer</td><td>—</td><td class="pending">PENDING</td></tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section>
+ <div class="heading">
+  <div class="kicker">FROM THE ROYAL COUNCIL</div>
+  <h2>OFFICIAL ANNOUNCEMENTS</h2><div class="rule-line"></div>
+ </div>
+ <div class="announcement">
+  <article class="news">
+   <div class="news-icon">📜</div>
+   <div><small>SEASON 1 · OFFICIAL NEWS</small><h3>The Kingdom War is Coming</h3><p>BLOX SMP's first Kingdom War is planned for January 2027. Exact date and schedule will be announced soon.</p></div>
+  </article>
+  <article class="news">
+   <div class="news-icon">👑</div>
+   <div><small>KINGDOM UPDATE</small><h3>Two Kingdoms. One Crown.</h3><p>Kingdom Blazer and Kingdom Flames are preparing for the ultimate showdown.</p></div>
+  </article>
+ </div>
+</section>
+
+<section class="dark-section">
+ <div class="heading">
+  <div class="kicker">REMEMBER THE LEGENDS</div>
+  <h2>HALL OF FAME</h2><div class="rule-line"></div>
+  <p class="subtitle">Glory is temporary. Legends are forever.</p>
+ </div>
+ <div class="hall">
+  <div class="hall-card"><div>🏆</div><h3>SEASON CHAMPION</h3><p>To be revealed after the war</p></div>
+  <div class="hall-card"><div>⚔️</div><h3>TOP WARRIOR</h3><p>To be revealed after the war</p></div>
+  <div class="hall-card"><div>👑</div><h3>KINGDOM LEGEND</h3><p>To be revealed after the war</p></div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="kicker">YOUR KINGDOM NEEDS YOU</div>
+ <h2>PREPARE FOR WAR.</h2>
+ <p class="subtitle">The battlefield awaits. The crown is not yet claimed.</p>
+ <div style="margin-top:28px">
+  <a class="btn" href="index.html">RETURN TO BLOX SMP</a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <strong>BLOX SMP</strong>
+ <p style="margin-top:12px">THE KINGDOM WAR · SEASON I · JANUARY 2027</p>
+ <p style="margin-top:12px"><a href="index.html">RETURN TO MAIN WEBSITE</a></p>
+ <p style="margin-top:18px">© BLOX SMP · ALL RIGHTS RESERVED</p>
+</footer>
+
+<script>
+// Provisional countdown target: update when official date is decided.
+const target = new Date("2027-01-01T00:00:00").getTime();
+
+function updateCountdown(){
+ const diff = target - Date.now();
+ if(diff <= 0){
+  ["days","hours","minutes","seconds"].forEach(id=>{
+   document.getElementById(id).textContent="00";
+  });
+  return;
+ }
+ document.getElementById("days").textContent=Math.floor(diff/86400000);
+ document.getElementById("hours").textContent=Math.floor(diff%86400000/3600000);
+ document.getElementById("minutes").textContent=Math.floor(diff%3600000/60000);
+ document.getElementById("seconds").textContent=Math.floor(diff%60000/1000);
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>
