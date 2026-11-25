@@ -51,6 +51,7 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn { font-family:'Orbitron',sans-serif; }
 .brand-name span { color:var(--light); }
 .navlinks { display:flex; gap:23px; color:#b8a9cf; font-size:11px; font-weight:700; }
 .navlinks a:hover { color:white; }
+
 .nav-cta,.btn {
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
   border-radius:8px; font-size:10px; font-weight:800;
@@ -62,6 +63,20 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn { font-family:'Orbitron',sans-serif; }
 }
 .nav-cta:hover,.btn:hover { transform:translateY(-3px); }
 .btn-secondary { background:#1b102bcc; border:1px solid #a855f744; color:#e9d5ff; }
+
+/* KINGDOM WAR NAVIGATION BUTTON */
+.kingdom-nav-cta {
+  background:linear-gradient(135deg,#8b5a16,#4b2b0b);
+  border:1px solid #fbbf2488;
+  color:#ffe7a3;
+  white-space:nowrap;
+  box-shadow:0 0 18px #f59e0b22;
+}
+.kingdom-nav-cta:hover {
+  background:linear-gradient(135deg,#b7791f,#70400e);
+  color:#fff7d6;
+  box-shadow:0 0 24px #f59e0b66;
+}
 
 .hero {
   min-height:100svh; min-height:790px; position:relative; isolation:isolate; overflow:hidden;
@@ -218,11 +233,12 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn { font-family:'Orbitron',sans-serif; }
   .blox-video-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media(max-width:540px) {
-  .nav { top:9px; }
-  .brand { font-size:11px; }
+  .nav { top:9px; gap:7px; padding:9px 10px; }
+  .brand { font-size:11px; gap:6px; }
   .brand-icon { width:31px; height:31px; }
   .navlinks { display:none; }
-  .nav-cta { margin-left:auto; }
+  .nav-cta { margin-left:auto; padding:10px 8px; font-size:8px; }
+  .kingdom-nav-cta { padding:10px 8px; font-size:8px; }
   .hero { min-height:760px; }
   .hero-content { padding-top:135px; padding-bottom:160px; }
   .hero h1 { font-size:clamp(42px,11.5vw,65px); }
@@ -265,6 +281,9 @@ h1,h2,h3,.brand,.btn,.nav-cta,.copy-btn { font-family:'Orbitron',sans-serif; }
     <a href="#videos">Videos</a>
     <a href="#community">Community</a>
   </div>
+
+  <!-- KINGDOM WAR BUTTON -->
+  <a href="./kingdom-war.html" class="nav-cta kingdom-nav-cta">⚔ KINGDOM WAR</a>
 
   <!-- PLAYER PORTAL BUTTON -->
   <button type="button" class="nav-cta" id="playerPortalOpen">PLAYER PORTAL ↗</button>
