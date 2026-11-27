@@ -3,36 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#09090d">
+<meta name="theme-color" content="#080612">
 <title>BLOX SMP | The Kingdom War</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
- --gold:#e8c47c;
- --gold-dark:#8c652e;
+ --gold:#d8b4fe;
+ --gold-dark:#581c87;
  --red:#d94e4e;
  --orange:#ef9a45;
- --bg:#08090d;
- --panel:#13141b;
- --muted:#aaa8a4;
+ --bg:#080612;
+ --panel:#160d25;
+ --muted:#b8a9cf;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{
- background:var(--bg);color:#f5f0e7;
+ background:var(--bg);color:#f5edff;
  font-family:Inter,Arial,sans-serif;
  overflow-x:hidden;
+  position:relative;
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%,rgba(91,33,182,.10),transparent 58%);
 }
 body:before{
  content:"";position:fixed;inset:0;z-index:-2;
  background:
  radial-gradient(ellipse at 15% 15%,#8b302522,transparent 35%),
  radial-gradient(ellipse at 85% 35%,#b77b2520,transparent 40%),
- linear-gradient(140deg,#08090d,#111018 55%,#09090d);
+ linear-gradient(140deg,#080612,#100b20 55%,#080612);
 }
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
@@ -40,27 +45,27 @@ header{
  position:sticky;top:0;z-index:50;
  height:74px;padding:0 7%;
  display:flex;align-items:center;justify-content:space-between;
- background:#09090df0;backdrop-filter:blur(14px);
- border-bottom:1px solid #d6ad6230;
+ background:#080612f0;backdrop-filter:blur(14px);
+ border-bottom:1px solid #a855f730;
 }
-.logo{font:900 19px Cinzel,serif;letter-spacing:3px}
+.logo{font:900 19px 'Orbitron',sans-serif;letter-spacing:3px}
 .logo span{color:var(--gold)}
 nav{display:flex;gap:24px;align-items:center}
-nav a{font-size:9px;font-weight:800;letter-spacing:1.5px;color:#c5c1ba;transition:.2s}
+nav a{font-size:9px;font-weight:800;letter-spacing:1.5px;color:#b8a9cf;transition:.2s}
 nav a:hover{color:var(--gold)}
-.home-link{padding:11px 16px;border:1px solid #d6ad6270;color:var(--gold)}
+.home-link{padding:11px 16px;border:1px solid #a855f770;color:var(--gold)}
 .hero{
  min-height:740px;position:relative;isolation:isolate;
  display:flex;align-items:center;justify-content:center;
  text-align:center;padding:100px 20px;
  overflow:hidden;
  background:
- linear-gradient(180deg,#08090d35 0%,#08090d35 45%,#08090d 100%),
+ linear-gradient(180deg,#08061235 0%,#08061235 45%,#080612 100%),
  url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1800&q=75") center/cover;
 }
 .hero:before{
  content:"";position:absolute;inset:0;z-index:-1;
- background:radial-gradient(ellipse at center,#a66e2920,transparent 58%);
+ background:radial-gradient(ellipse at center,rgba(168,85,247,.22),transparent 60%);
  animation:glow 5s ease-in-out infinite alternate;
 }
 .hero:after{
@@ -71,26 +76,26 @@ nav a:hover{color:var(--gold)}
 .hero-content{position:relative;z-index:2;max-width:950px}
 .eyebrow{font-size:10px;letter-spacing:6px;color:var(--gold);font-weight:800}
 .hero h1{
- font:900 clamp(47px,9vw,105px)/1.05 Cinzel,serif;
+ font:900 clamp(47px,9vw,105px)/1.05 'Orbitron',sans-serif;
  letter-spacing:2px;margin-top:27px;
  text-shadow:0 5px 45px #000;
 }
 .hero h1 span{
  display:block;color:var(--gold);
- text-shadow:0 0 22px #d6ad6260,0 0 60px #d6ad6230;
+ text-shadow:0 0 22px #a855f760,0 0 60px #a855f730;
 }
-.hero-sub{font:600 12px Cinzel,serif;letter-spacing:4px;color:#e0d2b9;margin-top:25px}
-.hero-desc{max-width:600px;margin:22px auto 32px;color:#c0bbb4;font-size:13px;line-height:2}
+.hero-sub{font:600 12px 'Orbitron',sans-serif;letter-spacing:4px;color:#d8b4fe;margin-top:25px}
+.hero-desc{max-width:600px;margin:22px auto 32px;color:#b8a9cf;font-size:13px;line-height:2}
 .buttons{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}
 .btn{
  display:inline-flex;align-items:center;justify-content:center;
  min-height:48px;padding:0 23px;
- color:#18120b;background:linear-gradient(110deg,#f0d59a,#bc8b49);
+ color:#100b20;background:linear-gradient(110deg,#d8b4fe,#7e22ce);
  border:1px solid #f1d59a;font-size:10px;font-weight:900;letter-spacing:1.5px;
  transition:.25s;
 }
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #d6ad6250}
-.btn-outline{background:#101015bb;color:var(--gold);border-color:#d6ad6270}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #a855f750}
+.btn-outline{background:#101015bb;color:var(--gold);border-color:#a855f770}
 .particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .particle{
  position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;
@@ -113,16 +118,16 @@ nav a:hover{color:var(--gold)}
 section{padding:90px 7%}
 .heading{text-align:center;margin-bottom:45px}
 .kicker{font-size:10px;letter-spacing:5px;color:var(--gold);font-weight:800}
-h2{font:700 clamp(27px,4vw,43px) Cinzel,serif;margin-top:13px}
+h2{font:700 clamp(27px,4vw,43px) 'Orbitron',sans-serif;margin-top:13px}
 .subtitle{font-size:12px;color:var(--muted);line-height:1.9;margin-top:12px}
 .rule-line{height:1px;width:90px;margin:20px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .clock{
  min-width:100px;padding:19px 14px;text-align:center;
- background:linear-gradient(145deg,#1c1b21,#101116);
- border:1px solid #d6ad6245;box-shadow:inset 0 0 20px #d6ad6208;
+ background:linear-gradient(145deg,#211331,#100b20);
+ border:1px solid #a855f745;box-shadow:inset 0 0 20px #a855f708;
 }
-.clock strong{display:block;font:700 30px Cinzel,serif;color:var(--gold)}
+.clock strong{display:block;font:700 30px 'Orbitron',sans-serif;color:var(--gold)}
 .clock small{font-size:9px;letter-spacing:2px;color:#aaa}
 .note{text-align:center;color:#a49b8c;font-size:9px;letter-spacing:2px;margin-top:22px}
 .dark-section{background:#0d0e13;border-top:1px solid #ffffff0d;border-bottom:1px solid #ffffff0d}
@@ -131,47 +136,47 @@ h2{font:700 clamp(27px,4vw,43px) Cinzel,serif;margin-top:13px}
  position:relative;overflow:hidden;min-height:390px;
  display:flex;flex-direction:column;justify-content:center;align-items:center;
  text-align:center;padding:35px 25px;
- background:linear-gradient(145deg,#1b171b,#101116);
+ background:linear-gradient(145deg,#1b1029,#100b20);
  border:1px solid #ffffff20;transition:.25s;
 }
 .kingdom:hover{transform:translateY(-5px)}
 .kingdom.blazer{border-top:3px solid var(--red)}
-.kingdom.flames{border-top:3px solid var(--orange);background:linear-gradient(145deg,#211a13,#101116)}
+.kingdom.flames{border-top:3px solid var(--orange);background:linear-gradient(145deg,#211331,#100b20)}
 .kingdom.blazer:before,.kingdom.flames:before{
  content:"";position:absolute;inset:0;pointer-events:none;
  background:radial-gradient(ellipse at 50% 0%,#d94e4e24,transparent 65%);
 }
 .kingdom.flames:before{background:radial-gradient(ellipse at 50% 0%,#ef9a4524,transparent 65%)}
-.crest{font-size:65px;filter:drop-shadow(0 0 16px #d6ad6250)}
-.kingdom h3{font:800 clamp(20px,3vw,29px) Cinzel,serif;margin:16px 0}
+.crest{font-size:65px;filter:drop-shadow(0 0 16px #a855f750)}
+.kingdom h3{font:800 clamp(20px,3vw,29px) 'Orbitron',sans-serif;margin:16px 0}
 .blazer h3{color:#f07872}
 .flames h3{color:#f2a65f}
 .kingdom p{max-width:330px;font-size:12px;color:#aaa;line-height:1.9;margin-bottom:20px}
 .kingdom small{font-size:9px;color:var(--gold);letter-spacing:2px}
-.vs{font:900 36px Cinzel,serif;color:var(--gold);text-shadow:0 0 24px #d6ad6260;text-align:center}
+.vs{font:900 36px 'Orbitron',sans-serif;color:var(--gold);text-shadow:0 0 24px #a855f760;text-align:center}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{
  position:relative;overflow:hidden;padding:28px;
- background:linear-gradient(145deg,#191a22,#101116);
+ background:linear-gradient(145deg,#1a1029,#100b20);
  border:1px solid #ffffff14;transition:.25s;
 }
-.card:hover{border-color:#d6ad6270;transform:translateY(-4px)}
+.card:hover{border-color:#a855f770;transform:translateY(-4px)}
 .card:after{
  content:"";position:absolute;right:-40px;top:-40px;
- width:110px;height:110px;border-radius:50%;background:#d6ad6210;filter:blur(12px);
+ width:110px;height:110px;border-radius:50%;background:#a855f710;filter:blur(12px);
 }
 .card-icon{font-size:29px;margin-bottom:17px}
-.card h3{font:700 18px Cinzel,serif}
+.card h3{font:700 18px 'Orbitron',sans-serif}
 .card p{font-size:12px;color:#999;line-height:1.9;margin-top:12px}
 .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .rule{
- display:flex;gap:16px;padding:20px;background:#171820;
+ display:flex;gap:16px;padding:20px;background:#160d25;
  border:1px solid #ffffff12;
 }
-.rule b{font:700 21px Cinzel,serif;color:var(--gold)}
+.rule b{font:700 21px 'Orbitron',sans-serif;color:var(--gold)}
 .rule h3{font-size:12px;margin:2px 0 8px}
 .rule p{font-size:11px;color:#999;line-height:1.8}
-.table-wrap{max-width:950px;margin:auto;overflow-x:auto;border:1px solid #d6ad6235}
+.table-wrap{max-width:950px;margin:auto;overflow-x:auto;border:1px solid #a855f735}
 table{width:100%;border-collapse:collapse;min-width:490px}
 th,td{padding:18px;text-align:left;font-size:12px}
 th{background:#1b1a20;color:var(--gold);font-size:9px;letter-spacing:2px}
@@ -179,16 +184,16 @@ td{border-top:1px solid #ffffff12;color:#ccc}
 .pending{font-size:9px;color:var(--gold);letter-spacing:1px}
 .member-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 .member{
- background:#171820;border:1px solid #ffffff16;
+ background:#160d25;border:1px solid #ffffff16;
  padding:24px;text-align:center;
 }
 .skin{
  width:76px;height:76px;margin:0 auto 15px;
  display:grid;place-items:center;font-size:37px;
- background:linear-gradient(145deg,#292b34,#12131a);
- border:1px solid #d6ad6250;
+ background:linear-gradient(145deg,#261638,#100b20);
+ border:1px solid #a855f750;
 }
-.member h3{font:700 16px Cinzel,serif}
+.member h3{font:700 16px 'Orbitron',sans-serif}
 .member p{font-size:10px;color:#aaa;margin-top:8px}
 .member .rank{color:var(--gold);font-size:9px;letter-spacing:2px;margin-top:12px}
 .announcement{
@@ -196,21 +201,21 @@ td{border-top:1px solid #ffffff12;color:#ccc}
 }
 .news{
  display:flex;gap:18px;padding:22px;
- background:#171820;border-left:2px solid var(--gold);
+ background:#160d25;border-left:2px solid var(--gold);
 }
 .news-icon{font-size:24px}
 .news small{font-size:9px;color:var(--gold);letter-spacing:2px}
-.news h3{font:700 17px Cinzel,serif;margin-top:8px}
+.news h3{font:700 17px 'Orbitron',sans-serif;margin-top:8px}
 .news p{font-size:11px;color:#999;line-height:1.8;margin-top:8px}
 .hall{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.hall-card{text-align:center;padding:30px 15px;background:#171820;border:1px solid #d6ad6230}
+.hall-card{text-align:center;padding:30px 15px;background:#160d25;border:1px solid #a855f730}
 .hall-card div{font-size:33px}
-.hall-card h3{font:700 15px Cinzel,serif;margin:15px 0 8px}
+.hall-card h3{font:700 15px 'Orbitron',sans-serif;margin:15px 0 8px}
 .hall-card p{font-size:10px;color:#999}
 .final{text-align:center;background:radial-gradient(ellipse at center,#aa772420,transparent 65%)}
 .final h2{font-size:clamp(30px,5vw,52px)}
 footer{padding:36px 7%;text-align:center;border-top:1px solid #ffffff14;color:#777;font-size:10px}
-footer strong{font:800 17px Cinzel,serif;color:var(--gold)}
+footer strong{font:800 17px 'Orbitron',sans-serif;color:var(--gold)}
 footer a{color:var(--gold)}
 @media(max-width:750px){
  header{padding:0 4%;height:65px}
